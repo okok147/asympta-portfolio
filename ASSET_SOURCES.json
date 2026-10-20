@@ -1,0 +1,110 @@
+{
+  "source": "Apple iTunes Lookup/Search public catalog, Hong Kong storefront",
+  "sources": [
+    "https://itunes.apple.com/lookup?id=6800755232&country=hk",
+    "https://itunes.apple.com/lookup?id=6818553101&country=hk",
+    "https://okok147.github.io/asympta-support/",
+    "https://okok147.github.io/asympta-paperie-support/"
+  ],
+  "assets": [
+    {
+      "file": "assets/writing-icon.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ed/71/c5/ed71c52a-ff7a-cfa2-e882-86fdaae23533/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Writing",
+      "public_version": "1.1.3",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "a9de55bedf0ce967866f33c2a5df088343807e910e26ad2552a25f28672417a9"
+    },
+    {
+      "file": "assets/writing-ipad-1.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/32/47/b3/3247b379-bc31-3bed-7f21-fc6c438910fc/Asympta-zh-Hant-APP_IPAD_PRO_3GEN_129-01-2064x2752.png/1200x1600bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Writing",
+      "public_version": "1.1.3",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "36628bd61fdad1b6f635265d614ca70665366f0bb1f17a1b81f39d5e8785b611"
+    },
+    {
+      "file": "assets/writing-ipad-2.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/42/17/11/42171140-c08e-bbe0-fd3d-9a231c4bdf43/Asympta-zh-Hant-APP_IPAD_PRO_3GEN_129-02-2064x2752.png/1200x1600bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Writing",
+      "public_version": "1.1.3",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "3622e5cefab278a7463f619cb51232e04a39badd60d5a83a63c5380f11772b0a"
+    },
+    {
+      "file": "assets/writing-ipad-3.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a4/1b/4d/a41b4d9b-3a11-82bb-7773-c852c5114e33/Asympta-zh-Hant-APP_IPAD_PRO_3GEN_129-02-2064x2752.png/1200x1600bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Writing",
+      "public_version": "1.1.3",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "3c337a9f3752a62b91d1b13543d1ac86a51d7b32659b1cae221ce09cdb63b369"
+    },
+    {
+      "file": "assets/writing-iphone-1.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/2e/26/80/2e2680f8-947b-359b-5660-44b9389e3a4c/Asympta-zh-Hant-APP_IPHONE_67-01-1320x2868.png/660x1434bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Writing",
+      "public_version": "1.1.3",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "cf43259c238b28be9476703500d12aece83195490372ba8f5eaa84c9bf057c60"
+    },
+    {
+      "file": "assets/writing-iphone-2.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fb/d7/e8/fbd7e834-a988-7df9-c6b9-081ad1aef549/Asympta-zh-Hant-APP_IPHONE_67-02-1320x2868.png/660x1434bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Writing",
+      "public_version": "1.1.3",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "1e195fad83b8ca9081e6a40fd725f1df92ee0b4058c55d5dfe0f80a1a9a5bc35"
+    },
+    {
+      "file": "assets/paperie-icon.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ad/40/1b/ad401b01-d422-65fa-91a0-389150040a42/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Paperie",
+      "public_version": "1.0",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "198e386aa787b013868dba58b1499f0cc1f5853f7bb0814fc3a1641d63a72049"
+    },
+    {
+      "file": "assets/paperie-ipad-1.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/93/ce/c5/93cec557-c3b3-c741-99bb-c9099651f888/00-cover112.png/1200x1600bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Paperie",
+      "public_version": "1.0",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "39fdb355deecc2aba88b3f1b32dde00a33d7bcd64ca0a268bb38c316ad73cdfd"
+    },
+    {
+      "file": "assets/paperie-ipad-2.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/1f/c7/69/1fc76984-2592-dab8-c40c-068f0f68f22c/01-pages2-3-112.png/1200x1600bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Paperie",
+      "public_version": "1.0",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "777609376857d9f4e782cdd2638478ac735085fb78332051291d8f30e6fbf5f0"
+    },
+    {
+      "file": "assets/paperie-iphone-1.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/57/6b/23/576b231b-8890-a2a4-3659-2408cbcea919/00-cover112.png/660x1434bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Paperie",
+      "public_version": "1.0",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "e70c3ee051eaed90dfc9e12e66f058403fb6a9bb96f38f3394d65726807273a7"
+    },
+    {
+      "file": "assets/paperie-iphone-2.webp",
+      "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/8a/83/a6/8a83a6a1-3b5e-e030-c1a1-c674c926040a/01-page2-112.png/660x1434bb.jpg",
+      "retrieved_date": "2026-10-20",
+      "product": "Asympta Paperie",
+      "public_version": "1.0",
+      "transform": "JPEG to WebP quality 88; no UI compositing or crop",
+      "sha256": "a874e51150e90a9690df9f056fde178d76f81abdb046332b5c910d4e796400aa"
+    }
+  ]
+}

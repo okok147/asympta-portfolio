@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://okok147.github.io/asympta-portfolio/sitemap.xml
