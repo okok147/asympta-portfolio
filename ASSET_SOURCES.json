@@ -105,6 +105,20 @@
       "public_version": "1.0",
       "transform": "JPEG to WebP quality 88; no UI compositing or crop",
       "sha256": "a874e51150e90a9690df9f056fde178d76f81abdb046332b5c910d4e796400aa"
+    },
+    {
+      "file": "assets/paperie-film.mp4",
+      "source": "Owner-supplied Paperie product recording, 2026-10-20",
+      "product": "Asympta Paperie",
+      "transform": "Owner-supplied 90-second product recording; original app footage retained, scaled to 1080px width, encoded H.264, audio and input metadata removed. No simulated app UI.",
+      "sha256": "1722ef2145d2df61f99f072b5543909542327372ba7c6fc963734090c19b86e0"
+    },
+    {
+      "file": "assets/paperie-film-poster.jpg",
+      "source": "Owner-supplied Paperie product recording, 2026-10-20",
+      "product": "Asympta Paperie",
+      "transform": "Still frame at 4 seconds from the same owner-supplied recording, scaled to 1080px width.",
+      "sha256": "0a8c83271799144f3714908c21a5905f1bf96478386c3af5742cca09acc79f3c"
     }
   ]
 }

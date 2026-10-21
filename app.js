@@ -1,13 +1,79 @@
 'use strict';
-const en={skip:'Skip to content',navWorks:'Work',navAbout:'About',introEyebrow:'A PERSONAL PORTFOLIO · ASYMPTA',intro1:'Making quiet things',intro2:'for writing and living.',introDescription:'Hello, I’m Ka Ho Lau. These are the apps I make.<br>For thoughts finding their shape, and days worth remembering.',introContact:'A little hello ↗',worksTitle:'Selected work',writingType:'Infinite canvas · iOS / iPadOS',writingIntro:'A place for thoughts to stay where they began. An open canvas for handwriting, drawing, and text — with room to discover the connections in between.',paperCaption:'01 / Light on paper',skyCaption:'02 / Writing under the sky',detailsLabel:'A few details',wFeature1:'Handwriting with Apple Pencil, drawing, and text.',wFeature2:'Pan and zoom freely; keep ideas in different Spaces.',wFeature3:'Paper, sky, and night scenes with natural ambience.',wFeature4:'Local saving, iCloud sync, and PNG export.',moreScreens:'More screenshots ↗',support:'Support ↗',writingFree:'3 Spaces free · Optional lifetime upgrade',paperieType:'Digital journal · iOS / iPadOS',paperieIntro:'A notebook for everyday life. A few words, a photograph, or a small plan. Somewhere to leave the ordinary moments, and come back to them.',spreadCaption:'01 / An everyday spread',actualScreen:'Actual app screenshot',pFeature1:'Apple Pencil handwriting and searchable typed entries.',pFeature2:'Stickers, stamps, and photos of your own.',pFeature3:'Notebooks with a choice of covers and page paper.',pFeature4:'Saved on your device first, with iCloud sync when available.',paperieFree:'2 notebooks free · Optional lifetime upgrade',aboutTitle:'About',about1:'I like tools that stay quiet,<br>so people can do their own thing.',about2:'These two projects begin with writing. One gives thoughts more room; the other gives everyday life a page. They are small explorations of digital tools that keep something of paper’s warmth, and leave room to use them in your own way.',aboutContact:'If these little things resonate, feel free to write.',writingPrivacy:'Writing privacy',paperiePrivacy:'Paperie privacy',backTop:'Top ↑',closeGallery:'Close ✕'};
-const zh={};document.querySelectorAll('[data-i18n]').forEach(el=>{zh[el.dataset.i18n]=el.innerHTML;});
-let lang='zh';let galleryName='writing';let galleryIndex=0;
-const galleries={writing:[{file:'writing-ipad-1.webp',zh:'紙張畫布',en:'Paper canvas'},{file:'writing-ipad-2.webp',zh:'開闊天空',en:'Open sky'},{file:'writing-ipad-3.webp',zh:'Spaces 空間',en:'Spaces'},{file:'writing-iphone-1.webp',zh:'iPhone 紙張畫布',en:'Paper canvas on iPhone'},{file:'writing-iphone-2.webp',zh:'iPhone 天空畫布',en:'Sky canvas on iPhone'}],paperie:[{file:'paperie-ipad-1.webp',zh:'iPad 筆記本封面',en:'Notebook cover on iPad'},{file:'paperie-ipad-2.webp',zh:'iPad 跨頁手帳',en:'Journal spread on iPad'},{file:'paperie-iphone-1.webp',zh:'iPhone 筆記本封面',en:'Notebook cover on iPhone'},{file:'paperie-iphone-2.webp',zh:'iPhone 單頁手帳',en:'Journal page on iPhone'}]};
-const dialog=document.getElementById('gallery-dialog');
-function setLanguage(next){lang=next;document.documentElement.lang=lang==='zh'?'zh-Hant':'en';const dict=lang==='en'?en:zh;document.querySelectorAll('[data-i18n]').forEach(el=>{if(dict[el.dataset.i18n]!==undefined)el.innerHTML=dict[el.dataset.i18n];});const b=document.getElementById('language');b.textContent=lang==='zh'?'EN':'繁中';b.setAttribute('aria-label',lang==='zh'?'Switch to English':'切換至繁體中文');document.querySelector('nav').setAttribute('aria-label',lang==='zh'?'主要導覽':'Main navigation');document.querySelector('.identity').setAttribute('aria-label',lang==='zh'?'Ka Ho Lau 首頁':'Ka Ho Lau home');document.querySelector('meta[name="description"]').content=lang==='zh'?'Ka Ho Lau 的個人作品集。Asympta Writing 與 Asympta Paperie，兩個關於書寫、紙張與日常的作品。':'The personal portfolio of Ka Ho Lau. Asympta Writing and Asympta Paperie — projects for writing, paper, and everyday life.';document.querySelectorAll('[data-gallery]').forEach(b=>{const item=galleries[b.dataset.gallery][Number(b.dataset.image)];b.setAttribute('aria-label',(lang==='zh'?'放大 ':'View ')+(b.dataset.gallery==='writing'?'Writing':'Paperie')+' — '+item[lang]);});document.getElementById('prev-image').setAttribute('aria-label',lang==='zh'?'上一張':'Previous screenshot');document.getElementById('next-image').setAttribute('aria-label',lang==='zh'?'下一張':'Next screenshot');try{localStorage.setItem('asympta-language',lang);}catch{}if(dialog.open)renderGallery();}
-function renderGallery(){const items=galleries[galleryName],item=items[galleryIndex];document.getElementById('gallery-title').textContent=galleryName==='writing'?'Asympta Writing':'Asympta Paperie';const img=document.getElementById('gallery-image');img.src='assets/'+item.file;img.alt=(galleryName==='writing'?'Asympta Writing':'Asympta Paperie')+' — '+item[lang];document.getElementById('gallery-caption').textContent=item[lang];document.getElementById('gallery-counter').textContent=(galleryIndex+1)+' / '+items.length;}
-function moveGallery(delta){galleryIndex=(galleryIndex+delta+galleries[galleryName].length)%galleries[galleryName].length;renderGallery();}
-document.getElementById('language').addEventListener('click',()=>setLanguage(lang==='zh'?'en':'zh'));
-document.querySelectorAll('[data-gallery]').forEach(b=>b.addEventListener('click',()=>{galleryName=b.dataset.gallery;galleryIndex=Number(b.dataset.image);renderGallery();dialog.showModal();document.body.style.overflow='hidden';}));
-document.getElementById('close-gallery').addEventListener('click',()=>dialog.close());document.getElementById('prev-image').addEventListener('click',()=>moveGallery(-1));document.getElementById('next-image').addEventListener('click',()=>moveGallery(1));dialog.addEventListener('close',()=>{document.body.style.overflow='';});dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});dialog.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();moveGallery(1);}if(e.key==='ArrowLeft'){e.preventDefault();moveGallery(-1);}});
-let saved;try{saved=localStorage.getItem('asympta-language');}catch{}setLanguage(saved==='en'?'en':'zh');
+const translations = {
+  en: {
+    skip: 'Skip to content', pageTitle: 'Small apps for writing and everyday life, by Asympta.',
+    writingLine: 'Room for your thoughts.', paperieLine: 'A page for your day.', peek: 'A little look inside',
+    paperieCaption: 'Paperie · Actual app recording', filmLength: '1:30 · Silent',
+    writingCaption: 'Writing · Actual app screenshot', seeMore: 'More screens ↗',
+    hello: 'A little hello ↗', writingPrivacy: 'Writing privacy', paperiePrivacy: 'Paperie privacy',
+    videoFallback: 'Your browser does not support video.', videoError: 'The video could not play. Please refresh and try again.'
+  },
+  zh: {}
+};
+document.querySelectorAll('[data-i18n]').forEach(el => { translations.zh[el.dataset.i18n] = el.textContent; });
+const languageButton = document.getElementById('language');
+const video = document.getElementById('paperie-film');
+const startButton = document.getElementById('start-film');
+const errorMessage = document.getElementById('video-error');
+const tabs = [...document.querySelectorAll('[role=tab]')];
+let language = 'zh';
+function setLanguage(next) {
+  language = next;
+  document.documentElement.lang = language === 'en' ? 'en' : 'zh-Hant';
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = translations[language][el.dataset.i18n]; });
+  languageButton.textContent = language === 'en' ? '繁中' : 'EN';
+  languageButton.setAttribute('aria-label', language === 'en' ? '切換至繁體中文' : 'Switch to English');
+  document.querySelector('.identity').setAttribute('aria-label', language === 'en' ? 'Asympta home' : 'Asympta 首頁');
+  document.querySelector('.apps').setAttribute('aria-label', language === 'en' ? 'Download the apps' : '下載 App');
+  document.querySelector('[role=tablist]').setAttribute('aria-label', language === 'en' ? 'App preview' : 'App 展示');
+  document.querySelector('.colophon nav').setAttribute('aria-label', language === 'en' ? 'Privacy policies' : '隱私政策');
+  document.querySelectorAll('.store-link').forEach((link, index) => link.setAttribute('aria-label', language === 'en' ? `Download Asympta ${index ? 'Paperie' : 'Writing'} on the App Store` : `在 App Store 下載 Asympta ${index ? 'Paperie' : 'Writing'}`));
+  startButton.setAttribute('aria-label', language === 'en' ? 'Play the Paperie film' : '播放 Paperie 影片');
+  video.setAttribute('aria-label', language === 'en' ? 'Actual Paperie app recording, silent' : 'Paperie 真實操作影片，無聲');
+  document.querySelector('.writing-screen img').alt = language === 'en' ? 'Actual Asympta Writing app screenshot: handwriting on the paper canvas' : 'Asympta Writing 真實 App 畫面：紙張畫布上的「光落在紙上」';
+  document.querySelector('meta[name=description]').content = language === 'en' ? 'Two small apps by Ka Ho Lau: Asympta Writing and Asympta Paperie. Download the apps and take a little look inside.' : 'Ka Ho Lau 的兩個小作品：Asympta Writing 與 Asympta Paperie。下載 App，翻開看看真實的書寫日常。';
+  try { localStorage.setItem('asympta-language', language); } catch {}
+}
+languageButton.addEventListener('click', () => setLanguage(language === 'en' ? 'zh' : 'en'));
+function selectTab(tab, focus = false) {
+  tabs.forEach(item => {
+    const selected = item === tab;
+    item.setAttribute('aria-selected', String(selected));
+    item.tabIndex = selected ? 0 : -1;
+    document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+  });
+  if (tab.id !== 'paperie-tab') video.pause();
+  if (focus) tab.focus();
+}
+tabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectTab(tab));
+  tab.addEventListener('keydown', event => {
+    let next;
+    if (event.key === 'ArrowRight') next = tabs[(index + 1) % tabs.length];
+    if (event.key === 'ArrowLeft') next = tabs[(index - 1 + tabs.length) % tabs.length];
+    if (event.key === 'Home') next = tabs[0];
+    if (event.key === 'End') next = tabs[tabs.length - 1];
+    if (next) { event.preventDefault(); selectTab(next, true); }
+  });
+});
+video.controls = false;
+startButton.hidden = false;
+startButton.addEventListener('click', async () => {
+  errorMessage.hidden = true;
+  try { await video.play(); } catch (error) {
+    if (error.name !== 'AbortError') { video.controls = true; errorMessage.hidden = false; }
+  }
+});
+video.addEventListener('play', () => {
+  video.controls = true;
+  if (document.activeElement === startButton) video.focus({ preventScroll: true });
+  startButton.hidden = true;
+  errorMessage.hidden = true;
+});
+video.addEventListener('pause', () => { startButton.hidden = false; });
+video.addEventListener('ended', () => { startButton.hidden = false; });
+video.addEventListener('error', () => { errorMessage.hidden = false; startButton.hidden = true; });
+document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); });
+let saved;
+try { saved = localStorage.getItem('asympta-language'); } catch {}
+setLanguage(saved === 'en' ? 'en' : 'zh');

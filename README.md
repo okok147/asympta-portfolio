@@ -1,23 +1,23 @@
-# Ka Ho Lau — Asympta
+# Asympta — Ka Ho Lau
 
-A quiet personal portfolio featuring Asympta Writing and Asympta Paperie.
+A small, paper-inspired personal app portfolio.
 
-Website: https://okok147.github.io/asympta-portfolio/
+**Website:** https://okok147.github.io/asympta-portfolio/
 
-This repository contains only the static website and public product images. The application source code is kept separately in private repositories. The site supports Traditional Chinese and English, responsive layouts, and a keyboard-accessible screenshot gallery.
+The first screen links directly to Asympta Writing and Asympta Paperie on the App Store. Below it is a quiet, switchable preview: a real Paperie product film in a miniature notebook/tablet frame, and a real Writing screenshot. Writing is labelled as a screenshot, not a video.
 
-## Hosting and updates
+The Paperie film is the owner's 90-second product recording, optimized for the web without audio. Playback is visitor-initiated, with native controls, inline playback, and a still poster. It pauses when hidden or when switching to Writing. There is no automatic playback or decorative animation. The frame, pencil, paper clip and folded paper bird are lightweight CSS/SVG decorations; the app footage is unaltered apart from size and encoding.
 
-GitHub Pages publishes the root of the `main` branch. There is no package installation, build service, deployment secret, or external website host. `.nojekyll` keeps this a plain static site. Push website updates to `main` and GitHub Pages publishes them.
+## Hosting
 
-For local preview, run `python3 -m http.server 4173` in this directory. Keep assets relative so the page works under `/asympta-portfolio/`.
+GitHub Pages publishes the root of `main`. This public repository contains only the website and reviewed presentation assets. The applications' source code stays in its separate private repository. No build process, account, API, analytics, cookies or third-party font download is required. A local language preference is saved in browser local storage when available.
 
-## Product images
+For local preview, run `python3 -m http.server 4173` here.
 
-Screenshots and icons come from the apps' public App Store listings, retrieved 2026-10-20. They were converted to WebP without redrawing the interface. See `ASSET_SOURCES.json` for public asset origins. Screenshots show the published listings, not newer development builds.
+## Typography and assets
+
+The site requests the locally installed `GB18030 Bitmap` / `GB18030Bitmap` family. Songti, Noto Serif TC and Georgia provide fallbacks for missing fonts or glyphs. No Apple font files are redistributed.
+
+Icons and screenshots are from the public App Store listings retrieved 2026-10-20. The product film is owner-supplied actual app footage; it is not a claim that a particular App Store version was tested. See `ASSET_SOURCES.json` for provenance and hashes. Private source paths, device identifiers and QA metadata are not included.
 
 © 2026 Ka Ho Lau. Product names, copy, images and artwork belong to their respective owners. No open-source software license is granted by this publication.
-
-## Reader typography
-
-The white reading theme requests the locally installed `GB18030 Bitmap` / `GB18030Bitmap` family, with Songti, Noto Serif TC and Georgia as serif fallbacks for unavailable fonts or characters. It uses a white background, dark gray text, and larger body type. No Apple font files are redistributed or downloaded; the exact face depends on the visitor’s installed fonts and the characters it covers.
