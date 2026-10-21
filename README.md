@@ -1,12 +1,14 @@
 # Asympta — Ka Ho Lau
 
-A small, paper-inspired personal app portfolio.
+A small stationery desk with two product storybooks.
 
 **Website:** https://okok147.github.io/asympta-portfolio/
 
-The first screen links directly to Asympta Writing and Asympta Paperie on the App Store. Below it is a quiet, switchable preview: a real Paperie product film in a miniature notebook/tablet frame, and a real Writing screenshot. Writing is labelled as a screenshot, not a video.
+Writing is a miniature paper sketchpad; Paperie is a miniature cloth journal. Clicking either object opens its three-page introduction with a slow cover-opening and page-turn animation. The separate app-icon links go directly to the correct App Store listing, without opening the story first.
 
-The Paperie film is the owner's 90-second product recording, optimized for the web without audio. Playback is visitor-initiated, with native controls, inline playback, and a still poster. It pauses when hidden or when switching to Writing. There is no automatic playback or decorative animation. The frame, pencil, paper clip and folded paper bird are lightweight CSS/SVG decorations; the app footage is unaltered apart from size and encoding.
+The storybooks contain real App Store screenshots and the owner's actual 90-second Paperie product recording. The miniature props are AI-generated illustrations, not app screens or photos of physical products. The film has been optimized for the web without audio; visitors choose when to play it. It pauses on page changes, book closure, and when the browser tab is hidden. Writing uses honestly labelled screenshots; no Writing demo video is simulated.
+
+Stories support English and Traditional Chinese, keyboard opening and page navigation, Escape/close, native modal focus containment, focus restoration and reduced motion. Reduced-motion visitors get immediate page changes without cover or page-turn animation. There is no automatic video playback, continuous animation, or 3D runtime dependency.
 
 ## Hosting
 
@@ -18,6 +20,6 @@ For local preview, run `python3 -m http.server 4173` here.
 
 The site requests the locally installed `GB18030 Bitmap` / `GB18030Bitmap` family. Songti, Noto Serif TC and Georgia provide fallbacks for missing fonts or glyphs. No Apple font files are redistributed.
 
-Icons and screenshots are from the public App Store listings retrieved 2026-10-20. The product film is owner-supplied actual app footage; it is not a claim that a particular App Store version was tested. See `ASSET_SOURCES.json` for provenance and hashes. Private source paths, device identifiers and QA metadata are not included.
+Icons and screenshots come from the public App Store listings retrieved 2026-10-20. The product film is owner-supplied actual app footage; it does not claim that a particular App Store version was tested. Miniature stationery illustrations were created for this site with ImageGen. See `ASSET_SOURCES.json` for provenance and hashes. Private source paths, device identifiers and QA metadata are not included.
 
 © 2026 Ka Ho Lau. Product names, copy, images and artwork belong to their respective owners. No open-source software license is granted by this publication.

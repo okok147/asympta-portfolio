@@ -119,6 +119,20 @@
       "product": "Asympta Paperie",
       "transform": "Still frame at 4 seconds from the same owner-supplied recording, scaled to 1080px width.",
       "sha256": "0a8c83271799144f3714908c21a5905f1bf96478386c3af5742cca09acc79f3c"
+    },
+    {
+      "file": "assets/writing-toy.webp",
+      "source": "ImageGen, generated for this portfolio, 2026-10-21",
+      "role": "Illustrative miniature stationery object, not an app screenshot or a photograph of a real product",
+      "transform": "PNG to WebP, alpha transparency preserved; no visual content compositing",
+      "sha256": "5be1a1fafa9f5a9bee5f6e18fb1e9e0ed48e72703d004ce60293302dd4cc0063"
+    },
+    {
+      "file": "assets/paperie-toy.webp",
+      "source": "ImageGen, generated for this portfolio, 2026-10-21",
+      "role": "Illustrative miniature stationery object, not an app screenshot or a photograph of a real product",
+      "transform": "PNG to WebP, alpha transparency preserved; no visual content compositing",
+      "sha256": "b64af657698f78b20da91ca1ee460945cd376467a8a78490d12a25b420592a28"
     }
   ]
 }

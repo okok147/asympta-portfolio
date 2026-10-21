@@ -4,89 +4,79 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fcfbf8">
-<meta name="description" content="Ka Ho Lau 的兩個小作品：Asympta Writing 與 Asympta Paperie。下載 App，翻開看看真實的書寫日常。">
+<meta name="description" content="Ka Ho Lau 的小小文具桌。點開 Writing 與 Paperie 的故事，或直接到 App Store 下載。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Asympta — 書寫與日常">
-<meta property="og:description" content="Writing 與 Paperie，給書寫，也給生活。">
+<meta property="og:title" content="Asympta — 書寫與日常的小故事">
+<meta property="og:description" content="兩件小文具，兩個關於書寫與日常的故事。">
 <meta property="og:image" content="https://okok147.github.io/asympta-portfolio/assets/social.jpg">
 <meta property="og:url" content="https://okok147.github.io/asympta-portfolio/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://okok147.github.io/asympta-portfolio/">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="style.css?v=paper-mini-1">
-<script src="app.js?v=paper-mini-1" defer></script>
+<link rel="stylesheet" href="style.css?v=storybook-1">
+<script src="app.js?v=storybook-1" defer></script>
 <title>Asympta — Ka Ho Lau</title>
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="skip">跳至內容</a>
 <div class="page">
   <header class="header">
-    <a class="identity" href="#" aria-label="Asympta 首頁">
-      <svg class="little-sun" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><circle cx="16" cy="16" r="5.5"/><path d="M16 3v4m0 18v4M3 16h4m18 0h4M6.8 6.8l2.8 2.8m12.8 12.8 2.8 2.8M6.8 25.2l2.8-2.8M22.4 9.6l2.8-2.8"/></g></svg>
-      <span>asympta</span>
-    </a>
-    <div class="header-note"><span>Ka Ho Lau</span><button id="language" type="button" aria-label="Switch to English">EN</button></div>
+    <a class="identity" href="#" aria-label="Asympta 首頁"><svg class="little-sun" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><circle cx="16" cy="16" r="5.5"/><path d="M16 3v4m0 18v4M3 16h4m18 0h4M6.8 6.8l2.8 2.8m12.8 12.8 2.8 2.8M6.8 25.2l2.8-2.8M22.4 9.6l2.8-2.8"/></g></svg><span>asympta</span></a>
+    <div class="header-note"><span>Ka Ho Lau</span><button class="language-button" id="language" type="button" aria-label="Switch to English">EN</button></div>
   </header>
   <main id="main">
-    <h1 class="sr-only" data-i18n="pageTitle">給書寫，也給生活。Asympta 的小作品。</h1>
-    <section class="apps" aria-label="下載 App">
-      <article class="app" aria-labelledby="writing-name">
-        <img class="app-icon" src="assets/writing-icon.webp" width="52" height="52" alt="" fetchpriority="high">
-        <div class="app-copy"><h2 id="writing-name">Writing</h2><p data-i18n="writingLine">給想法一點空間。</p></div>
-        <a class="store-link" href="https://apps.apple.com/app/id6800755232" aria-label="在 App Store 下載 Asympta Writing">App Store <span aria-hidden="true">↗</span></a>
+    <h1 data-i18n="pageTitle">給書寫，也給生活。</h1>
+    <section class="desk" aria-label="小文具與 App 下載">
+      <article class="product" aria-labelledby="writing-name">
+        <button class="toy writing-toy" type="button" data-open="writing" aria-haspopup="dialog" aria-controls="story-dialog" aria-label="打開 Writing 的故事"><img class="toy-art" src="assets/writing-toy.webp" width="1024" height="1024" alt="" fetchpriority="high"></button>
+        <h2 id="writing-name">Writing</h2>
+        <button class="story-label" type="button" data-open="writing" aria-haspopup="dialog" aria-controls="story-dialog" data-i18n="openStory">翻開小故事</button>
+        <a class="download-link" data-download="writing" href="https://apps.apple.com/app/id6800755232" aria-label="在 App Store 下載 Asympta Writing"><img src="assets/writing-icon.webp" width="32" height="32" alt=""><span>App Store <span aria-hidden="true">↗</span></span></a>
       </article>
-      <article class="app" aria-labelledby="paperie-name">
-        <img class="app-icon" src="assets/paperie-icon.webp" width="52" height="52" alt="" fetchpriority="high">
-        <div class="app-copy"><h2 id="paperie-name">Paperie</h2><p data-i18n="paperieLine">為日常留下一頁。</p></div>
-        <a class="store-link" href="https://apps.apple.com/app/id6818553101" aria-label="在 App Store 下載 Asympta Paperie">App Store <span aria-hidden="true">↗</span></a>
+      <article class="product" aria-labelledby="paperie-name">
+        <button class="toy paperie-toy" type="button" data-open="paperie" aria-haspopup="dialog" aria-controls="story-dialog" aria-label="打開 Paperie 的故事"><img class="toy-art" src="assets/paperie-toy.webp" width="1024" height="1024" alt="" fetchpriority="high"></button>
+        <h2 id="paperie-name">Paperie</h2>
+        <button class="story-label" type="button" data-open="paperie" aria-haspopup="dialog" aria-controls="story-dialog" data-i18n="openStory">翻開小故事</button>
+        <a class="download-link" data-download="paperie" href="https://apps.apple.com/app/id6818553101" aria-label="在 App Store 下載 Asympta Paperie"><img src="assets/paperie-icon.webp" width="32" height="32" alt=""><span>App Store <span aria-hidden="true">↗</span></span></a>
       </article>
     </section>
-
-    <section class="showcase" aria-labelledby="showcase-title">
-      <div class="showcase-heading">
-        <h2 id="showcase-title" data-i18n="peek">翻開看看</h2>
-        <div class="tabs" role="tablist" aria-label="App 展示">
-          <button id="paperie-tab" type="button" role="tab" aria-selected="true" aria-controls="paperie-panel" tabindex="0">Paperie</button>
-          <button id="writing-tab" type="button" role="tab" aria-selected="false" aria-controls="writing-panel" tabindex="-1">Writing</button>
-        </div>
-      </div>
-      <div id="paperie-panel" class="app-panel" role="tabpanel" aria-labelledby="paperie-tab">
-        <figure>
-          <div class="mini-desk">
-            <div class="notebook-case">
-              <div class="mini-tablet">
-                <div class="screen video-screen">
-                  <video id="paperie-film" controls playsinline preload="none" tabindex="0" poster="assets/paperie-film-poster.jpg" aria-label="Paperie 真實操作影片，無聲" aria-describedby="paperie-caption">
-                    <source src="assets/paperie-film.mp4" type="video/mp4">
-                    <span data-i18n="videoFallback">你的瀏覽器不支援影片。</span>
-                  </video>
-                  <button class="video-start" id="start-film" type="button" aria-label="播放 Paperie 影片" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg></button>
-                </div>
-              </div>
-              <span class="paper-clip" aria-hidden="true"></span>
-            </div>
-            <span class="mini-pencil" aria-hidden="true"></span>
-            <svg class="paper-bird" viewBox="0 0 64 48" aria-hidden="true"><path d="m6 30 22-8L39 3l-2 23 22-8-14 18-18-2-14 7Z" fill="#e1dfd2"/><path d="m6 30 21 4 10-8-9-4Z" fill="#f5f2e9"/><path d="m28 22 11-19-7 25Z" fill="#c7cbb9"/><path d="m37 26 22-8-17 14Z" fill="#d1d5c5"/><path d="m13 41 14-7-21-4Z" fill="#ccc5b5"/></svg>
-          </div>
-          <figcaption id="paperie-caption"><span data-i18n="paperieCaption">Paperie · 真實操作影片</span><span data-i18n="filmLength">1:30 · 無聲</span></figcaption>
-          <p id="video-error" class="video-error" role="status" hidden data-i18n="videoError">影片暫時無法播放，請重新整理後再試。</p>
-        </figure>
-      </div>
-      <div id="writing-panel" class="app-panel" role="tabpanel" aria-labelledby="writing-tab" hidden>
-        <figure>
-          <div class="mini-desk writing-desk">
-            <div class="notebook-case writing-case"><div class="mini-tablet"><div class="screen writing-screen"><img src="assets/writing-ipad-1.webp" width="1200" height="1600" alt="Asympta Writing 真實 App 畫面：紙張畫布上的「光落在紙上」" loading="lazy"></div></div></div>
-            <span class="mini-pencil" aria-hidden="true"></span>
-          </div>
-          <figcaption><span data-i18n="writingCaption">Writing · 真實 App 畫面</span><a href="https://apps.apple.com/app/id6800755232" data-i18n="seeMore">更多畫面 ↗</a></figcaption>
-        </figure>
-      </div>
-    </section>
+    <p class="desk-note" data-i18n="deskNote">點小物看故事，點圖示下載。</p>
+    <noscript><p class="desk-note">App Store 圖示可直接下載 App；開啟故事需要 JavaScript。</p></noscript>
   </main>
-  <footer class="footer">
-    <a class="hello" href="mailto:hello@everformlab.com" data-i18n="hello">很高興認識你 ↗</a>
-    <div class="colophon"><span>© 2026 Ka Ho Lau</span><nav aria-label="隱私政策"><a href="https://okok147.github.io/asympta-support/privacy/" data-i18n="writingPrivacy">Writing 隱私</a><a href="https://okok147.github.io/asympta-paperie-support/privacy/" data-i18n="paperiePrivacy">Paperie 隱私</a></nav></div>
-  </footer>
+  <footer class="footer"><a href="mailto:hello@everformlab.com" data-i18n="hello">很高興認識你 ↗</a><div class="colophon"><span>© 2026 Ka Ho Lau</span><nav aria-label="隱私政策"><a href="https://okok147.github.io/asympta-support/privacy/" data-i18n="writingPrivacy">Writing 隱私</a><a href="https://okok147.github.io/asympta-paperie-support/privacy/" data-i18n="paperiePrivacy">Paperie 隱私</a></nav></div></footer>
 </div>
+
+<dialog id="story-dialog" aria-labelledby="story-product story-title">
+  <div class="book-toolbar"><span id="story-product">Asympta Paperie</span><div><button id="story-language" class="language-button" type="button" aria-label="Switch to English">EN</button><button id="close-story" type="button" data-i18n="closeStory">合上書 ×</button></div></div>
+  <div class="book-scroll">
+    <div class="storybook">
+      <div class="story-spread">
+        <div class="story-pages">
+          <figure class="story-media">
+            <div class="media-mat">
+              <div id="film-wrap" class="film-wrap">
+                <video id="paperie-film" controls playsinline preload="none" tabindex="0" poster="assets/paperie-film-poster.jpg" aria-label="Paperie 真實操作影片，無聲" aria-describedby="media-caption"><source src="assets/paperie-film.mp4" type="video/mp4"><span data-i18n="videoFallback">你的瀏覽器不支援影片。</span></video>
+                <button class="video-start" id="start-film" type="button" aria-label="播放 Paperie 影片" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg></button>
+              </div>
+              <img id="story-image" src="assets/writing-ipad-1.webp" width="1200" height="1600" alt="" hidden>
+            </div>
+            <figcaption id="media-caption">Paperie · 真實操作影片 · 1:30，無聲</figcaption>
+            <p id="video-error" class="video-error" role="status" hidden data-i18n="videoError">影片暫時無法播放，請重新整理後再試。</p>
+          </figure>
+          <article class="story-copy">
+            <p class="chapter" id="story-chapter">01 · Paperie</p>
+            <h2 id="story-title">今天，值得留下一頁。</h2>
+            <p class="story-body" id="story-body"></p>
+            <p class="story-detail" id="story-detail"></p>
+            <a class="book-download" id="story-download" href="https://apps.apple.com/app/id6818553101"><img id="story-icon" src="assets/paperie-icon.webp" width="30" height="30" alt=""><span>App Store ↗</span></a>
+          </article>
+        </div>
+        <div class="opening-cover" aria-hidden="true"><span class="cover-label" id="cover-label">Paperie</span></div>
+        <div class="turn-leaf" aria-hidden="true"></div>
+      </div>
+      <div class="book-bottom"><button id="prev-page" type="button" data-i18n="previous">← 上一頁</button><span id="page-counter" aria-live="polite" aria-atomic="true">01 / 03</span><button id="next-page" type="button" data-i18n="next">下一頁 →</button></div>
+    </div>
+  </div>
+</dialog>
 </body>
 </html>
