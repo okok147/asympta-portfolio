@@ -13,8 +13,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://okok147.github.io/asympta-portfolio/">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="style.css?v=storybook-1">
-<script src="app.js?v=storybook-1" defer></script>
+<link rel="stylesheet" href="style.css?v=mini-hinge-1">
+<link rel="stylesheet" href="mini-books.css?v=mini-hinge-1">
+<link rel="preload" as="image" href="assets/book-materials.webp">
+<script src="app.js?v=mini-hinge-1" defer></script>
 <title>Asympta — Ka Ho Lau</title>
 </head>
 <body>
@@ -28,13 +30,25 @@
     <h1 data-i18n="pageTitle">給書寫，也給生活。</h1>
     <section class="desk" aria-label="小文具與 App 下載">
       <article class="product" aria-labelledby="writing-name">
-        <button class="toy writing-toy" type="button" data-open="writing" aria-haspopup="dialog" aria-controls="story-dialog" aria-label="打開 Writing 的故事"><img class="toy-art" src="assets/writing-toy.webp" width="1024" height="1024" alt="" fetchpriority="high"></button>
+        <button class="toy writing-toy" type="button" data-open="writing" aria-haspopup="dialog" aria-controls="story-dialog" aria-label="打開 Writing 的故事"><span class="mini-book" data-product="writing" aria-hidden="true">
+          <span class="mini-back-cover"></span><span class="mini-page-block"></span><span class="mini-bottom-edge"></span><span class="mini-right-edge"></span><span class="mini-spine"></span>
+          <span class="mini-tab"></span><span class="mini-ribbon"></span>
+          <span class="mini-inner"><img src="assets/writing-icon.webp" width="30" height="30" alt=""><span class="mini-note">想法</span></span>
+          <span class="mini-leaf leaf-one"></span><span class="mini-leaf leaf-two"></span>
+          <span class="mini-front-cover"><span class="mini-cover-front"><svg class="mini-loop" viewBox="0 0 90 60"><path d="M5 47c20-5 60-24 54-35-7-15-45 5-35 22 8 15 35 16 59-3" fill="none" stroke="#9bb6c5" stroke-width="2.1" stroke-linecap="round"/></svg><span class="mini-cloth-label">Paperie</span></span><span class="mini-cover-back"></span></span>
+        </span><span class="desk-pencil" aria-hidden="true"></span></button>
         <h2 id="writing-name">Writing</h2>
         <button class="story-label" type="button" data-open="writing" aria-haspopup="dialog" aria-controls="story-dialog" data-i18n="openStory">翻開小故事</button>
         <a class="download-link" data-download="writing" href="https://apps.apple.com/app/id6800755232" aria-label="在 App Store 下載 Asympta Writing"><img src="assets/writing-icon.webp" width="32" height="32" alt=""><span>App Store <span aria-hidden="true">↗</span></span></a>
       </article>
       <article class="product" aria-labelledby="paperie-name">
-        <button class="toy paperie-toy" type="button" data-open="paperie" aria-haspopup="dialog" aria-controls="story-dialog" aria-label="打開 Paperie 的故事"><img class="toy-art" src="assets/paperie-toy.webp" width="1024" height="1024" alt="" fetchpriority="high"></button>
+        <button class="toy paperie-toy" type="button" data-open="paperie" aria-haspopup="dialog" aria-controls="story-dialog" aria-label="打開 Paperie 的故事"><span class="mini-book" data-product="paperie" aria-hidden="true">
+          <span class="mini-back-cover"></span><span class="mini-page-block"></span><span class="mini-bottom-edge"></span><span class="mini-right-edge"></span><span class="mini-spine"></span>
+          <span class="mini-tab"></span><span class="mini-ribbon"></span>
+          <span class="mini-inner"><img src="assets/paperie-icon.webp" width="30" height="30" alt=""><span class="mini-note">日常</span></span>
+          <span class="mini-leaf leaf-one"></span><span class="mini-leaf leaf-two"></span>
+          <span class="mini-front-cover"><span class="mini-cover-front"><svg class="mini-loop" viewBox="0 0 90 60"><path d="M5 47c20-5 60-24 54-35-7-15-45 5-35 22 8 15 35 16 59-3" fill="none" stroke="#9bb6c5" stroke-width="2.1" stroke-linecap="round"/></svg><span class="mini-cloth-label">Paperie</span></span><span class="mini-cover-back"></span></span>
+        </span></button>
         <h2 id="paperie-name">Paperie</h2>
         <button class="story-label" type="button" data-open="paperie" aria-haspopup="dialog" aria-controls="story-dialog" data-i18n="openStory">翻開小故事</button>
         <a class="download-link" data-download="paperie" href="https://apps.apple.com/app/id6818553101" aria-label="在 App Store 下載 Asympta Paperie"><img src="assets/paperie-icon.webp" width="32" height="32" alt=""><span>App Store <span aria-hidden="true">↗</span></span></a>
@@ -48,6 +62,7 @@
 
 <dialog id="story-dialog" aria-labelledby="story-product story-title">
   <div class="book-toolbar"><span id="story-product">Asympta Paperie</span><div><button id="story-language" class="language-button" type="button" aria-label="Switch to English">EN</button><button id="close-story" type="button" data-i18n="closeStory">合上書 ×</button></div></div>
+  <div id="toy-transition" aria-hidden="true" hidden><div id="transition-object"></div></div>
   <div class="book-scroll">
     <div class="storybook">
       <div class="story-spread">

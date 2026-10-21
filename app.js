@@ -22,7 +22,10 @@ const previousButton = document.getElementById('prev-page');
 const nextButton = document.getElementById('next-page');
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let language = 'zh', product = 'paperie', pageIndex = 0, origin, originalOverflow = '';
-let openingTimer, pageTimer, turnTimer, closeTimer;
+let openingTimer, pageTimer, turnTimer, closeTimer, miniTimer;
+const motionStage = document.getElementById("toy-transition");
+const motionObject = document.getElementById("transition-object");
+let sourceToy;
 function productName(key = product) { return key === 'writing' ? 'Writing' : 'Paperie'; }
 function downloadLabel(key = product) { return language === 'en' ? `Download Asympta ${productName(key)} on the App Store` : `在 App Store 下載 Asympta ${productName(key)}`; }
 function setLanguage(next) {
@@ -64,26 +67,90 @@ function renderPage() {
   previousButton.disabled = pageIndex === 0; nextButton.disabled = pageIndex === 2;
 }
 function clearTurns() { clearTimeout(openingTimer); clearTimeout(pageTimer); clearTimeout(turnTimer); dialog.classList.remove('turning-next','turning-back'); }
+function setMotionGeometry() {
+  if (!sourceToy) return;
+  const model = sourceToy.querySelector('.mini-book'), rect = model.getBoundingClientRect();
+  const width = model.offsetWidth, height = model.offsetHeight;
+  const scale = Math.min(1.65, (innerWidth - 42) / (width * 2.1), (innerHeight - 110) / (height * 1.5));
+  motionObject.style.setProperty('--book-w', width + 'px');
+  motionObject.style.setProperty('--book-h', height + 'px');
+  motionObject.style.setProperty('--start-x', (rect.left + rect.width / 2 - innerWidth / 2) + 'px');
+  motionObject.style.setProperty('--start-y', (rect.top + rect.height / 2 - innerHeight / 2) + 'px');
+  motionObject.style.setProperty('--open-scale', scale);
+  motionObject.style.setProperty('--spread-offset', (width * scale * .36) + 'px');
+  const clone = motionObject.querySelector('.mini-book');
+  if (clone) clone.style.setProperty('--start-pose', getComputedStyle(model).transform);
+}
+function buildMotionStage(heldOpen = false) {
+  motionObject.replaceChildren(sourceToy.querySelector('.mini-book').cloneNode(true));
+  setMotionGeometry();
+  motionStage.hidden = false;
+  motionStage.className = heldOpen ? 'is-held-open' : 'is-unfolding';
+}
+function hideMotionStage() {
+  motionStage.hidden = true; motionStage.className = ''; motionObject.replaceChildren();
+}
+function revealStory() {
+  clearTimeout(miniTimer);
+  if (!dialog.open || dialog.dataset.state !== 'mini-opening') return;
+  dialog.dataset.state = 'opening';
+  motionStage.classList.add('is-arriving');
+  document.querySelector('.book-scroll').scrollTop = 0;
+  openingTimer = setTimeout(() => {
+    if (dialog.dataset.state === 'opening') dialog.dataset.state = 'open';
+    hideMotionStage();
+  }, reduceMotion.matches ? 0 : 780);
+}
+function foldToDesk() {
+  const backdrop = getComputedStyle(dialog, '::backdrop');
+  dialog.style.setProperty('--fold-backdrop', backdrop.backgroundColor);
+  dialog.style.setProperty('--fold-blur', backdrop.backdropFilter);
+  dialog.dataset.state = 'mini-closing';
+  if (motionStage.hidden || !motionObject.firstElementChild) buildMotionStage(true);
+  setMotionGeometry();
+  const clone = motionObject.querySelector('.mini-book');
+  const poses = [
+    [motionObject, '--fold-travel', motionObject],
+    [clone, '--fold-pose', clone],
+    [clone, '--fold-cover', clone.querySelector('.mini-front-cover')],
+    [clone, '--fold-leaf-one', clone.querySelector('.leaf-one')],
+    [clone, '--fold-leaf-two', clone.querySelector('.leaf-two')]
+  ];
+  poses.forEach(([target, key, element]) => target.style.setProperty(key, getComputedStyle(element).transform));
+  motionStage.className = 'is-folding';
+  closeTimer = setTimeout(() => dialog.close(), 1120);
+}
 function openStory(key, trigger) {
   if (dialog.open) return;
-  clearTurns(); clearTimeout(closeTimer);
-  product = key; pageIndex = 0; origin = trigger; dialog.dataset.product = product; dialog.dataset.state = 'opening';
+  clearTurns(); clearTimeout(closeTimer); clearTimeout(miniTimer);
+  product = key; pageIndex = 0; origin = trigger;
+  sourceToy = trigger.closest('.product').querySelector('.toy');
+  dialog.dataset.product = product; dialog.dataset.entry = 'mini';
+  dialog.dataset.state = reduceMotion.matches ? 'open' : 'mini-opening';
   video.pause(); if (video.readyState > 0) video.currentTime = 0;
   video.controls = false; startButton.hidden = false; renderPage();
   originalOverflow = document.body.style.overflow; document.body.style.overflow = 'hidden';
-  dialog.showModal(); document.querySelector('.book-scroll').scrollTop = 0; document.getElementById('close-story').focus({preventScroll:true});
-  openingTimer = setTimeout(() => { dialog.dataset.state = 'open'; }, reduceMotion.matches ? 0 : 1250);
+  dialog.showModal(); document.querySelector('.book-scroll').scrollTop = 0;
+  document.getElementById('close-story').focus({preventScroll:true});
+  if (!reduceMotion.matches) {
+    buildMotionStage(); sourceToy.classList.add('is-in-motion');
+    miniTimer = setTimeout(revealStory, 1560);
+  }
 }
 function closeStory() {
-  if (!dialog.open || dialog.dataset.state === 'closing') return;
-  clearTurns(); video.pause(); dialog.dataset.state = 'closing';
-  closeTimer = setTimeout(() => dialog.close(), reduceMotion.matches ? 0 : 340);
+  const state = dialog.dataset.state;
+  if (!dialog.open || state === 'closing' || state === 'mini-closing') return;
+  clearTurns(); clearTimeout(miniTimer); video.pause();
+  if (reduceMotion.matches) { dialog.close(); return; }
+  if (state === 'mini-opening') { foldToDesk(); return; }
+  hideMotionStage(); dialog.dataset.state = 'closing';
+  closeTimer = setTimeout(foldToDesk, 340);
 }
 function turnPage(direction) {
-  if (!dialog.open || dialog.dataset.state === 'closing' || dialog.classList.contains('turning-next') || dialog.classList.contains('turning-back')) return;
+  if (!dialog.open || !['open','opening'].includes(dialog.dataset.state) || dialog.classList.contains('turning-next') || dialog.classList.contains('turning-back')) return;
   const next = pageIndex + direction;
   if (next < 0 || next > 2) return;
-  clearTurns(); dialog.dataset.state = 'open'; video.pause();
+  clearTurns(); hideMotionStage(); dialog.dataset.state = 'open'; video.pause();
   if (reduceMotion.matches) { pageIndex = next; renderPage(); document.querySelector('.book-scroll').scrollTop = 0; return; }
   dialog.classList.add(direction > 0 ? 'turning-next' : 'turning-back');
   pageTimer = setTimeout(() => { pageIndex = next; renderPage(); document.querySelector('.book-scroll').scrollTop = 0; }, 360);
@@ -94,8 +161,8 @@ document.querySelectorAll('.language-button').forEach(button => button.addEventL
 document.getElementById('close-story').addEventListener('click', closeStory);
 previousButton.addEventListener('click', () => turnPage(-1)); nextButton.addEventListener('click', () => turnPage(1));
 dialog.addEventListener('cancel', event => { event.preventDefault(); closeStory(); });
-dialog.addEventListener('close', () => { clearTurns(); clearTimeout(closeTimer); video.pause(); document.body.style.overflow = originalOverflow; if (origin?.isConnected) origin.focus({preventScroll:true}); });
-dialog.addEventListener('click', event => { if (event.target === dialog) { const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) closeStory(); } });
+dialog.addEventListener('close', () => { clearTurns(); clearTimeout(closeTimer); clearTimeout(miniTimer); hideMotionStage(); sourceToy?.classList.remove('is-in-motion'); video.pause(); document.body.style.overflow = originalOverflow; if (origin?.isConnected) origin.focus({preventScroll:true}); });
+dialog.addEventListener('click', event => { if (event.target === dialog) { const r = dialog.getBoundingClientRect(); if (dialog.dataset.state === 'mini-opening' || event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) closeStory(); } });
 dialog.addEventListener('keydown', event => { if (event.target === video || event.altKey || event.ctrlKey || event.metaKey) return; if (event.key === 'ArrowRight') { event.preventDefault(); turnPage(1); } if (event.key === 'ArrowLeft') { event.preventDefault(); turnPage(-1); } });
 video.controls = false; startButton.hidden = false;
 startButton.addEventListener('click', async () => { errorMessage.hidden = true; try { await video.play(); } catch (error) { if (error.name !== 'AbortError') { video.controls = true; errorMessage.hidden = false; } } });
@@ -106,3 +173,6 @@ video.addEventListener('error', () => { errorMessage.hidden = false; startButton
 document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); });
 let saved; try { saved = localStorage.getItem('asympta-language'); } catch {}
 setLanguage(saved === 'en' ? 'en' : 'zh');
+
+addEventListener('resize', () => { if (!motionStage.hidden) setMotionGeometry(); });
+reduceMotion.addEventListener('change', () => { if (!reduceMotion.matches || !dialog.open) return; if (dialog.dataset.state === 'mini-opening') revealStory(); else if (['closing','mini-closing'].includes(dialog.dataset.state)) dialog.close(); });

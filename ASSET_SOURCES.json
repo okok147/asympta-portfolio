@@ -133,6 +133,13 @@
       "role": "Illustrative miniature stationery object, not an app screenshot or a photograph of a real product",
       "transform": "PNG to WebP, alpha transparency preserved; no visual content compositing",
       "sha256": "b64af657698f78b20da91ca1ee460945cd376467a8a78490d12a25b420592a28"
+    },
+    {
+      "file": "assets/book-materials.webp",
+      "source": "ImageGen material atlas generated for this portfolio, 2026-10-21",
+      "role": "Flat ivory paper and sage linen material textures for articulated CSS3D miniature books; not app UI",
+      "transform": "PNG to WebP; material halves selected by CSS background position",
+      "sha256": "cd14ceccf8995b388db53ac185da3229411904892026baae2c3d0e0a6ff2b628"
     }
   ]
 }

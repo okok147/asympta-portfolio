@@ -1,0 +1,74 @@
+/* Articulated paper objects: each cover, page and edge occupies its own 3D plane. */
+.toy{position:relative;perspective:1000px;isolation:isolate}
+.mini-book{--book-width:138px;--book-height:184px;position:relative;display:block;width:var(--book-width);height:var(--book-height);transform-style:preserve-3d;transform:rotateX(28deg) rotateY(-9deg) rotateZ(-13deg);transition:transform 700ms cubic-bezier(.22,.61,.36,1);pointer-events:none}
+.mini-book[data-product=paperie]{--book-width:141px;--book-height:184px;transform:rotateX(28deg) rotateY(-9deg) rotateZ(12deg)}
+.mini-book>span,.mini-front-cover>span{display:block;position:absolute;transform-style:preserve-3d}
+.mini-back-cover{inset:0;border:1px solid #d4cdb8;border-radius:5px 9px 9px 5px;background:#e3dece;transform:translateZ(-7px);box-shadow:3px 15px 19px -7px #6c634344,8px 27px 26px -12px #70674628}
+[data-product=paperie] .mini-back-cover{background:#adb89a;border-color:#a3af90}
+.mini-page-block{inset:3px 2px 3px 6px;background:#f7f1df;border-radius:1px 6px 6px 1px;transform:translateZ(7px);border:1px solid #e6dcc4}
+.mini-bottom-edge{top:calc(100% - 3px);height:14px;left:6px;right:2px;border-radius:0 0 4px 0;background:repeating-linear-gradient(0deg,#ede7d6 0px,#ede7d6 1.5px,#c9bea5 1.7px,#f7f1df 2.5px);transform-origin:top;transform:translateZ(7px) rotateX(-90deg)}
+.mini-right-edge{left:calc(100% - 2px);top:3px;bottom:3px;width:14px;background:repeating-linear-gradient(90deg,#eee8d6 0px,#eee8d6 1.5px,#c8bda5 1.7px,#f7f1df 2.5px);transform-origin:left;transform:translateZ(7px) rotateY(90deg)}
+.mini-spine{left:0;top:1px;bottom:1px;width:14px;background:#d7d0bb;transform-origin:left;transform:translateZ(-7px) rotateY(-90deg);border-radius:3px}
+[data-product=paperie] .mini-spine{background:#9faa8c}
+.mini-inner{inset:4px 3px 4px 7px;border:1px solid #e5dbc2;border-radius:1px 5px 5px 1px;background:linear-gradient(90deg,#ded5bc,#fbf6e7 11%,#faf5e6);transform:translateZ(7.2px);text-align:center;padding-top:37px;color:#a8aa96;box-shadow:inset 5px 0 6px #9b90721c}
+.mini-inner img{display:block;width:30px;height:30px;border-radius:7px;margin:0 auto;opacity:.72}
+.mini-inner .mini-note{display:block;font-size:11px;line-height:2.3}
+.mini-inner::after{content:"";display:block;height:27px;margin:5px 20px;background:repeating-linear-gradient(0deg,transparent 0px,transparent 8px,#ded8c58a 8px,#ded8c58a 9px)}
+.mini-leaf{inset:4px 3px 4px 7px;border-radius:1px 5px 5px 1px;background:linear-gradient(90deg,#ded5be,#faf5e7 10%,#f7f1df);border:1px solid #e8dec5;transform-origin:left center;backface-visibility:visible;box-shadow:2px 2px 3px #867a5b17}
+.leaf-one{transform:translateZ(8px) rotateY(0deg)}.leaf-two{transform:translateZ(9px) rotateY(0deg)}
+.mini-front-cover{inset:0;transform-origin:left center;transform:translateZ(11px) rotateY(0deg);border-radius:4px 8px 8px 4px}
+.mini-cover-front,.mini-cover-back{inset:0;border:1px solid #ddd4bf;border-radius:4px 8px 8px 4px;backface-visibility:hidden}
+.mini-cover-front{background-color:#f0eadb;background-image:url('assets/book-materials.webp');background-size:200% 100%;background-position:left center;box-shadow:inset 1px 1px 2px #fff9,1px 2px 1px #c6bda6;transform:translateZ(.6px)}
+.mini-cover-back{background:linear-gradient(90deg,#ebe2cb,#faf4e4 13%,#f7efdb);transform:rotateY(180deg) translateZ(.6px);box-shadow:inset -4px 0 7px #d8c9a52b}
+[data-product=paperie] .mini-cover-front{background-color:#bcc5ac;background-position:right center;border-color:#a7b193;box-shadow:inset 1px 1px 2px #f2f4dfaa,1px 2px 1px #929e7e}
+[data-product=paperie] .mini-cover-front::after{content:"";position:absolute;inset:5px;border:1px dashed #e4e8ceba;border-radius:2px 6px 6px 2px;box-shadow:inset 1px 0 0 #85916b1c}
+.mini-loop{position:absolute;left:21%;top:36%;width:65%;height:auto;transform:rotate(-4deg)}
+.mini-cloth-label{display:none!important;position:absolute;left:19%;right:16%;top:31%;padding:13px 1px;background:#ede5d1;border:1px solid #d9cfb6;box-shadow:1px 2px 3px #7c73582b;font-size:13px;text-align:center;color:#8a8c76;transform:rotate(-1deg)}
+[data-product=paperie] .mini-loop{display:none}[data-product=paperie] .mini-cloth-label{display:block!important}
+.mini-tab{width:29px;height:15px;left:24%;top:-11px;transform:translateZ(-1px) rotate(-4deg);background:#b7c8d2;border:1px solid #a8bac6;border-radius:1px;box-shadow:0 1px 2px #778d991c}
+.mini-ribbon{display:none!important;left:57%;bottom:-25px;width:14px;height:40px;background:repeating-linear-gradient(90deg,#c3a15c,#d5ba7f 1px,#c7a665 2px);transform:translateZ(-4px) rotate(-3deg);clip-path:polygon(0 0,100% 0,100% 100%,50% 87%,0 100%);box-shadow:2px 4px 3px #6f63382a}
+[data-product=paperie] .mini-ribbon{display:block!important}[data-product=paperie] .mini-tab{display:none}
+.desk-pencil{position:absolute;left:calc(50% - 105px);top:calc(50% - 71px);width:9px;height:132px;background:linear-gradient(90deg,#baa070,#e4cfa5 35%,#e4cfa5 66%,#b59a68);border-radius:2px;transform:rotate(-23deg);box-shadow:3px 4px 4px #80704425;pointer-events:none}
+.desk-pencil::before{content:"";position:absolute;top:-22px;left:0;width:9px;height:23px;clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(#635d4d 0 25%,#d4b686 26%)}
+.desk-pencil::after{content:"";position:absolute;bottom:0;left:0;right:0;height:9px;background:#b9c2a9;border-radius:0 0 2px 2px}
+@media(hover:hover){.writing-toy:hover .mini-book{transform:translateY(-5px) rotateX(23deg) rotateY(-9deg) rotateZ(-11deg)}.paperie-toy:hover .mini-book{transform:translateY(-5px) rotateX(23deg) rotateY(-9deg) rotateZ(10deg)}}
+.toy.is-in-motion .mini-book{opacity:0}.toy.is-in-motion{pointer-events:none}
+/* This same articulated object moves from the desk into the story, and returns. */
+#toy-transition{position:fixed;inset:0;z-index:6;pointer-events:none;perspective:1100px}
+#transition-object{position:absolute;left:calc(50% - var(--book-w)/2);top:calc(50% - var(--book-h)/2);width:var(--book-w);height:var(--book-h);transform-style:preserve-3d;transform:translate3d(var(--start-x),var(--start-y),0);will-change:transform}
+#transition-object .mini-book{width:var(--book-w);height:var(--book-h);transition:none}
+.is-unfolding #transition-object{animation:toy-travel-in 1500ms cubic-bezier(.2,.65,.25,1) both}
+.is-unfolding .mini-book{animation:toy-pose-in 1500ms cubic-bezier(.2,.65,.25,1) both}
+.is-unfolding .mini-front-cover{animation:mini-cover-open 1450ms 100ms cubic-bezier(.25,.65,.2,1) both}
+.is-unfolding .leaf-one{animation:mini-leaf-one 1100ms 270ms ease both}.is-unfolding .leaf-two{animation:mini-leaf-two 1000ms 420ms ease both}
+.is-arriving{animation:toy-dissolve 500ms ease both}
+.is-held-open #transition-object{transform:translate3d(var(--spread-offset),0,0) scale(var(--open-scale))}.is-held-open .mini-book{transform:rotateX(14deg) rotateY(0deg) rotateZ(-2deg)}.is-held-open .mini-front-cover{transform:translateZ(11px) rotateY(-155deg)}.is-held-open .leaf-one{transform:translateZ(8px) rotateY(-24deg)}.is-held-open .leaf-two{transform:translateZ(9px) rotateY(-10deg)}
+.is-folding #transition-object{animation:toy-travel-out 1100ms cubic-bezier(.3,.4,.25,1) both}.is-folding .mini-book{animation:toy-pose-out 1100ms ease both}.is-folding .mini-front-cover{animation:mini-cover-close 1040ms cubic-bezier(.3,.4,.25,1) both}.is-folding .leaf-one{animation:mini-leaf-one-close 1000ms ease both}.is-folding .leaf-two{animation:mini-leaf-two-close 900ms ease both}
+dialog[data-state^=mini-]{position:fixed;inset:0;margin:0;width:100vw;height:100dvh;max-height:none;overflow:visible}
+dialog[data-state^=mini-] .book-scroll{display:none}
+dialog[data-state^=mini-] .book-toolbar{position:fixed;left:50%;top:20px;transform:translateX(-50%);width:min(1000px,calc(100% - 48px));z-index:8}
+dialog[data-state^=mini-] #story-product{visibility:hidden}
+dialog[data-state=mini-opening]::backdrop{animation:mini-backdrop-in 1600ms ease both}
+dialog[data-state=mini-closing]::backdrop{animation:mini-backdrop-out 1100ms ease both}
+dialog[data-entry=mini] .opening-cover{display:none!important}
+dialog[data-entry=mini] .storybook{animation:story-from-mini 780ms cubic-bezier(.2,.65,.25,1) both}
+dialog[data-entry=mini] .story-pages{animation:pages-arrive 1000ms 160ms ease both}
+dialog[data-entry=mini][data-state=closing] .storybook{animation:book-away 340ms ease both}
+dialog[data-entry=mini][data-state=closing]::backdrop{animation:none;background:#eeece5e8;backdrop-filter:blur(5px)}
+@keyframes toy-travel-in{from{transform:translate3d(var(--start-x),var(--start-y),0) scale(1)}to{transform:translate3d(var(--spread-offset),0,0) scale(var(--open-scale))}}
+@keyframes toy-pose-in{from{transform:var(--start-pose)}to{transform:rotateX(14deg) rotateY(0deg) rotateZ(-2deg)}}
+@keyframes mini-cover-open{from{transform:translateZ(11px) rotateY(0deg)}to{transform:translateZ(11px) rotateY(-155deg)}}
+@keyframes mini-leaf-one{from{transform:translateZ(8px) rotateY(0deg)}to{transform:translateZ(8px) rotateY(-24deg)}}
+@keyframes mini-leaf-two{from{transform:translateZ(9px) rotateY(0deg)}to{transform:translateZ(9px) rotateY(-10deg)}}
+@keyframes toy-dissolve{to{opacity:0}}
+@keyframes toy-travel-out{from{transform:var(--fold-travel)}to{transform:translate3d(var(--start-x),var(--start-y),0) scale(1)}}
+@keyframes toy-pose-out{from{transform:var(--fold-pose)}to{transform:var(--start-pose)}}
+@keyframes mini-cover-close{from{transform:var(--fold-cover)}to{transform:translateZ(11px) rotateY(0deg)}}
+@keyframes mini-leaf-one-close{from{transform:var(--fold-leaf-one)}to{transform:translateZ(8px) rotateY(0deg)}}
+@keyframes mini-leaf-two-close{from{transform:var(--fold-leaf-two)}to{transform:translateZ(9px) rotateY(0deg)}}
+@keyframes mini-backdrop-in{from{background:#eeece500;backdrop-filter:blur(0)}to{background:#eeece5b8;backdrop-filter:blur(2px)}}
+@keyframes mini-backdrop-out{from{background:var(--fold-backdrop,#eeece5e8);backdrop-filter:var(--fold-blur,blur(5px))}to{background:#eeece500;backdrop-filter:blur(0)}}
+@keyframes story-from-mini{from{opacity:0;transform:translateY(8px) scale(.72)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:680px){.mini-book{--book-width:93px;--book-height:125px}.mini-book[data-product=paperie]{--book-width:96px;--book-height:125px}.mini-loop{width:65%}.mini-cloth-label{font-size:9px;padding:9px 0}.mini-inner{padding-top:21px}.mini-inner img{width:24px;height:24px}.mini-inner .mini-note{font-size:8px}.mini-inner::after{margin:2px 13px;height:18px}.mini-tab{width:22px;height:12px;top:-9px}.mini-ribbon{width:10px;height:30px;bottom:-20px}.desk-pencil{left:calc(50% - 70px);top:calc(50% - 44px);height:88px;width:7px}.desk-pencil::before{width:7px;height:17px;top:-16px}dialog[data-state^=mini-] .book-toolbar{top:12px;width:calc(100% - 30px)}}
+@media(max-width:350px){.mini-book{--book-width:79px;--book-height:107px}.mini-book[data-product=paperie]{--book-width:82px;--book-height:107px}.mini-cloth-label{font-size:8px;padding:7px 0}.mini-inner{padding-top:17px}.mini-inner img{width:21px;height:21px}.mini-inner .mini-note{font-size:7px}.desk-pencil{left:calc(50% - 59px);height:76px;top:calc(50% - 38px)}}
+@media(prefers-reduced-motion:reduce){.mini-book{transition:none!important}.toy:hover .mini-book{transform:rotateX(28deg) rotateY(-9deg) rotateZ(-13deg)}.toy.paperie-toy:hover .mini-book{transform:rotateX(28deg) rotateY(-9deg) rotateZ(12deg)}#toy-transition{display:none!important}}
