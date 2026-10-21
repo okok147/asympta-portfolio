@@ -23,3 +23,9 @@ The site requests the locally installed `GB18030 Bitmap` / `GB18030Bitmap` famil
 Icons and screenshots come from the public App Store listings retrieved 2026-10-20. The product film is owner-supplied actual app footage; it does not claim that a particular App Store version was tested. Miniature stationery illustrations were created for this site with ImageGen. See `ASSET_SOURCES.json` for provenance and hashes. Private source paths, device identifiers and QA metadata are not included.
 
 © 2026 Ka Ho Lau. Product names, copy, images and artwork belong to their respective owners. No open-source software license is granted by this publication.
+
+## Reading and navigation
+
+The home page identifies the two apps by purpose and keeps their icon download links visible. Each story includes a direct App Store link and its app-specific support page. The Paperie player has an explicit play label and starts only on request.
+
+On phone and touch layouts, a short tap on the left or right half of the non-interactive paper area turns to the previous or next page. Taps on links, buttons and native video controls retain their own actions. Scrolling, pointer cancellation, multi-touch, long presses and text selection do not turn pages. The visible previous/next controls and keyboard arrows remain available; phone pagination stays at the bottom of the reading area.
