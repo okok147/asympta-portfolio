@@ -17,3 +17,7 @@ For local preview, run `python3 -m http.server 4173` in this directory. Keep ass
 Screenshots and icons come from the apps' public App Store listings, retrieved 2026-10-20. They were converted to WebP without redrawing the interface. See `ASSET_SOURCES.json` for public asset origins. Screenshots show the published listings, not newer development builds.
 
 © 2026 Ka Ho Lau. Product names, copy, images and artwork belong to their respective owners. No open-source software license is granted by this publication.
+
+## Reader typography
+
+The white reading theme requests the locally installed `GB18030 Bitmap` / `GB18030Bitmap` family, with Songti, Noto Serif TC and Georgia as serif fallbacks for unavailable fonts or characters. It uses a white background, dark gray text, and larger body type. No Apple font files are redistributed or downloaded; the exact face depends on the visitor’s installed fonts and the characters it covers.
