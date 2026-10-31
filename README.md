@@ -7,7 +7,7 @@ A static portfolio, published from the root of `main` by GitHub Pages.
 ## Live files
 
 - `index.html`: semantic cover, contents, work plates, correspondence, reader.
-- `folio.css`: the complete design system; no previous stylesheets are loaded.
+- `folio.css`: the complete design system, including the warm engraved-paper edition; no previous stylesheets are loaded.
 - `folio.js`: bilingual labels, the reader, print-only color image treatment, restrained animation.
 - `assets/folio/`: original print textures, archived monochrome plates plus original owner-supplied screenshots, social preview, asset provenance.
 
@@ -35,4 +35,8 @@ The live site displays only the soft-color printed treatment for both the thumbn
 
 ## Printed folio design correction
 
-`assets/folio/frontispiece.svg` is a deterministic, original in-house contour engraving with three ruled folios and dense analog linework. The running head, index, plate captions, contact folio, typography and margins form a single editorial system. The cover stays product-agnostic, and artwork is always fully visible even when animations are paused. Run the Chrome/WebKit acceptance suite for both languages and mobile sizes before publishing.
+`assets/folio/frontispiece.svg` is a deterministic, original intaglio-style illustration of an open folio and quill, drawn from deterministic irregular vector paths and dense analog linework. The running head, index, plate captions, contact folio, typography and margins form a single editorial system. The cover stays product-agnostic, and artwork is always fully visible even when animations are paused. Run the Chrome/WebKit acceptance suite for both languages and mobile sizes before publishing.
+
+## Antique engraving and analog materiality (31 October 2026)
+
+The home plate is an original hand-constructed folio-and-quill engraving: irregular rule lines, crosshatching, ink burr and plate-registration marks. The display is not a reused third-party illustration. Warm fiber paper and absorbed-ink textures are authored as local SVGs; work images retain color with print screening and a restrained plate rim. No external fonts, new libraries, tracking, extra runtime requests or perpetual animation were added. The tools/make-art.py generator deliberately leaves the canonical frontispiece unchanged. Verified with the existing 37-check headless Chrome and 27-check offscreen WebKit suites; no claims of physical-device testing.
