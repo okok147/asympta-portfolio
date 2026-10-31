@@ -23,3 +23,11 @@ For local preview, run `python3 -m http.server 4173` from the repository root.
 The public repository contains only presentation assets and existing public media. See `ASSET_SOURCES.json` for the provenance of retained assets. App source code is separate.
 
 © 2026 Ka Ho Lau. No open-source license granted.
+
+## Edition 02 — tangible print and bilingual content (31 October 2026)
+
+Reference: Julián Leiss's video essay on Borges, https://x.com/julianleiss/status/2116294919488716958. Nine frames from the original were inspected from 1 to 56 seconds. The website draws from near-white archived paper, fine uneven print ink, technical diagrams, generously tracked typography, and restrained compositional movement. It uses original vector drawings and procedural SVG grain tiles, without copying copyrighted artwork or fonts.
+
+Changes: materially specific feature descriptions in place of generic poetic filler; paper and letterpress grain; entrance motion and SVG ink-path reveal with reduced-motion fallback; complete Chinese/English translations for visible controls, labels, captions and metadata; email contact plus public X/Instagram profile links for quick direct messages. The original section headers and publication-style indexes are preserved.
+
+The new entry assets are `editorial.css?v=20261031c`, `editorial.js?v=20261031c`, `assets/paper-grain.svg` and `assets/ink-grain.svg`. Older site assets remain for rollback. No third-party font downloads, tracking, or external scripts.

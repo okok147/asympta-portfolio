@@ -42,6 +42,11 @@ const translations = {
     videoFallback:'Your browser does not support video.',videoError:'The video could not play.',watchFilm:'▷ Watch the recording',support:'APP SUPPORT ↗'
   }
 };
+Object.assign(translations.zh,{"homeAria":"Asympta 首頁","mainNavAria":"主選單","imprintRole":"獨立作品 · 2026","atlas":"圖錄 / 01","topline":"設計 · 軟體 · 日常","byline":"KA HO LAU 的作品","heroLine1":"書寫。","heroLine2":"繪畫。","heroLine3":"記錄。","heroDiagramAria":"原創多層紙張製圖研究","fig01":"圖 01","fig01Caption":"思緒 / 筆跡 / 紙頁","worksHeading":"精選作品","workIndex":"索引 / 001—002","writingNumber":"第 001 號","paperieNumber":"第 002 號","writingMeta":"無限畫布 · APPLE PENCIL · 文字","paperieMeta":"手帳 · 貼紙 · 印章","writingDiagramAria":"手寫線條研究","paperieDiagramAria":"翻開手帳的線描研究","plateI":"圖版 I · 無限延展","plateII":"圖版 II · 記錄日常","folio":"書頁","openFor":"歡迎交流","collabIndex":"專案與合作 / 003","collabTitle1":"開放","collabTitle2":"專案","collabTitle3":"與合作。","contactFallback":"如電郵未獲回覆，或希望更快交流，亦可透過以下社交平台私訊。","xLink":"X 私訊 ↗","instagramLink":"Instagram 私訊 ↗","copyright":"© 2026 KA HO LAU · 獨立作品","privacyNavAria":"隱私政策","pageNavAria":"翻頁選單","backTop":"↑ 頁首","dialogBreadcrumb":"ASYMPTA / 作品 / ","atlasOfThings":"作品檔案 · 2026","storeAction":"App Store 下載 ↗","videoAria":"Paperie 真實 App 操作影片","metaTitle":"Asympta — Ka Ho Lau · 獨立作品","metaDescription":"Ka Ho Lau 的獨立 App：Asympta Writing 與 Paperie。開放專案與合作提案。","emailSubject":"專案與合作邀約"});
+Object.assign(translations.en,{"homeAria":"Asympta home","mainNavAria":"Main navigation","imprintRole":"INDEPENDENT WORKS · 2026","atlas":"ATLAS / 01","topline":"DESIGN · SOFTWARE · EVERYDAY LIFE","byline":"THE WORK OF KA HO LAU","heroLine1":"Write.","heroLine2":"Sketch.","heroLine3":"Keep.","heroDiagramAria":"Original layered-paper cartographic illustration","fig01":"FIG. 01","fig01Caption":"THOUGHT / MARK / PAGE","worksHeading":"SELECTED WORKS","workIndex":"INDEX / 001—002","writingNumber":"NO. 001","paperieNumber":"NO. 002","writingMeta":"OPEN CANVAS · APPLE PENCIL · TEXT","paperieMeta":"JOURNAL · STICKERS · STAMPS","writingDiagramAria":"Study of a handwritten line","paperieDiagramAria":"Technical drawing of an open journal","plateI":"PLATE I · WITHOUT AN END","plateII":"PLATE II · A DAY KEPT","folio":"FOLIO","openFor":"OPEN FOR CONVERSATION","collabIndex":"PROJECTS & COLLABORATIONS / 003","collabTitle1":"Open to","collabTitle2":"projects","collabTitle3":"& collaborations.","contactFallback":"If an email goes unanswered, or you would prefer a quicker conversation, you can also reach me by social media direct message.","xLink":"Message on X ↗","instagramLink":"Message on Instagram ↗","copyright":"© 2026 KA HO LAU · INDEPENDENT WORKS","privacyNavAria":"Privacy policies","pageNavAria":"Page navigation","backTop":"↑ TOP","dialogBreadcrumb":"ASYMPTA / WORKS / ","atlasOfThings":"WORK ARCHIVE · 2026","storeAction":"View on App Store ↗","videoAria":"Actual Paperie app recording","metaTitle":"Asympta — Ka Ho Lau · Independent Works","metaDescription":"Writing and Paperie by Ka Ho Lau. Open to projects and collaborations.","emailSubject":"Project & Collaboration Enquiry"});
+
+Object.assign(translations.zh,{"heroDescription":"由 Ka Ho Lau 獨立設計與開發的 Writing 與 Paperie，提供 iPhone、iPad 的手寫畫布與數位手帳。","heroFootnote":"Writing 與 Paperie · iPhone / iPad","writingDescription":"支援 Apple Pencil 手寫、草圖及文字輸入的無限畫布，可自由移動與縮放。","paperieDescription":"可手寫、打字、加入照片、貼紙與印章的數位手帳，支援翻頁閱讀。","collabDescription":"歡迎產品設計、App、創意技術及獨立專案的合作提案。來信時可附上需求概要與預計時程。","collabAction":"電郵洽談 ↗"});
+Object.assign(translations.en,{"heroDescription":"Writing and Paperie are independently built iPhone and iPad apps for handwriting, sketching, and digital journaling.","heroFootnote":"Writing & Paperie · iPhone / iPad","writingDescription":"An infinite canvas for Apple Pencil handwriting, sketching, typed notes, and pan-and-zoom.","paperieDescription":"A digital journal for handwriting, typing, photos, stickers, stamps, and page turning.","collabDescription":"Available for product design, apps, creative technology, and independent projects. Please include a short brief and proposed timeline.","collabAction":"Enquire by email ↗"});
 const byId = id => document.getElementById(id);
 const dialog=byId('story-dialog'),video=byId('paperie-film'),playButton=byId('start-film'),
       errorMessage=byId('video-error'),storyImage=byId('story-image'),
@@ -51,12 +56,19 @@ function label(key){return key==='writing'?'Writing':'Paperie'}
 function setLanguage(next){
   language=next;document.documentElement.lang=next==='en'?'en':'zh-Hant';
   document.querySelectorAll('[data-i18n]').forEach(el=>{const value=translations[next][el.dataset.i18n];if(value!==undefined)el.textContent=value});
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(el=>{
+    const value=translations[next][el.dataset.i18nAriaLabel];if(value!==undefined)el.setAttribute('aria-label',value);
+  });
+  document.title=translations[next].metaTitle;
+  const ogTitle=document.querySelector('meta[property="og:title"]');if(ogTitle)ogTitle.content=translations[next].metaTitle;
+  const ogDesc=document.querySelector('meta[property="og:description"]');if(ogDesc)ogDesc.content=translations[next].metaDescription;
+  const emailLink=document.querySelector('.contact-link');
+  if(emailLink)emailLink.href='mailto:hello@everformlab.com?subject='+encodeURIComponent(translations[next].emailSubject);
+
   document.querySelectorAll('.language-switch').forEach(button=>{button.textContent=next==='en'?'繁中':'EN';button.setAttribute('aria-label',next==='en'?'切換至繁體中文':'Switch to English')});
   document.querySelectorAll('[data-open]').forEach(button=>button.setAttribute('aria-label',next==='en'?'Read about Asympta '+label(button.dataset.open):'閱讀 Asympta '+label(button.dataset.open)+' 作品介紹'));
   playButton.setAttribute('aria-label',next==='en'?'Play real Paperie video':'播放 Paperie 真實操作影片');
-  document.querySelector('meta[name="description"]').content=next==='en'?
-  'Asympta — independent software by Ka Ho Lau. Open to projects and collaborations.':
-  'Asympta — Ka Ho Lau 的獨立數位作品。歡迎專案與合作邀約。';
+  document.querySelector('meta[name="description"]').content=translations[next].metaDescription;
   try{localStorage.setItem('asympta-language',next)}catch(_){}
   if(dialog.open)renderStory();
 }
@@ -126,3 +138,40 @@ storyFigure.addEventListener('pointercancel',()=>touchStart=null,{passive:true})
 dialog.addEventListener('scroll',()=>touchStart=null,{passive:true});
 let stored;try{stored=localStorage.getItem('asympta-language')}catch(_){}
 setLanguage(stored==='en'?'en':'zh');
+
+
+/* Printmaking motion: short-lived, intentional assembly of ink and line. */
+(function(){
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(reduced.matches||!('IntersectionObserver' in window))return;
+  const blocks=[...document.querySelectorAll('[data-reveal]')];
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-revealed');observer.unobserve(entry.target)}});
+  },{threshold:0.08,rootMargin:'0px 0px -12px 0px'});
+  blocks.forEach((el,i)=>{el.style.setProperty('--reveal-delay',Math.min(i%3,2)*105+'ms');observer.observe(el)});
+  document.documentElement.classList.add('motion-ready');
+  const diagrams=[...document.querySelectorAll('.diagram svg')];
+  const inkObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    entry.target.classList.add('is-inked');
+    inkObserver.unobserve(entry.target);
+  })},{threshold:0.15});
+  diagrams.forEach(svg=>{
+    svg.querySelectorAll('path:not([stroke-dasharray])').forEach((path,index)=>{
+      if(index>=16)return;
+      try{
+        const length=path.getTotalLength();
+        if(!Number.isFinite(length)||length<5)return;
+        path.style.setProperty('--stroke-length',String(length));
+        path.style.setProperty('--stroke-order',Math.min(index,12));
+        path.classList.add('draw-line');
+      }catch(_){}
+    });
+    inkObserver.observe(svg);
+  });
+  reduced.addEventListener('change',event=>{
+    if(!event.matches)return;
+    document.documentElement.classList.remove('motion-ready');
+    diagrams.forEach(svg=>svg.classList.add('is-inked'));
+  });
+})();
