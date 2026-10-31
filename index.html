@@ -2,100 +2,150 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fcfbf8">
-<meta name="description" content="Ka Ho Lau 的小小文具桌。點開 Writing 與 Paperie 的故事，或直接到 App Store 下載。">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Asympta — independent software by Ka Ho Lau. Writing, Paperie, and projects & collaborations.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Asympta — 書寫與日常的小故事">
-<meta property="og:description" content="兩件小文具，兩個關於書寫與日常的故事。">
+<meta property="og:title" content="Asympta — Ka Ho Lau">
+<meta property="og:description" content="A quieter kind of software. Independent works, projects and collaborations.">
 <meta property="og:image" content="https://okok147.github.io/asympta-portfolio/assets/social.jpg">
 <meta property="og:url" content="https://okok147.github.io/asympta-portfolio/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://okok147.github.io/asympta-portfolio/">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="style.css?v=final-paper-1">
-<link rel="stylesheet" href="mini-books.css?v=final-paper-1">
-<link rel="stylesheet" href="polish.css?v=final-paper-1">
-<link rel="preload" as="image" href="assets/book-materials.webp">
-<script src="app.js?v=final-paper-1" defer></script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="editorial.css?v=20261031b">
+<script defer src="editorial.js?v=20261031b"></script>
 <title>Asympta — Ka Ho Lau</title>
 </head>
-<body>
-<a class="skip" href="#main" data-i18n="skip">跳至內容</a>
-<div class="page">
-  <header class="header">
-    <a class="identity" href="#" aria-label="Asympta 首頁"><svg class="little-sun" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><circle cx="16" cy="16" r="5.5"/><path d="M16 3v4m0 18v4M3 16h4m18 0h4M6.8 6.8l2.8 2.8m12.8 12.8 2.8 2.8M6.8 25.2l2.8-2.8M22.4 9.6l2.8-2.8"/></g></svg><span>asympta</span></a>
-    <div class="header-note"><span>Ka Ho Lau</span><button class="language-button" id="language" type="button" aria-label="Switch to English">EN</button></div>
-  </header>
-  <main id="main">
-    <h1 data-i18n="pageTitle">給書寫，也給生活。</h1>
-    <p class="intro-note" data-i18n="introNote">兩個給 iPhone、iPad 的小作品。</p>
-    <section class="desk" aria-label="小文具與 App 下載">
-      <article class="product" aria-labelledby="writing-name">
-        <button class="toy writing-toy" type="button" data-open="writing" aria-haspopup="dialog" aria-controls="story-dialog" aria-label="打開 Writing 的故事"><span class="mini-book" data-product="writing" aria-hidden="true">
-          <span class="mini-back-cover"></span><span class="mini-page-block"></span><span class="mini-bottom-edge"></span><span class="mini-right-edge"></span><span class="mini-spine"></span>
-          <span class="mini-tab"></span><span class="mini-ribbon"></span>
-          <span class="mini-inner"><img src="assets/writing-icon.webp" width="30" height="30" alt=""><span class="mini-note">想法</span></span>
-          <span class="mini-leaf leaf-one"></span><span class="mini-leaf leaf-two"></span>
-          <span class="mini-front-cover"><span class="mini-cover-front"><svg class="mini-loop" viewBox="0 0 90 60"><path d="M5 47c20-5 60-24 54-35-7-15-45 5-35 22 8 15 35 16 59-3" fill="none" stroke="#9bb6c5" stroke-width="2.1" stroke-linecap="round"/></svg><span class="mini-cloth-label">Paperie</span></span><span class="mini-cover-back"></span></span>
-        </span><span class="desk-pencil" aria-hidden="true"></span></button>
-        <h2 id="writing-name">Writing</h2>
-        <p class="product-purpose" data-i18n="writingPurpose">無限畫布，放開想法。</p>
-        <button class="story-label" type="button" data-open="writing" aria-haspopup="dialog" aria-controls="story-dialog" data-i18n="openStory">翻開看看 →</button>
-        <a class="download-link" data-download="writing" href="https://apps.apple.com/app/id6800755232" aria-label="在 App Store 下載 Asympta Writing"><img src="assets/writing-icon.webp" width="32" height="32" alt=""><span class="download-copy"><span data-i18n="downloadApp">下載 App</span><span class="store-word">App Store <span aria-hidden="true">↗</span></span></span></a>
-      </article>
-      <article class="product" aria-labelledby="paperie-name">
-        <button class="toy paperie-toy" type="button" data-open="paperie" aria-haspopup="dialog" aria-controls="story-dialog" aria-label="打開 Paperie 的故事"><span class="mini-book" data-product="paperie" aria-hidden="true">
-          <span class="mini-back-cover"></span><span class="mini-page-block"></span><span class="mini-bottom-edge"></span><span class="mini-right-edge"></span><span class="mini-spine"></span>
-          <span class="mini-tab"></span><span class="mini-ribbon"></span>
-          <span class="mini-inner"><img src="assets/paperie-icon.webp" width="30" height="30" alt=""><span class="mini-note">日常</span></span>
-          <span class="mini-leaf leaf-one"></span><span class="mini-leaf leaf-two"></span>
-          <span class="mini-front-cover"><span class="mini-cover-front"><svg class="mini-loop" viewBox="0 0 90 60"><path d="M5 47c20-5 60-24 54-35-7-15-45 5-35 22 8 15 35 16 59-3" fill="none" stroke="#9bb6c5" stroke-width="2.1" stroke-linecap="round"/></svg><span class="mini-cloth-label">Paperie</span></span><span class="mini-cover-back"></span></span>
-        </span></button>
-        <h2 id="paperie-name">Paperie</h2>
-        <p class="product-purpose" data-i18n="paperiePurpose">數位手帳，留住日常。</p>
-        <button class="story-label" type="button" data-open="paperie" aria-haspopup="dialog" aria-controls="story-dialog" data-i18n="openStory">翻開看看 →</button>
-        <a class="download-link" data-download="paperie" href="https://apps.apple.com/app/id6818553101" aria-label="在 App Store 下載 Asympta Paperie"><img src="assets/paperie-icon.webp" width="32" height="32" alt=""><span class="download-copy"><span data-i18n="downloadApp">下載 App</span><span class="store-word">App Store <span aria-hidden="true">↗</span></span></span></a>
-      </article>
-    </section>
-    <p class="desk-note" data-i18n="deskNote">小物可以翻開，圖示可以下載。</p>
-    <noscript><p class="desk-note">App Store 圖示可直接下載 App；開啟故事需要 JavaScript。</p></noscript>
-  </main>
-  <footer class="footer"><a href="mailto:hello@everformlab.com" data-i18n="hello">和 Ka Ho Lau 說聲你好 ↗</a><div class="colophon"><span>© 2026 Ka Ho Lau</span><nav aria-label="隱私政策"><a href="https://okok147.github.io/asympta-support/privacy/" data-i18n="writingPrivacy">Writing 隱私</a><a href="https://okok147.github.io/asympta-paperie-support/privacy/" data-i18n="paperiePrivacy">Paperie 隱私</a></nav></div></footer>
-</div>
-
-<dialog id="story-dialog" aria-labelledby="story-product story-title">
-  <div class="book-toolbar"><span id="story-product">Asympta Paperie</span><div><button id="story-language" class="language-button" type="button" aria-label="Switch to English">EN</button><button id="close-story" type="button" data-i18n="closeStory">合上書 ×</button></div></div>
-  <div id="toy-transition" aria-hidden="true" hidden><div id="transition-object"></div></div>
-  <div class="book-scroll">
-    <div class="storybook">
-      <div class="story-spread">
-        <div class="story-pages">
-          <figure class="story-media">
-            <div class="media-mat">
-              <div id="film-wrap" class="film-wrap">
-                <video id="paperie-film" controls playsinline preload="none" tabindex="0" poster="assets/paperie-film-poster.jpg" aria-label="Paperie 真實操作影片，無聲" aria-describedby="media-caption"><source src="assets/paperie-film.mp4" type="video/mp4"><span data-i18n="videoFallback">你的瀏覽器不支援影片。</span></video>
-                <button class="video-start" id="start-film" type="button" aria-label="播放 Paperie 影片" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg><span data-i18n="watchFilm">看實際操作</span></button>
-              </div>
-              <img id="story-image" src="assets/writing-ipad-1.webp" width="1200" height="1600" alt="" hidden>
-            </div>
-            <figcaption id="media-caption">Paperie · 真實操作影片 · 1:30，無聲</figcaption>
-            <p id="video-error" class="video-error" role="status" hidden data-i18n="videoError">影片暫時無法播放，請重新整理後再試。</p>
-          </figure>
-          <article class="story-copy">
-            <p class="chapter" id="story-chapter">01 · Paperie</p>
-            <h2 id="story-title">今天，值得留下一頁。</h2>
-            <p class="story-body" id="story-body"></p>
-            <p class="story-detail" id="story-detail"></p>
-            <a class="book-download" id="story-download" href="https://apps.apple.com/app/id6818553101"><img id="story-icon" src="assets/paperie-icon.webp" width="30" height="30" alt=""><span>App Store ↗</span></a>
-            <a id="story-support" class="story-support" href="https://okok147.github.io/asympta-paperie-support/" data-i18n="appSupport">App 支援 ↗</a>
-          </article>
-        </div>
-        <div class="opening-cover" aria-hidden="true"><span class="cover-label" id="cover-label">Paperie</span></div>
-        <div class="turn-leaf" aria-hidden="true"></div>
-      </div>
-      <div class="book-bottom"><button id="prev-page" type="button" data-i18n="previous">← 上一頁</button><span id="page-counter" aria-live="polite" aria-atomic="true">01 / 03</span><button id="next-page" type="button" data-i18n="next">下一頁 →</button><p class="turn-hint" data-i18n="tapHint">輕點書頁左側／右側翻頁</p></div>
+<body id="top">
+<a class="skip-link" href="#main" data-i18n="skip">跳至內容</a>
+<div class="folio">
+<header class="masthead">
+  <a class="identity" href="#top" aria-label="Asympta home">asympta<span>.</span></a>
+  <div class="imprint">KA HO LAU<br>INDEPENDENT WORKS · 2026</div>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#works" data-i18n="navWork">作品</a>
+    <a href="#collaborate" data-i18n="navCollab">合作</a>
+    <button class="language-switch" type="button" id="language" aria-label="Switch to English">EN</button>
+  </nav>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="topline smallcaps"><span>ATLAS / 01</span><span>DESIGN, SOFTWARE & EVERYDAY LIFE</span></div>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="hero-overline smallcaps"><span class="mark" aria-hidden="true">✳</span> THE WORK OF KA HO LAU</p>
+      <h1 id="hero-title"><span>A quieter</span><em>kind of</em><span>software.</span></h1>
+      <p class="hero-description" data-i18n="heroDescription">為思緒、書寫與日常創造一點空間。由 Ka Ho Lau 獨立設計與製作的數位作品。</p>
     </div>
+    <figure class="diagram hero-diagram">
+      <svg viewBox="0 0 350 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An original cartographic-style study of layered paper">
+        <g fill="none" stroke="currentColor" stroke-linecap="square">
+          <path stroke-width=".6" d="M27 25H323V356H27Z"/>
+          <path stroke-width=".5" stroke-dasharray="2 6" d="M175 10V371 M12 195H338"/>
+          <path stroke-width=".8" d="M55 100L230 49L309 96L132 151Z M55 100V148L132 203L309 149V96 M132 151V203"/>
+          <path stroke-width=".5" d="M55 109L132 158L309 104 M62 121L136 169L299 117"/>
+          <path stroke-width=".8" d="M42 200L221 150L302 202L126 255Z M42 200V245L126 301L302 250V202 M126 255V301"/>
+          <path stroke-width=".65" d="M51 276L228 228L306 276L132 331Z M51 276V318L132 360L306 318V276 M132 331V360"/>
+          <path stroke-width="1.25" d="M68 121C104 109 100 125 134 118S177 85 211 94S263 119 287 99 M59 222C90 206 110 224 143 211S187 190 216 202S269 221 287 206 M63 294C104 276 118 301 149 288S200 266 228 278S260 290 287 279"/>
+          <path stroke-width=".6" d="M68 128C104 116 100 132 134 125S177 92 211 101S263 126 287 106 M63 231C90 215 110 233 143 220S187 199 216 211S269 230 287 215 M63 302C104 284 118 309 149 296S200 274 228 286S260 298 287 287"/>
+          <path stroke-width=".55" d="M230 49L233 27 M309 96L330 87 M306 318L332 335 M51 318L20 337"/>
+          <circle cx="230" cy="49" r="2.9" stroke-width=".9"/>
+          <circle cx="306" cy="318" r="2.9" stroke-width=".9"/>
+        </g>
+        <g font-size="8" font-family="monospace" fill="currentColor" letter-spacing=".3"><text x="14" y="20">A</text><text x="325" y="20">B</text><text x="14" y="372">C</text><text x="325" y="372">D</text><text x="239" y="33">001</text><text x="316" y="79">002</text><text x="15" y="348">003</text></g>
+      </svg>
+      <figcaption class="smallcaps"><span>FIG. 01</span><span>THOUGHT / MARK / PAGE</span></figcaption>
+    </figure>
+  </div>
+  <div class="hero-rail">
+    <p data-i18n="heroFootnote">兩件小作品，無數個尚未寫下的時刻。</p>
+    <a href="#works" class="inline-link" data-i18n="explore">閱讀作品 ↓</a>
+  </div>
+</section>
+
+<section id="works" class="works" aria-labelledby="works-heading">
+  <div class="section-rail smallcaps"><h2 id="works-heading">SELECTED WORKS</h2><span>INDEX / 001—002</span></div>
+
+  <article class="work" aria-labelledby="writing-title">
+    <div class="work-index smallcaps"><span>NO. 001</span><span data-i18n="writingCategory">書寫 / 繪畫 / 思考</span></div>
+    <div class="work-content">
+      <h3 id="writing-title"><button type="button" class="work-name" data-open="writing" aria-haspopup="dialog" aria-controls="story-dialog">Writing<span class="work-arrow" aria-hidden="true">↗</span></button></h3>
+      <p class="work-description" data-i18n="writingDescription">一張無限延伸的紙，讓想法自由生長。</p>
+      <p class="work-meta smallcaps">OPEN CANVAS · APPLE PENCIL · TEXT</p>
+      <div class="work-actions">
+        <button class="inline-link" type="button" data-open="writing" aria-haspopup="dialog" aria-controls="story-dialog" data-i18n="readStory">閱讀作品介紹 ↗</button>
+        <a class="inline-link" href="https://apps.apple.com/app/id6800755232" target="_blank" rel="noopener noreferrer">APP STORE ↗</a>
+      </div>
+    </div>
+    <figure class="diagram work-diagram">
+      <svg viewBox="0 0 295 205" role="img" aria-label="A study of a handwritten line"><g fill="none" stroke="currentColor" stroke-linecap="round"><path stroke-width=".5" d="M15 11V182H283"/><path stroke-width=".4" stroke-dasharray="2 6" d="M15 57H283 M15 113H283 M78 11V182 M142 11V182 M206 11V182"/><path stroke-width="1.35" d="M24 158C68 170 87 32 124 59S99 173 149 150S191 25 225 54S221 139 268 118"/><path stroke-width=".55" d="M24 164C68 176 89 38 124 65S102 179 149 156S194 32 225 60S225 144 268 124"/><circle cx="24" cy="158" r="3"/><circle cx="268" cy="118" r="3"/></g><g fill="currentColor" font-size="8" font-family="monospace"><text x="10" y="199">0</text><text x="268" y="199">∞</text><text x="19" y="9">Y</text></g></svg>
+      <figcaption class="smallcaps">PLATE I · WITHOUT AN END</figcaption>
+    </figure>
+  </article>
+
+  <article class="work" aria-labelledby="paperie-title">
+    <div class="work-index smallcaps"><span>NO. 002</span><span data-i18n="paperieCategory">手帳 / 紙張 / 日常</span></div>
+    <div class="work-content">
+      <h3 id="paperie-title"><button type="button" class="work-name" data-open="paperie" aria-haspopup="dialog" aria-controls="story-dialog">Paperie<span class="work-arrow" aria-hidden="true">↗</span></button></h3>
+      <p class="work-description" data-i18n="paperieDescription">一本可以隨身攜帶，慢慢留下生活的紙本手帳。</p>
+      <p class="work-meta smallcaps">JOURNAL · STATIONERY · MEMORY</p>
+      <div class="work-actions">
+        <button class="inline-link" type="button" data-open="paperie" aria-haspopup="dialog" aria-controls="story-dialog" data-i18n="readStory">閱讀作品介紹 ↗</button>
+        <a class="inline-link" href="https://apps.apple.com/app/id6818553101" target="_blank" rel="noopener noreferrer">APP STORE ↗</a>
+      </div>
+    </div>
+    <figure class="diagram work-diagram">
+      <svg viewBox="0 0 295 205" role="img" aria-label="An architectural study of an open journal">
+        <g fill="none" stroke="currentColor" stroke-width=".7"><path d="M17 33L136 20L151 37L277 21V166L151 184L17 168Z M151 37V184 M136 20V160L151 184 M29 50L127 39V157L29 165Z M163 50L264 39V156L163 170Z"/><path stroke-width=".43" d="M40 70L118 62 M40 82L118 74 M40 94L118 86 M40 106L118 98 M40 118L118 110 M40 130L118 122 M40 142L104 134 M177 74L250 66V111L177 119Z M177 133L250 125 M177 144L250 136 M177 155L233 147"/><path stroke-width=".4" stroke-dasharray="2 6" d="M7 17H288 M7 182H288"/></g><g fill="currentColor" font-size="8" font-family="monospace"><text x="14" y="198">001</text><text x="265" y="198">002</text><text x="137" y="11">FOLIO</text></g></svg>
+      <figcaption class="smallcaps">PLATE II · A DAY KEPT</figcaption>
+    </figure>
+  </article>
+</section>
+
+<section class="collaboration" id="collaborate" aria-labelledby="collab-heading">
+  <div class="section-rail smallcaps"><span>OPEN FOR CONVERSATION</span><span>PROJECTS & COLLABORATIONS / 003</span></div>
+  <div class="collab-grid">
+    <div class="collab-margin"><span class="smallcaps" data-i18n="collabSide">歡迎專案與合作邀約</span><span class="collab-asterisk" aria-hidden="true">✳</span></div>
+    <div class="collab-body">
+      <h2 id="collab-heading">Let's make <em>something</em> worth keeping.</h2>
+      <div class="collab-end">
+        <p data-i18n="collabDescription">開放產品設計、創意技術與獨立專案合作。如果你有正在構思的作品，歡迎來信交流。</p>
+        <a class="contact-link" href="mailto:hello@everformlab.com?subject=Project%20%26%20Collaboration%20Enquiry" data-i18n="collabAction">討論一個專案 ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="footer-main"><span class="footer-wordmark">asympta.</span><a href="mailto:hello@everformlab.com">hello@everformlab.com ↗</a></div>
+  <div class="footer-bottom smallcaps"><span>© 2026 KA HO LAU · INDEPENDENT WORKS</span><nav aria-label="Privacy policies"><a href="https://okok147.github.io/asympta-support/privacy/" data-i18n="writingPrivacy">Writing 隱私</a><a href="https://okok147.github.io/asympta-paperie-support/privacy/" data-i18n="paperiePrivacy">Paperie 隱私</a></nav><a href="#top" class="back-top">↑ TOP</a></div>
+</footer>
+</div>
+<dialog id="story-dialog" aria-labelledby="story-title">
+  <div class="story-sheet">
+    <header class="story-top smallcaps"><span>ASYMPTA / WORKS / <span id="story-product">WRITING</span></span><div><button class="language-switch" id="story-language" type="button" aria-label="Switch language">EN</button><button id="close-story" class="close-story" type="button" data-i18n="closeStory">關閉 ×</button></div></header>
+    <div class="story-grid">
+      <figure class="story-figure">
+        <div class="story-image-shell">
+          <div id="film-wrap" class="film-wrap" hidden>
+            <video id="paperie-film" playsinline preload="none" poster="assets/paperie-film-poster.jpg" aria-label="Paperie real app recording" aria-describedby="media-caption"><source src="assets/paperie-film.mp4" type="video/mp4"><span data-i18n="videoFallback">瀏覽器不支援播放影片。</span></video>
+            <button id="start-film" class="play-film" type="button" aria-label="Play Paperie recording" data-i18n="watchFilm">▷ 觀看實際操作</button>
+          </div>
+          <img id="story-image" src="assets/writing-ipad-1.webp" width="1200" height="1600" alt="">
+        </div>
+        <figcaption class="smallcaps" id="media-caption">ACTUAL APP SCREENSHOT</figcaption>
+        <p id="video-error" role="status" hidden data-i18n="videoError">影片暫時無法播放。</p>
+      </figure>
+      <div class="story-text">
+        <p id="story-chapter" class="smallcaps">01 / WRITING</p>
+        <h2 id="story-title"></h2>
+        <p id="story-body"></p>
+        <p id="story-detail" class="smallcaps"></p>
+        <div class="story-links"><a class="inline-link" id="story-download" href="https://apps.apple.com/app/id6800755232" target="_blank" rel="noopener noreferrer"><img id="story-icon" src="assets/writing-icon.webp" width="24" height="24" alt="">APP STORE ↗</a><a class="inline-link" id="story-support" href="https://okok147.github.io/asympta-support/" target="_blank" rel="noopener noreferrer" data-i18n="support">APP 支援 ↗</a></div>
+      </div>
+    </div>
+    <footer class="story-bottom smallcaps"><span id="page-counter" aria-live="polite" aria-atomic="true">01 / 03</span><span>AN ATLAS OF SMALL THINGS</span><nav aria-label="Page navigation"><button id="prev-page" type="button" data-i18n="previous">← 上一頁</button><button id="next-page" type="button" data-i18n="next">下一頁 →</button></nav></footer>
   </div>
 </dialog>
 </body>
