@@ -80,11 +80,8 @@ html[lang="zh-Hant"] .section-title{font-family:var(--cjk);font-size:30px;letter
 .viewer-head{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line);min-height:69px;font:11px var(--serif);letter-spacing:.14em}
 .viewer-head>div{display:flex;align-items:center;gap:21px}
 .close-viewer{font-size:12px;min-height:44px;min-width:55px;letter-spacing:.04em}
-.viewer-title{text-align:center;padding:29px 0 15px;font:12px var(--serif)}
+.viewer-title{text-align:center;padding:29px 0 24px;font:12px var(--serif)}
 .viewer-title h2{font:400 31px/1.3 var(--serif);letter-spacing:.08em;margin:10px 0 0}
-.reproduction-switch{display:flex;justify-content:center;align-items:center;gap:17px;font-size:12px;color:var(--muted);margin-bottom:16px}
-.reproduction-switch button{min-height:40px;padding:4px 0}
-.reproduction-switch button[aria-pressed="true"]{color:var(--ink);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
 .viewer-figure{margin:0 auto;max-width:790px}
 .viewer-media{position:relative;display:flex;align-items:center;justify-content:center;min-height:210px;overflow:hidden}
 #viewer-image{display:block;max-width:100%;width:auto;height:auto;max-height:50dvh;object-fit:contain}
@@ -130,7 +127,6 @@ body.has-viewer{overflow:hidden}
 .plate-link::after{z-index:2}
 .plate-open{z-index:3}
 .viewer-media.is-print-reproduction{background:#faf9f6}
-#viewer-image:not(.is-print){filter:none;mix-blend-mode:normal}
 #viewer-video{
   background:#f6f4f0;
   filter:saturate(.81) contrast(.91) brightness(1.025) sepia(.025);

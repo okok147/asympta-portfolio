@@ -11,10 +11,10 @@
       availability:'開放專案與合作。',contactNote:'如電郵未獲回覆，或希望更快交流，亦可透過社交平台私訊。',
       xAria:'透過 X 聯繫 @oklauuuuu',threadsAria:'透過 Threads 聯繫 @oklauuuuu',
       privacyAria:'隱私政策',writingPrivacy:'Writing 隱私',paperiePrivacy:'Paperie 隱私',backTop:'頁首 ↑',
-      close:'關閉 ×',previous:'← 上一頁',next:'下一頁 →',printView:'印刷圖版',originalView:'原始畫面',
-      reproductionAria:'圖版顯示方式',videoFallback:'瀏覽器無法播放影片。',mediaError:'媒體載入失敗。',
+      close:'關閉 ×',previous:'← 上一頁',next:'下一頁 →',
+      videoFallback:'瀏覽器無法播放影片。',mediaError:'媒體載入失敗。',
       meta:'Asympta — Ka Ho Lau。作品與聯絡。',subject:'專案與合作',page:'第 {n} 頁，共 {total} 頁',
-      printLabel:'印刷圖版',originalLabel:'原始畫面',videoLabel:'實際操作 · 無聲影片',
+      printLabel:'印刷圖版',videoLabel:'實際操作 · 無聲影片',
       paperCanvas:'紙張畫布',skyCanvas:'天空畫布',spaces:'Spaces',journal:'手帳跨頁',cover:'手帳封面'
     },
     en: {
@@ -25,23 +25,23 @@
       availability:'Open to projects & collaborations.',contactNote:'If your email remains unanswered, or for a quicker conversation, please contact me via social media.',
       xAria:'Contact @oklauuuuu on X',threadsAria:'Contact @oklauuuuu on Threads',
       privacyAria:'Privacy policies',writingPrivacy:'Writing privacy',paperiePrivacy:'Paperie privacy',backTop:'Top ↑',
-      close:'Close ×',previous:'← Previous',next:'Next →',printView:'Printed plate',originalView:'Original',
-      reproductionAria:'Reproduction format',videoFallback:'Your browser cannot play this video.',mediaError:'The media could not be loaded.',
+      close:'Close ×',previous:'← Previous',next:'Next →',
+      videoFallback:'Your browser cannot play this video.',mediaError:'The media could not be loaded.',
       meta:'Asympta — Ka Ho Lau. Works and contact.',subject:'Project & Collaboration',page:'Page {n} of {total}',
-      printLabel:'Printed reproduction',originalLabel:'Original screenshot',videoLabel:'Actual app recording · Silent',
+      printLabel:'Printed reproduction',videoLabel:'Actual app recording · Silent',
       paperCanvas:'Paper canvas',skyCanvas:'Sky canvas',spaces:'Spaces',journal:'Journal spread',cover:'Journal cover'
     }
   };
   // Add future work here and as a semantic article in index.html. The cover does not depend on a product count.
   const projects = {
     writing: {name:'Writing',roman:'I',store:'https://apps.apple.com/app/id6800755232',support:'https://okok147.github.io/asympta-support/',media:[
-      {source:'assets/writing-ipad-2.webp',print:'assets/writing-ipad-2.webp',caption:'skyCanvas'},
-      {source:'assets/writing-ipad-1.webp',print:'assets/writing-ipad-1.webp',caption:'paperCanvas'},
-      {source:'assets/writing-ipad-3.webp',print:'assets/writing-ipad-3.webp',caption:'spaces'}
+      {source:'assets/writing-ipad-2.webp',caption:'skyCanvas'},
+      {source:'assets/writing-ipad-1.webp',caption:'paperCanvas'},
+      {source:'assets/writing-ipad-3.webp',caption:'spaces'}
     ]},
     paperie: {name:'Paperie',roman:'II',store:'https://apps.apple.com/app/id6818553101',support:'https://okok147.github.io/asympta-paperie-support/',media:[
-      {source:'assets/paperie-ipad-2.webp',print:'assets/paperie-ipad-2.webp',caption:'journal'},
-      {source:'assets/paperie-ipad-1.webp',print:'assets/paperie-ipad-1.webp',caption:'cover'},
+      {source:'assets/paperie-ipad-2.webp',caption:'journal'},
+      {source:'assets/paperie-ipad-1.webp',caption:'cover'},
       {video:true,source:'assets/paperie-film.mp4',caption:'videoLabel'}
     ]}
   };
@@ -53,7 +53,6 @@
   let language = 'zh';
   let selected = 'writing';
   let page = 0;
-  let mode = 'print';
   let origin = null;
   let previousOverflow = '';
   let displayedKey = '';
@@ -98,7 +97,7 @@
     $('#viewer-title').textContent = project.name;
     $('#viewer-folio').textContent = project.roman + '.';
     $('#viewer-series').textContent = 'ASYMPTA / ' + project.roman;
-    const caption = item.video ? t('videoLabel') : t(item.caption) + ' · ' + t(mode === 'print' ? 'printLabel' : 'originalLabel');
+    const caption = item.video ? t('videoLabel') : t(item.caption) + ' · ' + t('printLabel');
     $('#viewer-caption').textContent = caption;
     image.alt = project.name + ' — ' + caption;
     video.setAttribute('aria-label', project.name + ' — ' + t('videoLabel'));
@@ -106,14 +105,12 @@
     $('#viewer-counter').setAttribute('aria-label', t('page').replace('{n}',page + 1).replace('{total}',project.media.length));
     $('[data-prev]').disabled = page === 0;
     $('[data-next]').disabled = page === project.media.length - 1;
-    $('.reproduction-switch').hidden = Boolean(item.video);
-    $$('[data-mode]').forEach(b => b.setAttribute('aria-pressed',String(b.dataset.mode === mode)));
     $('#viewer-store').href = project.store;
     $('#viewer-support').href = project.support;
   }
   function renderMedia() {
     const item = currentItem();
-    const key = selected + ':' + page + ':' + mode;
+    const key = selected + ':' + page;
     updateViewerText();
     if (key === displayedKey) return;
     displayedKey = key;
@@ -124,18 +121,17 @@
     $('.viewer-media').classList.toggle('is-film-reproduction',Boolean(item.video));
     if (item.video) $('.viewer-media').classList.remove('is-print-reproduction');
     if (!item.video) {
-      const src = mode === 'print' ? item.print : item.source;
-      image.classList.toggle('is-print',mode === 'print');
-      $('.viewer-media').classList.toggle('is-print-reproduction',mode === 'print');
+      image.classList.add('is-print');
+      $('.viewer-media').classList.add('is-print-reproduction');
       $('.viewer-media').classList.remove('is-film-reproduction');
-      image.src = src;
+      image.src = item.source;
       if (image.complete && image.naturalWidth > 0) printPass($('.viewer-media .print-pass'));
     }
   }
   function openViewer(key, trigger) {
     if (!projects[key] || dialog.open) return;
     if (typeof dialog.showModal !== 'function') { location.href = trigger.href; return; }
-    selected = key; page = 0; mode = 'print'; origin = trigger; displayedKey = '';
+    selected = key; page = 0; origin = trigger; displayedKey = '';
     previousOverflow = document.body.style.overflow;
     renderMedia();
     dialog.showModal();
@@ -159,10 +155,6 @@
   $('[data-close]').addEventListener('click',() => dialog.close());
   $('[data-prev]').addEventListener('click',() => turn(-1));
   $('[data-next]').addEventListener('click',() => turn(1));
-  $$('[data-mode]').forEach(b => b.addEventListener('click',() => {
-    if (b.dataset.mode === mode) return;
-    mode = b.dataset.mode; renderMedia();
-  }));
   dialog.addEventListener('close',() => {
     video.pause();
     passAnimation?.cancel();

@@ -44,7 +44,7 @@ for lang in ["zh-Hant","en"]{
 check("Modal open","(document.querySelector('.plate-link').click(),document.querySelector('#viewer').open)")
 RunLoop.current.run(until:Date().addingTimeInterval(0.4))
 check("Printed image decoded","document.querySelector('#viewer-image').complete && document.querySelector('#viewer-image').naturalWidth>0")
-check("Original switch","(document.querySelector('[data-mode=original]').click(),document.querySelector('#viewer-image').src.endsWith('writing-ipad-2.webp'))")
+check("Print-only mode","document.querySelectorAll('[data-mode]').length === 0 && !document.querySelector('.reproduction-switch') && document.querySelector('#viewer-image').classList.contains('is-print')")
 check("Next sheet","(document.querySelector('[data-next]').click(),document.querySelector('#viewer-counter').value.startsWith('02'))")
 check("Live dialog language","(document.querySelector('#viewer .language').click(),document.documentElement.lang==='zh-Hant' && document.querySelector('[data-close]').textContent==='關閉 ×')")
 _ = evaluate("document.querySelector('[data-close]').click();true")

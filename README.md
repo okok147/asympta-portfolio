@@ -8,10 +8,10 @@ A static portfolio, published from the root of `main` by GitHub Pages.
 
 - `index.html`: semantic cover, contents, work plates, correspondence, reader.
 - `folio.css`: the complete design system; no previous stylesheets are loaded.
-- `folio.js`: bilingual labels, the reader, original/printed image switch, restrained animation.
+- `folio.js`: bilingual labels, the reader, print-only color image treatment, restrained animation.
 - `assets/folio/`: original print textures, archived monochrome plates plus original owner-supplied screenshots, social preview, asset provenance.
 
-No framework, package installation, API, account, analytics or external font service is required. All meaningful content, original image links and contact links work without JavaScript. The selected language is optionally stored in local storage. Native dialog behavior provides Escape, focus containment, and focus restoration. All motion is optional; `prefers-reduced-motion` is respected. Product videos never autoplay. Original media is unchanged.
+No framework, package installation, API, account, analytics or external font service is required. All meaningful content, image fallbacks and contact links work without JavaScript. The selected language is optionally stored in local storage. Native dialog behavior provides Escape, focus containment, and focus restoration. All motion is optional; `prefers-reduced-motion` is respected. Product videos never autoplay. Original media is unchanged.
 
 ## Adding work
 
@@ -31,4 +31,4 @@ Native WebKit smoke verification: `swift tests/webkit-check.swift .`. The checke
 
 ## Color print reproduction
 
-The live site uses original color screenshots for both the thumbnail plates and the viewer’s printed mode. `folio.css` applies low-saturation, reduced-contrast color grading and delicate screened-ink/paper overlays; the `Original` toggle displays the untouched source. The actual Paperie video also retains its colors and gains the same restrained print treatment without transcoding, autoplay, or blocking native playback controls. Archived monochrome render assets remain in `assets/folio/` for historical comparison but are no longer displayed. A future regenerated plate should preserve color; the archival `tools/render-plates.swift` generator produces the *old monochrome* plates, not the live presentation.
+The live site displays only the soft-color printed treatment for both the thumbnail plates and the image viewer, with no original-view toggle. `folio.css` applies low-saturation, reduced-contrast grading and delicate screened-ink/paper overlays; the source files remain unchanged. The actual Paperie video also retains its colors and gains the same restrained print treatment without transcoding, autoplay, or blocking native playback controls. Archived monochrome render assets remain in `assets/folio/` for historical comparison but are no longer displayed. A future regenerated plate should preserve color; the archival `tools/render-plates.swift` generator produces the *old monochrome* plates, not the live presentation.

@@ -55,7 +55,7 @@ try{
  await evaluate("document.querySelectorAll('img[loading]').forEach(i=>i.loading='eager')");
  await until("[...document.querySelectorAll('main img')].every(i=>i.complete&&i.naturalWidth>0)");
  check('No unwanted slogan or fixed product introduction',await evaluate("!document.body.innerText.includes('書寫。繪畫。記錄。')&&!document.querySelector('.hero-description')"));
- check('Originals preserved',await evaluate("document.querySelector('.plate-link').href.includes('writing-ipad-2.webp')"));
+ check('No-JavaScript image fallback preserved',await evaluate("document.querySelector('.plate-link').href.includes('writing-ipad-2.webp')"));
  check('Thumbnail preserves color',await evaluate("document.querySelector('.plate-link>img').src.endsWith('writing-ipad-2.webp')&&getComputedStyle(document.querySelector('.plate-link>img')).filter.includes('saturate(0.79)')"));
  check('X and exact requested Threads route',await evaluate("!!document.querySelector('a[href=\"https://www.threads.com/@oklauuuuu\"]')&&!!document.querySelector('a[href=\"https://x.com/oklauuuuu\"]')"));
  await language('zh');await delay(2100);await screenshot('01-cover-zh');
@@ -78,13 +78,9 @@ try{
  await until("document.querySelector('#viewer-image').complete&&document.querySelector('#viewer-image').naturalWidth>0");
  check('Printed view retains color and grain',await evaluate("document.querySelector('#viewer-image').src.endsWith('writing-ipad-2.webp')&&document.querySelector('#viewer-image').classList.contains('is-print')&&document.querySelector('.viewer-media').classList.contains('is-print-reproduction')&&getComputedStyle(document.querySelector('#viewer-image')).filter.includes('saturate(0.79)')"));
  await screenshot('06-writing-print');
- await evaluate("document.querySelector('[data-mode=original]').click()");
- await until("document.querySelector('#viewer-image').complete&&document.querySelector('#viewer-image').naturalWidth>0");
- check('Original is genuinely original',await evaluate("document.querySelector('#viewer-image').src.endsWith('writing-ipad-2.webp')&&!document.querySelector('#viewer-image').classList.contains('is-print')"));
- check('Original view removes print treatment',await evaluate("!document.querySelector('.viewer-media').classList.contains('is-print-reproduction')&&getComputedStyle(document.querySelector('#viewer-image')).filter==='none'"));
- await screenshot('07-writing-original');
+ check('Printed reproduction is the only display mode',await evaluate("!document.querySelector('.reproduction-switch')&&!document.querySelector('[data-mode]')&&document.querySelector('#viewer-image').classList.contains('is-print')"));
  await evaluate("document.querySelector('#viewer .language').click()");
- check('Dialog and page change language together',await evaluate("document.documentElement.lang==='en'&&document.querySelector('[data-close]').textContent==='Close ×'&&document.querySelector('#viewer-caption').textContent.includes('Original screenshot')"));
+ check('Dialog and page change language together',await evaluate("document.documentElement.lang==='en'&&document.querySelector('[data-close]').textContent==='Close ×'&&document.querySelector('#viewer-caption').textContent.includes('Printed reproduction')"));
  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'ArrowRight',code:'ArrowRight'});
  check('Keyboard pagination',await evaluate("document.querySelector('#viewer-counter').value.startsWith('02')"));
  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape'});
