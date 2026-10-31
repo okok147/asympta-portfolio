@@ -58,6 +58,12 @@ try{
  check('Title and contents navigation retained',await evaluate("document.querySelector('#site-title')?.textContent.trim()==='ASYMPTA'&&document.querySelector('.cover-index')?.getAttribute('href')==='#contents'"));
  check('No unwanted slogan or fixed product introduction',await evaluate("!document.body.innerText.includes('書寫。繪畫。記錄。')&&!document.querySelector('.hero-description')"));
  check('No-JavaScript image fallback preserved',await evaluate("document.querySelector('.plate-link').href.includes('writing-ipad-2.webp')"));
+ check('Printed serif faces selected for Latin and Chinese',await evaluate("getComputedStyle(document.querySelector('#site-title')).fontFamily.includes('Baskerville')&&getComputedStyle(document.querySelector('#contact-title')).fontFamily.includes('Songti')"));
+ check('Pigment texture is clipped inside real selectable lettering',await evaluate("getComputedStyle(document.querySelector('#site-title')).backgroundImage.includes('letterpress-ink.svg')&&getComputedStyle(document.querySelector('.index-name')).backgroundImage.includes('letterpress-ink.svg')&&document.querySelector('#site-title').textContent==='ASYMPTA'"));
+ check('Body still has paper stock, not global ink noise',await evaluate("getComputedStyle(document.body).backgroundImage.includes('paper.svg')&&!getComputedStyle(document.querySelector('.running-head a')).backgroundImage.includes('letterpress-ink.svg')"));
+ await send('Emulation.setEmulatedMedia',{media:'print'});
+ check('Print stylesheet restores solid black glyphs',await evaluate("getComputedStyle(document.querySelector('#site-title')).backgroundImage==='none'&&getComputedStyle(document.querySelector('#site-title')).webkitTextFillColor!=='transparent'"));
+ await send('Emulation.setEmulatedMedia',{media:'screen'});
  check('Thumbnail preserves color',await evaluate("document.querySelector('.plate-link>img').src.endsWith('writing-ipad-2.webp')&&getComputedStyle(document.querySelector('.plate-link>img')).filter.includes('saturate(0.79)')"));
  check('X and exact requested Threads route',await evaluate("!!document.querySelector('a[href=\"https://www.threads.com/@oklauuuuu\"]')&&!!document.querySelector('a[href=\"https://x.com/oklauuuuu\"]')"));
  await language('zh');await delay(2100);await screenshot('01-cover-zh');

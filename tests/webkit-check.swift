@@ -32,6 +32,8 @@ spin{probe.finished};if !probe.finished{fatalError("WebKit load timeout")};if le
 check("Chinese initial language","document.documentElement.lang==='zh-Hant'")
 check("No marketing hero","!document.querySelector('.hero-description') && !document.body.innerText.includes('書寫。繪畫。記錄。')")
 check("No decorative cover illustration","!document.querySelector('.title-page figure,.title-page img')")
+check("Letterpress ink surface", "getComputedStyle(document.querySelector('#site-title')).backgroundImage.includes('letterpress-ink.svg') && getComputedStyle(document.querySelector('.index-name')).backgroundImage.includes('letterpress-ink.svg')")
+check("Serif print typography", "getComputedStyle(document.querySelector('#site-title')).fontFamily.includes('Baskerville') && getComputedStyle(document.querySelector('#contact-title')).fontFamily.includes('Songti')")
 check("Title and navigation intact","document.querySelector('#site-title')?.textContent.trim()==='ASYMPTA' && document.querySelector('.cover-index')?.getAttribute('href')==='#contents'")
 check("Correct social routes","!!document.querySelector('a[href=\"https://www.threads.com/@oklauuuuu\"]') && !!document.querySelector('a[href=\"https://x.com/oklauuuuu\"]')")
 for lang in ["zh-Hant","en"]{

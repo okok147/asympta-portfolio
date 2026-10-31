@@ -18,7 +18,7 @@ a:focus-visible,button:focus-visible,video:focus-visible{outline:1.5px solid var
 .edition{font:11px/1.6 var(--serif);letter-spacing:.18em;margin-bottom:63px}
 .title-page h1{font:400 clamp(44px,6.4vw,86px)/1.1 var(--serif);letter-spacing:.17em;text-indent:.17em;margin:0;white-space:nowrap}
 .print-type{color:var(--ink)}
-@supports (-webkit-background-clip:text){.print-type{background:var(--ink) url("assets/folio/ink.svg") repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}}
+@supports (-webkit-background-clip:text){.print-type{background:var(--ink) url("assets/folio/letterpress-ink.svg") repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}}
 .title-rule{width:40px;border-top:1px solid var(--ink);margin:27px 0 24px}
 .author{font:12px/1.6 var(--serif);letter-spacing:.16em;margin:0}
 
@@ -387,4 +387,86 @@ body {
   }
   .title-page .edition { margin-bottom:clamp(45px,7svh,65px); }
   .title-page .cover-index { margin-top:clamp(84px,12svh,116px); }
+}
+
+
+/* Letterpress typography and absorbed pigment — October 2026.
+   Paper fibers interrupt the ink INSIDE the glyph; this is not
+   a noise sheet placed over all content. Small text remains solid. */
+:root {
+  --ink:#261c15;
+  --muted:#594b3c;
+  --serif:"Baskerville","Iowan Old Style","Hoefler Text","Palatino","Times New Roman","Songti TC",serif;
+  --cjk:"Songti TC","STSong","Noto Serif TC","Source Han Serif TC","PMingLiU",serif;
+}
+body, #viewer {
+  color:var(--ink);
+  text-rendering:optimizeLegibility;
+  font-kerning:normal;
+  font-optical-sizing:auto;
+  -webkit-font-smoothing:auto;
+}
+.title-page h1,
+.work-heading h2,
+.contents .section-title,
+.correspondence .section-title,
+.viewer-title h2,
+.index-name,
+.email {
+  text-shadow:none;
+  font-synthesis:none;
+}
+.title-page h1 {
+  font-family:var(--serif);
+  font-weight:400;
+  letter-spacing:.145em;
+  text-indent:.145em;
+}
+.work-heading h2,.viewer-title h2 { font-family:var(--serif);font-weight:400; }
+.index-name { font-family:var(--serif); font-weight:400; }
+html[lang="zh-Hant"] .section-title,
+html[lang="zh-Hant"] .index-name:lang(zh-Hant),
+html[lang="zh-Hant"] .availability,
+html[lang="zh-Hant"] .contact-note {
+  font-family:var(--cjk);
+}
+.edition,.author,.running-line,.chapter-number,.index-roman,
+.folio-number,.plate figcaption,.contact-note,.availability,
+.running-head,.colophon {
+  text-shadow:none;
+  font-feature-settings:"kern" 1,"liga" 1;
+}
+@supports (-webkit-background-clip:text) {
+  .print-type,.index-name,.email,.viewer-title h2 {
+    background-color:var(--ink);
+    background-image:url("assets/folio/letterpress-ink.svg");
+    background-repeat:repeat;
+    background-size:288px 288px;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  /* Barely extruded edge simulates ink pressure, not a drop shadow. */
+  .title-page .print-type,.work-heading .print-type {
+    -webkit-text-stroke:.12px rgba(42,27,19,.25);
+  }
+}
+@media (max-width:540px) {
+  .title-page h1 { letter-spacing:.12em; text-indent:.12em; }
+  .index-name { -webkit-text-stroke:0; }
+}
+@media (prefers-contrast:more),(forced-colors:active) {
+  .print-type,.index-name,.email,.viewer-title h2 {
+    background:none!important;
+    -webkit-text-fill-color:currentColor!important;
+    -webkit-text-stroke:0!important;
+  }
+}
+@media print {
+  .print-type,.index-name,.email,.viewer-title h2 {
+    background:none!important;
+    -webkit-text-fill-color:currentColor!important;
+    -webkit-text-stroke:0!important;
+    color:#000!important;
+  }
 }

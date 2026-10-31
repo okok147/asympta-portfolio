@@ -27,7 +27,7 @@ Add an article and contents entry to `index.html`, then a corresponding entry to
 
 The separate `muzhu/` site and earlier presentation assets remain untouched. Earlier root CSS/JS are retained for rollback but are not loaded. Copyright remains with the respective owners; this publication does not grant an open-source license to the product artwork.
 
-Native WebKit smoke verification: `swift tests/webkit-check.swift .`. The checked-in `tests/acceptance.json` records 37 Chrome and 29 WebKit checks for this editorial print edition; it is a test record, not a guarantee of future compatibility.
+Native WebKit smoke verification: `swift tests/webkit-check.swift .`. The checked-in `tests/acceptance.json` records 41 Chrome and 31 WebKit checks for this editorial print edition; it is a test record, not a guarantee of future compatibility.
 
 ## Color print reproduction
 
@@ -44,3 +44,15 @@ The home plate is an original hand-constructed folio-and-quill engraving: irregu
 ## Image-free title leaf (31 October 2026)
 
 The decorative folio-and-quill illustration was intentionally removed from the visible cover at the user's request. The first screen now uses only engraved serif typography, warm tactile paper, whitespace, and a minimal contents link. Work plates, physical ink reproduction and actual media remain unchanged. The former illustration is retained as an unused archive asset for reversible editing, and is not fetched by the page.
+
+## Letterpress type and absorbed ink
+
+The tools/make-letterpress.py generator deterministically draws the original
+microscopic pigment tile at assets/folio/letterpress-ink.svg.
+Baskerville/Iowan Old Style and Songti are local system-font stacks;
+no remote font, WebGL, canvas, blur, full-page overlay, or runtime image
+processing is needed. Only display-sized lettering receives pigment/fiber
+interruptions, while body copy stays sharp. Fallbacks keep solid text when
+background-clip or print backgrounds are unavailable; contrast and
+forced-colors modes remove decorative pigment. The previously removed
+cover illustration is not restored.

@@ -21,3 +21,12 @@ The user clarified that antique engraving and analog materiality—not gothic ic
 ## 31 October: minimal cover correction
 
 Following review of the large quill-and-book illustration, the user requested its removal. The visible title leaf is therefore purely typographic, with no substitute hero image. Analog materiality remains in the warm stock, serif impression, restrained linework and product plates. The original engraving is archived, unreferenced by the runtime. The responsive cover height and entry link were rebalanced without increasing runtime dependencies.
+
+## 31 October: type is part of the physical print
+
+Ink treatment is contained inside letterforms rather than coating the page
+with uniform transparency. Very fine holes and streaks suggest paper fibres,
+less-inked areas and capillary absorption. Warm brown-black typography uses
+locally available old-style serif printing faces, with Songti for traditional
+Chinese. No blur, drop shadows, or blurry raster letters. At small sizes keep
+high-contrast solid ink. Preserve the bare, unillustrated cover.

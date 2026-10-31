@@ -1,9 +1,9 @@
 {
-  "revision": "image-free-title-leaf-2026-10-31",
+  "revision": "letterpress-ink-materiality-2026-10-31",
   "status": "local-acceptance-passed",
   "chrome": {
     "browser": "isolated headless Chrome",
-    "passed": 37,
+    "passed": 41,
     "failed": 0,
     "checks": [
       {
@@ -20,6 +20,22 @@
       },
       {
         "name": "No-JavaScript image fallback preserved",
+        "pass": true
+      },
+      {
+        "name": "Printed serif faces selected for Latin and Chinese",
+        "pass": true
+      },
+      {
+        "name": "Pigment texture is clipped inside real selectable lettering",
+        "pass": true
+      },
+      {
+        "name": "Body still has paper stock, not global ink noise",
+        "pass": true
+      },
+      {
+        "name": "Print stylesheet restores solid black glyphs",
         "pass": true
       },
       {
@@ -160,7 +176,7 @@
   },
   "webkit": {
     "browser": "native WKWebView",
-    "passed": 29,
+    "passed": 31,
     "failed": 0,
     "checks": [
       {
@@ -173,6 +189,14 @@
       },
       {
         "name": "No decorative cover illustration",
+        "pass": true
+      },
+      {
+        "name": "Letterpress ink surface",
+        "pass": true
+      },
+      {
+        "name": "Serif print typography",
         "pass": true
       },
       {
@@ -285,5 +309,5 @@
     "name": "Rebuilding paper/ink textures preserves curated frontispiece and index.html",
     "pass": true
   },
-  "limitations": "Browser acceptance verified on local preview for this revision (Chrome and native offscreen WKWebView); no physical device claims."
+  "limitations": "Tests reflect local headless Chrome and native offscreen WebKit at this source revision; no physical-device or universal compatibility claims."
 }
