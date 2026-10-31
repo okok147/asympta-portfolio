@@ -1,5 +1,5 @@
 {
-  "revision": "folio-20261031-1",
+  "revision": "folio-20261031-print-only",
   "chromium": {
     "checks": [
       {
@@ -7,7 +7,11 @@
         "pass": true
       },
       {
-        "name": "Originals preserved",
+        "name": "No-JavaScript image fallback preserved",
+        "pass": true
+      },
+      {
+        "name": "Thumbnail preserves color",
         "pass": true
       },
       {
@@ -139,7 +143,11 @@
         "pass": true
       },
       {
-        "name": "Original is genuinely original",
+        "name": "Printed view retains color and grain",
+        "pass": true
+      },
+      {
+        "name": "Printed reproduction is the only display mode",
         "pass": true
       },
       {
@@ -159,10 +167,14 @@
         "pass": true
       },
       {
+        "name": "Film retains color and paper overlay",
+        "pass": true
+      },
+      {
         "name": "Actual video decodes and plays",
         "pass": true,
         "details": {
-          "time": 0.6592,
+          "time": 0.6529,
           "width": 1080,
           "paused": false
         }
@@ -194,11 +206,12 @@
         "details": []
       }
     ],
+    "passed": 35,
+    "failed": 0,
     "errors": [],
     "missing_assets": []
   },
   "webkit": {
-    "browser": "native WKWebView",
     "checks": [
       {
         "name": "Chinese initial language",
@@ -285,7 +298,7 @@
         "pass": true
       },
       {
-        "name": "Original switch",
+        "name": "Print-only mode",
         "pass": true
       },
       {
@@ -309,15 +322,8 @@
         "pass": true
       }
     ],
-    "failures": [],
-    "passed": true
+    "passed": 27,
+    "failed": 0
   },
-  "visual_review": [
-    "cover desktop",
-    "cover mobile",
-    "printed Writing plate",
-    "printed Paperie plate",
-    "contact colophon"
-  ],
-  "scope": "Web browsers; no physical-device verification claimed"
+  "scope": "Local Chromium and native WebKit, both languages, 320–1440px, print-only reader, video, keyboard accessibility, reduced motion; no real-device test claimed"
 }
