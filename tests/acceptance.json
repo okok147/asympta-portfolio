@@ -1,7 +1,19 @@
 {
-  "revision": "folio-20261031-print-only",
-  "chromium": {
+  "revision": "editorial-rhythm-2026-10-31",
+  "status": "local-acceptance-passed",
+  "chrome": {
+    "browser": "isolated headless Chrome",
+    "passed": 37,
+    "failed": 0,
     "checks": [
+      {
+        "name": "Frontispiece original engraved artwork loads",
+        "pass": true
+      },
+      {
+        "name": "Frontispiece print pass does not obscure content",
+        "pass": true
+      },
       {
         "name": "No unwanted slogan or fixed product introduction",
         "pass": true
@@ -20,59 +32,31 @@
       },
       {
         "name": "zh layout 320",
-        "pass": true,
-        "details": {
-          "width": 320,
-          "scroll": 320
-        }
+        "pass": true
       },
       {
         "name": "zh layout 375",
-        "pass": true,
-        "details": {
-          "width": 375,
-          "scroll": 375
-        }
+        "pass": true
       },
       {
         "name": "zh layout 390",
-        "pass": true,
-        "details": {
-          "width": 390,
-          "scroll": 390
-        }
+        "pass": true
       },
       {
         "name": "zh layout 540",
-        "pass": true,
-        "details": {
-          "width": 540,
-          "scroll": 540
-        }
+        "pass": true
       },
       {
         "name": "zh layout 768",
-        "pass": true,
-        "details": {
-          "width": 768,
-          "scroll": 768
-        }
+        "pass": true
       },
       {
         "name": "zh layout 1024",
-        "pass": true,
-        "details": {
-          "width": 1024,
-          "scroll": 1024
-        }
+        "pass": true
       },
       {
         "name": "zh layout 1440",
-        "pass": true,
-        "details": {
-          "width": 1440,
-          "scroll": 1440
-        }
+        "pass": true
       },
       {
         "name": "zh all authored labels present",
@@ -80,59 +64,31 @@
       },
       {
         "name": "en layout 320",
-        "pass": true,
-        "details": {
-          "width": 320,
-          "scroll": 320
-        }
+        "pass": true
       },
       {
         "name": "en layout 375",
-        "pass": true,
-        "details": {
-          "width": 375,
-          "scroll": 375
-        }
+        "pass": true
       },
       {
         "name": "en layout 390",
-        "pass": true,
-        "details": {
-          "width": 390,
-          "scroll": 390
-        }
+        "pass": true
       },
       {
         "name": "en layout 540",
-        "pass": true,
-        "details": {
-          "width": 540,
-          "scroll": 540
-        }
+        "pass": true
       },
       {
         "name": "en layout 768",
-        "pass": true,
-        "details": {
-          "width": 768,
-          "scroll": 768
-        }
+        "pass": true
       },
       {
         "name": "en layout 1024",
-        "pass": true,
-        "details": {
-          "width": 1024,
-          "scroll": 1024
-        }
+        "pass": true
       },
       {
         "name": "en layout 1440",
-        "pass": true,
-        "details": {
-          "width": 1440,
-          "scroll": 1440
-        }
+        "pass": true
       },
       {
         "name": "en all authored labels present",
@@ -172,12 +128,7 @@
       },
       {
         "name": "Actual video decodes and plays",
-        "pass": true,
-        "details": {
-          "time": 0.6529,
-          "width": 1080,
-          "paused": false
-        }
+        "pass": true
       },
       {
         "name": "Video pauses on close",
@@ -197,21 +148,20 @@
       },
       {
         "name": "No runtime exceptions",
-        "pass": true,
-        "details": []
+        "pass": true
       },
       {
         "name": "No missing assets",
-        "pass": true,
-        "details": []
+        "pass": true
       }
     ],
-    "passed": 35,
-    "failed": 0,
-    "errors": [],
-    "missing_assets": []
+    "consoleErrors": [],
+    "badAssetResponses": []
   },
   "webkit": {
+    "browser": "native WKWebView",
+    "passed": 27,
+    "failed": 0,
     "checks": [
       {
         "name": "Chinese initial language",
@@ -321,9 +271,11 @@
         "name": "Video pause on close",
         "pass": true
       }
-    ],
-    "passed": 27,
-    "failed": 0
+    ]
   },
-  "scope": "Local Chromium and native WebKit, both languages, 320–1440px, print-only reader, video, keyboard accessibility, reduced motion; no real-device test claimed"
+  "additionalCheck": {
+    "name": "Rebuilding paper/ink textures preserves curated frontispiece and index.html",
+    "pass": true
+  },
+  "limitations": "Native real-device testing and every possible browser/font configuration are not claimed. Browser tests conducted against local preview at this revision."
 }

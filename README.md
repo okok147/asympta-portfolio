@@ -27,7 +27,7 @@ Add an article and contents entry to `index.html`, then a corresponding entry to
 
 The separate `muzhu/` site and earlier presentation assets remain untouched. Earlier root CSS/JS are retained for rollback but are not loaded. Copyright remains with the respective owners; this publication does not grant an open-source license to the product artwork.
 
-Native WebKit smoke verification: `swift tests/webkit-check.swift .`. The checked-in `tests/acceptance.json` records 35 Chrome and 27 WebKit checks for the print-only edition; it is a test record, not a guarantee of future compatibility.
+Native WebKit smoke verification: `swift tests/webkit-check.swift .`. The checked-in `tests/acceptance.json` records 37 Chrome and 27 WebKit checks for this editorial print edition; it is a test record, not a guarantee of future compatibility.
 
 ## Color print reproduction
 
