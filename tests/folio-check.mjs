@@ -56,6 +56,7 @@ try{
  await until("[...document.querySelectorAll('main img')].every(i=>i.complete&&i.naturalWidth>0)");
  check('No unwanted slogan or fixed product introduction',await evaluate("!document.body.innerText.includes('書寫。繪畫。記錄。')&&!document.querySelector('.hero-description')"));
  check('Originals preserved',await evaluate("document.querySelector('.plate-link').href.includes('writing-ipad-2.webp')"));
+ check('Thumbnail preserves color',await evaluate("document.querySelector('.plate-link>img').src.endsWith('writing-ipad-2.webp')&&getComputedStyle(document.querySelector('.plate-link>img')).filter.includes('saturate(0.79)')"));
  check('X and exact requested Threads route',await evaluate("!!document.querySelector('a[href=\"https://www.threads.com/@oklauuuuu\"]')&&!!document.querySelector('a[href=\"https://x.com/oklauuuuu\"]')"));
  await language('zh');await delay(2100);await screenshot('01-cover-zh');
  for(const lang of ['zh','en']){
@@ -75,10 +76,12 @@ try{
  await evaluate("document.querySelector('.plate-link[data-open=writing]').click()");
  check('Native modal opens with close focus',await evaluate("document.querySelector('#viewer').open&&document.activeElement.matches('[data-close]')"));
  await until("document.querySelector('#viewer-image').complete&&document.querySelector('#viewer-image').naturalWidth>0");
+ check('Printed view retains color and grain',await evaluate("document.querySelector('#viewer-image').src.endsWith('writing-ipad-2.webp')&&document.querySelector('#viewer-image').classList.contains('is-print')&&document.querySelector('.viewer-media').classList.contains('is-print-reproduction')&&getComputedStyle(document.querySelector('#viewer-image')).filter.includes('saturate(0.79)')"));
  await screenshot('06-writing-print');
  await evaluate("document.querySelector('[data-mode=original]').click()");
  await until("document.querySelector('#viewer-image').complete&&document.querySelector('#viewer-image').naturalWidth>0");
  check('Original is genuinely original',await evaluate("document.querySelector('#viewer-image').src.endsWith('writing-ipad-2.webp')&&!document.querySelector('#viewer-image').classList.contains('is-print')"));
+ check('Original view removes print treatment',await evaluate("!document.querySelector('.viewer-media').classList.contains('is-print-reproduction')&&getComputedStyle(document.querySelector('#viewer-image')).filter==='none'"));
  await screenshot('07-writing-original');
  await evaluate("document.querySelector('#viewer .language').click()");
  check('Dialog and page change language together',await evaluate("document.documentElement.lang==='en'&&document.querySelector('[data-close]').textContent==='Close ×'&&document.querySelector('#viewer-caption').textContent.includes('Original screenshot')"));
@@ -90,6 +93,7 @@ try{
  await evaluate("document.querySelector('.plate-link[data-open=paperie]').click()");await until("document.querySelector('#viewer-image').complete&&document.querySelector('#viewer-image').naturalWidth>0");await screenshot('08-paperie-print');
  await evaluate("document.querySelector('[data-next]').click();document.querySelector('[data-next]').click()");
  check('Video never autoplays',await evaluate("!document.querySelector('#viewer-video').hidden&&document.querySelector('#viewer-video').paused&&!document.querySelector('#viewer-video').autoplay"));
+ check('Film retains color and paper overlay',await evaluate("document.querySelector('.viewer-media').classList.contains('is-film-reproduction')&&getComputedStyle(document.querySelector('#viewer-video')).filter.includes('saturate(0.81)')&&getComputedStyle(document.querySelector('.viewer-media'),'::after').opacity==='0.13'"));
  const playback=await evaluate("(async()=>{const v=document.querySelector('#viewer-video');await v.play();await new Promise(r=>setTimeout(r,650));const result={time:v.currentTime,width:v.videoWidth,paused:v.paused};v.pause();return result})()");
  check('Actual video decodes and plays',playback.width>0&&playback.time>0,playback);
  await evaluate("document.querySelector('[data-close]').click()");
