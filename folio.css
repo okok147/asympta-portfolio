@@ -21,9 +21,9 @@ a:focus-visible,button:focus-visible,video:focus-visible{outline:1.5px solid var
 @supports (-webkit-background-clip:text){.print-type{background:var(--ink) url("assets/folio/ink.svg") repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}}
 .title-rule{width:40px;border-top:1px solid var(--ink);margin:27px 0 24px}
 .author{font:12px/1.6 var(--serif);letter-spacing:.16em;margin:0}
-.frontispiece{width:min(355px,86%);margin:54px 0 31px;min-height:230px}
-.frontispiece svg{display:block;width:100%;height:auto;overflow:visible}
-.frontispiece .moving-layer{transform-box:fill-box;transform-origin:center;will-change:transform}
+
+
+
 .cover-index{font-size:12px;letter-spacing:.12em;display:flex;align-items:center;gap:17px;min-height:44px}
 .cover-index .down{font:18px/1 var(--serif);letter-spacing:0}
 .folio-number{display:block;text-align:center;font:12px/1.4 var(--serif);letter-spacing:.08em;color:var(--muted);margin-top:58px}
@@ -95,9 +95,9 @@ html[lang="zh-Hant"] .section-title{font-family:var(--cjk);font-size:30px;letter
 .viewer-links{display:flex;justify-content:center;align-items:center;gap:30px;font-size:12px;margin-top:9px}
 .viewer-links a{min-height:40px;display:flex;align-items:center}
 body.has-viewer{overflow:hidden}
-@media(max-width:800px){.running-head{width:calc(100% - 48px);min-height:78px;gap:21px}.title-page{min-height:690px;min-height:max(650px,calc(100svh - 78px));padding-top:37px}.title-page h1{font-size:64px}.edition{margin-bottom:57px}.frontispiece{width:300px;margin-top:48px}.leaf{width:calc(100% - 64px)}.paperie-plate{width:100%}.plate-side{left:-27px;font-size:9px}.work-heading{padding-top:47px}.work-heading h2{font-size:43px}.contents{padding-top:55px;padding-bottom:93px}}
-@media(max-width:540px){body{font-size:15px}.running-head{min-height:68px;width:calc(100% - 36px);gap:20px;font-size:11px}.title-page{width:calc(100% - 36px);min-height:640px;min-height:max(620px,calc(100svh - 68px));padding:29px 0 37px}.edition{font-size:10px;margin-bottom:52px}.title-page h1{font-size:clamp(35px,10.2vw,53px);letter-spacing:.14em;text-indent:.14em}.title-rule{margin-top:23px;margin-bottom:21px;width:30px}.author{font-size:11px}.frontispiece{width:265px;max-width:90%;min-height:190px;margin:42px 0 17px}.cover-index{font-size:11px}.title-page>.folio-number{padding-top:23px}.leaf{width:calc(100% - 48px)}.running-line{font-size:9px}.contents{padding-top:40px;padding-bottom:80px}.section-title{font-size:28px;margin-top:36px}.index-list{padding:0}.index-list a{gap:10px}.index-name{font-size:20px}.index-roman{width:26px}.index-name:lang(zh-Hant){font-size:17px}.work{padding-bottom:80px}.work-heading{padding:42px 0 31px}.work-heading h2{font-size:36px}.plate-side{left:-18px;top:0;font-size:8px;writing-mode:vertical-rl;letter-spacing:.08em}.plate-open{opacity:1;font-size:15px;right:5px;bottom:5px;padding:3px 6px}.plate figcaption{font-size:10px;gap:12px;margin-top:9px}.work-links{font-size:12px;margin-top:6px;gap:29px}.work>.folio-number{margin-top:35px}.paperie-plate{padding-top:18px;padding-bottom:24px}.correspondence>.chapter-number{margin-top:50px}.correspondence .section-title{font-size:28px}.availability{font-size:13px}.email{font-size:20px}.contact-note{font-size:12px;margin-top:37px;max-width:290px}.social{font-size:13px}.correspondence{padding-bottom:65px}.colophon{width:calc(100% - 48px);padding-bottom:28px}#viewer{width:100%;height:100dvh;max-height:100dvh;border:0}.viewer-sheet{padding:0 22px 23px}.viewer-head{min-height:62px;font-size:10px}.viewer-head>div{gap:13px}.viewer-title{padding-top:24px}.viewer-title h2{font-size:28px}.reproduction-switch{font-size:11px;gap:14px;margin-bottom:12px}.viewer-media{min-height:220px}#viewer-image,#viewer-video{max-height:45dvh}.viewer-footer{font-size:11px;gap:12px}.viewer-links{font-size:11px}.viewer-head .close-viewer{font-size:11px;min-width:50px}#viewer-caption{font-size:10px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.frontispiece .moving-layer{transform:none!important;will-change:auto}.print-pass{display:none!important}}
+@media(max-width:800px){.running-head{width:calc(100% - 48px);min-height:78px;gap:21px}.title-page{min-height:690px;min-height:max(650px,calc(100svh - 78px));padding-top:37px}.title-page h1{font-size:64px}.edition{margin-bottom:57px}.leaf{width:calc(100% - 64px)}.paperie-plate{width:100%}.plate-side{left:-27px;font-size:9px}.work-heading{padding-top:47px}.work-heading h2{font-size:43px}.contents{padding-top:55px;padding-bottom:93px}}
+@media(max-width:540px){body{font-size:15px}.running-head{min-height:68px;width:calc(100% - 36px);gap:20px;font-size:11px}.title-page{width:calc(100% - 36px);min-height:640px;min-height:max(620px,calc(100svh - 68px));padding:29px 0 37px}.edition{font-size:10px;margin-bottom:52px}.title-page h1{font-size:clamp(35px,10.2vw,53px);letter-spacing:.14em;text-indent:.14em}.title-rule{margin-top:23px;margin-bottom:21px;width:30px}.author{font-size:11px}.cover-index{font-size:11px}.title-page>.folio-number{padding-top:23px}.leaf{width:calc(100% - 48px)}.running-line{font-size:9px}.contents{padding-top:40px;padding-bottom:80px}.section-title{font-size:28px;margin-top:36px}.index-list{padding:0}.index-list a{gap:10px}.index-name{font-size:20px}.index-roman{width:26px}.index-name:lang(zh-Hant){font-size:17px}.work{padding-bottom:80px}.work-heading{padding:42px 0 31px}.work-heading h2{font-size:36px}.plate-side{left:-18px;top:0;font-size:8px;writing-mode:vertical-rl;letter-spacing:.08em}.plate-open{opacity:1;font-size:15px;right:5px;bottom:5px;padding:3px 6px}.plate figcaption{font-size:10px;gap:12px;margin-top:9px}.work-links{font-size:12px;margin-top:6px;gap:29px}.work>.folio-number{margin-top:35px}.paperie-plate{padding-top:18px;padding-bottom:24px}.correspondence>.chapter-number{margin-top:50px}.correspondence .section-title{font-size:28px}.availability{font-size:13px}.email{font-size:20px}.contact-note{font-size:12px;margin-top:37px;max-width:290px}.social{font-size:13px}.correspondence{padding-bottom:65px}.colophon{width:calc(100% - 48px);padding-bottom:28px}#viewer{width:100%;height:100dvh;max-height:100dvh;border:0}.viewer-sheet{padding:0 22px 23px}.viewer-head{min-height:62px;font-size:10px}.viewer-head>div{gap:13px}.viewer-title{padding-top:24px}.viewer-title h2{font-size:28px}.reproduction-switch{font-size:11px;gap:14px;margin-bottom:12px}.viewer-media{min-height:220px}#viewer-image,#viewer-video{max-height:45dvh}.viewer-footer{font-size:11px;gap:12px}.viewer-links{font-size:11px}.viewer-head .close-viewer{font-size:11px;min-width:50px}#viewer-caption{font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.print-pass{display:none!important}}
 @media print{body{background:#fff;color:#000}.running-head,.cover-index,.work-links,.plate-open,.print-pass,.language,.back-top,.skip,#viewer{display:none!important}.title-page{min-height:90vh;page-break-after:always}.leaf{width:90%;break-inside:avoid}.work{break-before:page}.print-type{-webkit-text-fill-color:initial;background:none}.plate-link>img{filter:none}.correspondence{break-before:page}a{color:#000}.plate figcaption a{display:none}}
 
 
@@ -152,10 +152,10 @@ body{background-color:var(--paper);text-rendering:optimizeLegibility;font-featur
 .title-page h1{font:400 clamp(50px,6vw,82px)/1.1 var(--serif);letter-spacing:.20em;text-indent:.20em;margin:0}
 .title-rule{width:49px;margin:28px 0 21px}
 .author{font-size:12px;letter-spacing:.22em}
-.frontispiece{width:min(520px,94%);margin:48px auto 15px;min-height:0;position:relative;isolation:isolate}
-.frontispiece>img{width:100%;height:auto;display:block;mix-blend-mode:multiply;filter:contrast(1.08)}
-.frontispiece figcaption{font:12px/1.6 var(--serif);color:#43433f;letter-spacing:.09em;text-align:center;margin:5px 0 0}
-.frontispiece .register-pass{inset:0 0 29px 0;background:url("assets/folio/frontispiece.svg") center/contain no-repeat;mix-blend-mode:multiply;opacity:0}
+
+
+
+
 .cover-index{font-size:13px;letter-spacing:.07em;gap:21px}
 .cover-index .down{font-size:20px}
 .title-page>.folio-number{font-size:12px;padding-top:17px}
@@ -205,7 +205,7 @@ html[lang="zh-Hant"] .correspondence .section-title{text-align:left;text-indent:
 #viewer-video{max-height:54dvh}
 @media(max-width:800px){
  .title-page{min-height:max(650px,calc(100svh - 78px));width:calc(100% - 54px)}
- .frontispiece{width:min(460px,98%);margin-top:45px}
+
  .work-heading{padding-top:59px}
  .writing-plate{width:min(80%,540px);margin-left:40px}
  .paperie-plate{max-width:100%}
@@ -218,8 +218,8 @@ html[lang="zh-Hant"] .correspondence .section-title{text-align:left;text-indent:
  .edition{font-size:10px;gap:10px;margin-bottom:67px}
  .edition-rule{width:20px}
  .title-page h1{font-size:clamp(36px,10.5vw,51px);letter-spacing:.13em;text-indent:.13em}
- .frontispiece{width:min(370px,100%);margin:44px auto 12px}
- .frontispiece figcaption{font-size:11px}
+
+
  .cover-index{font-size:13px;margin-top:6px}
  .leaf{width:calc(100% - 40px)}
  .contents{padding-top:42px;padding-bottom:80px}
@@ -244,8 +244,8 @@ html[lang="zh-Hant"] .correspondence .section-title{text-align:left;text-indent:
  #viewer{width:100%;height:100dvh;max-height:100dvh;border:0}
  #viewer-image,#viewer-video{max-height:48dvh}
 }
-@media(prefers-reduced-motion:reduce){.frontispiece .register-pass{display:none!important}}
-@media print{.frontispiece .register-pass{display:none}.work-heading{break-after:avoid}.plate{break-inside:avoid}.plate-link>img{filter:saturate(.79) contrast(.90)}}
+@media(prefers-reduced-motion:reduce){}
+@media print{.work-heading{break-after:avoid}.plate{break-inside:avoid}.plate-link>img{filter:saturate(.79) contrast(.90)}}
 
 /* Engraved edition — intaglio and analog paper, 31 October 2026. */
 :root {
@@ -275,24 +275,9 @@ body {
 .edition { color:#4c3b2e; }
 .edition-rule, .title-rule { border-color:#554536; }
 .author { color:#423529; }
-.frontispiece {
-  width:min(615px,100%);
-  margin:40px auto 14px;
-  padding:0;
-  isolation:isolate;
-}
-.frontispiece>img {
-  display:block;
-  width:100%;
-  filter:contrast(1.105) sepia(.035);
-  mix-blend-mode:multiply;
-}
-.frontispiece figcaption {
-  margin-top:-2px;
-  font-size:11px;
-  color:#554637;
-  letter-spacing:.12em;
-}
+
+
+
 .cover-index { color:#34291f; }
 .leaf .running-line { border-color:#a89984; }
 .contents .section-title, .correspondence .section-title {
@@ -360,7 +345,7 @@ body {
 }
 .viewer-media.is-film-reproduction::after { opacity:.13; }
 @media(max-width:800px) {
-  .frontispiece { width:min(560px,100%); margin-top:40px; }
+
 }
 @media(max-width:540px) {
   .title-page h1 {
@@ -368,7 +353,7 @@ body {
     letter-spacing:.115em;
     text-indent:.115em;
   }
-  .frontispiece { width:100%; margin-top:41px; }
+
   .plate-link { padding:8px; box-shadow:inset 0 0 0 3px #f1e6d4,inset 0 0 0 3.7px #ad988050; }
   .plate-link::before,.plate-link::after { inset:8px; }
   .plate-open { right:13px; bottom:13px; }
@@ -381,6 +366,25 @@ body {
   body,#viewer { background:#fff!important;color:#000; }
   .plate-link { background:#fff;border:0;box-shadow:none;padding:0; }
   .plate-link::before,.plate-link::after { display:none; }
-  .frontispiece>img { filter:none; }
+
   .print-type,.title-page h1,.work-heading h2 { text-shadow:none; }
+}
+
+/* Unillustrated title leaf: typography, paper and intentional space. */
+.title-page {
+  min-height:max(550px,min(720px,calc(100svh - 78px)));
+  padding-top:clamp(84px,13svh,145px);
+  padding-bottom:36px;
+}
+.title-page .edition { margin-bottom:clamp(46px,7svh,70px); }
+.title-page .cover-index { margin-top:clamp(91px,14svh,150px); }
+.title-page>.folio-number { margin-top:auto; padding-top:28px; }
+@media (max-width:540px) {
+  .title-page {
+    min-height:max(540px,min(690px,calc(100svh - 66px)));
+    padding-top:clamp(68px,12svh,108px);
+    padding-bottom:27px;
+  }
+  .title-page .edition { margin-bottom:clamp(45px,7svh,65px); }
+  .title-page .cover-index { margin-top:clamp(84px,12svh,116px); }
 }

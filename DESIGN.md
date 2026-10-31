@@ -17,3 +17,7 @@ The first folio still read as a sparse website with a small diagram rather than 
 ## 31 October: intaglio and physical stock
 
 The user clarified that antique engraving and analog materiality—not gothic iconography—are the desired visual qualities. The cover plate is now an original engraved open folio/quill with irregular ruled edges, crosshatching, small dry-point bites and etching-like shadows. The paper stock is warm ivory with visible irregular fiber traces; ink is black-brown rather than digital black. The work images are mounted as subtle printed plates, with screened ink and restrained mounting lines. No external images or fonts, no moving-background texture and no loss of image color. Functional text, active links, native video and bilingual controls remain unchanged. Chrome: 37/37; offscreen WebKit: 27/27 on the local build. These are local verification results, not production/browser-universal claims.
+
+## 31 October: minimal cover correction
+
+Following review of the large quill-and-book illustration, the user requested its removal. The visible title leaf is therefore purely typographic, with no substitute hero image. Analog materiality remains in the warm stock, serif impression, restrained linework and product plates. The original engraving is archived, unreferenced by the runtime. The responsive cover height and entry link were rebalanced without increasing runtime dependencies.

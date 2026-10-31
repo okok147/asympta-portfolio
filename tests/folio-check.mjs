@@ -54,8 +54,8 @@ try{
  await until("document.readyState==='complete'&&!document.querySelector('.language').hidden");
  await evaluate("document.querySelectorAll('img[loading]').forEach(i=>i.loading='eager')");
  await until("[...document.querySelectorAll('main img')].every(i=>i.complete&&i.naturalWidth>0)");
- check('Frontispiece original engraved artwork loads',await evaluate("document.querySelector('.frontispiece img')?.complete&&document.querySelector('.frontispiece img')?.naturalWidth>0"));
- check('Frontispiece print pass does not obscure content',await evaluate("getComputedStyle(document.querySelector('.frontispiece img')).opacity==='1'"));
+ check('Title leaf has no decorative illustration',await evaluate("!document.querySelector('.title-page figure,.title-page img')"));
+ check('Title and contents navigation retained',await evaluate("document.querySelector('#site-title')?.textContent.trim()==='ASYMPTA'&&document.querySelector('.cover-index')?.getAttribute('href')==='#contents'"));
  check('No unwanted slogan or fixed product introduction',await evaluate("!document.body.innerText.includes('書寫。繪畫。記錄。')&&!document.querySelector('.hero-description')"));
  check('No-JavaScript image fallback preserved',await evaluate("document.querySelector('.plate-link').href.includes('writing-ipad-2.webp')"));
  check('Thumbnail preserves color',await evaluate("document.querySelector('.plate-link>img').src.endsWith('writing-ipad-2.webp')&&getComputedStyle(document.querySelector('.plate-link>img')).filter.includes('saturate(0.79)')"));

@@ -27,7 +27,7 @@ Add an article and contents entry to `index.html`, then a corresponding entry to
 
 The separate `muzhu/` site and earlier presentation assets remain untouched. Earlier root CSS/JS are retained for rollback but are not loaded. Copyright remains with the respective owners; this publication does not grant an open-source license to the product artwork.
 
-Native WebKit smoke verification: `swift tests/webkit-check.swift .`. The checked-in `tests/acceptance.json` records 37 Chrome and 27 WebKit checks for this editorial print edition; it is a test record, not a guarantee of future compatibility.
+Native WebKit smoke verification: `swift tests/webkit-check.swift .`. The checked-in `tests/acceptance.json` records 37 Chrome and 29 WebKit checks for this editorial print edition; it is a test record, not a guarantee of future compatibility.
 
 ## Color print reproduction
 
@@ -35,8 +35,12 @@ The live site displays only the soft-color printed treatment for both the thumbn
 
 ## Printed folio design correction
 
-`assets/folio/frontispiece.svg` is a deterministic, original intaglio-style illustration of an open folio and quill, drawn from deterministic irregular vector paths and dense analog linework. The running head, index, plate captions, contact folio, typography and margins form a single editorial system. The cover stays product-agnostic, and artwork is always fully visible even when animations are paused. Run the Chrome/WebKit acceptance suite for both languages and mobile sizes before publishing.
+`assets/folio/frontispiece.svg` is a deterministic, archived original intaglio illustration (not shown on the title page) and dense analog linework. The running head, index, plate captions, contact folio, typography and margins form a single editorial system. The cover stays product-agnostic, and artwork is always fully visible even when animations are paused. Run the Chrome/WebKit acceptance suite for both languages and mobile sizes before publishing.
 
 ## Antique engraving and analog materiality (31 October 2026)
 
 The home plate is an original hand-constructed folio-and-quill engraving: irregular rule lines, crosshatching, ink burr and plate-registration marks. The display is not a reused third-party illustration. Warm fiber paper and absorbed-ink textures are authored as local SVGs; work images retain color with print screening and a restrained plate rim. No external fonts, new libraries, tracking, extra runtime requests or perpetual animation were added. The tools/make-art.py generator deliberately leaves the canonical frontispiece unchanged. Verified with the existing 37-check headless Chrome and 27-check offscreen WebKit suites; no claims of physical-device testing.
+
+## Image-free title leaf (31 October 2026)
+
+The decorative folio-and-quill illustration was intentionally removed from the visible cover at the user's request. The first screen now uses only engraved serif typography, warm tactile paper, whitespace, and a minimal contents link. Work plates, physical ink reproduction and actual media remain unchanged. The former illustration is retained as an unused archive asset for reversible editing, and is not fetched by the page.

@@ -31,6 +31,8 @@ view.loadFileURL(root.appendingPathComponent("index.html"),allowingReadAccessTo:
 spin{probe.finished};if !probe.finished{fatalError("WebKit load timeout")};if let e=probe.problem{fatalError(e)}
 check("Chinese initial language","document.documentElement.lang==='zh-Hant'")
 check("No marketing hero","!document.querySelector('.hero-description') && !document.body.innerText.includes('書寫。繪畫。記錄。')")
+check("No decorative cover illustration","!document.querySelector('.title-page figure,.title-page img')")
+check("Title and navigation intact","document.querySelector('#site-title')?.textContent.trim()==='ASYMPTA' && document.querySelector('.cover-index')?.getAttribute('href')==='#contents'")
 check("Correct social routes","!!document.querySelector('a[href=\"https://www.threads.com/@oklauuuuu\"]') && !!document.querySelector('a[href=\"https://x.com/oklauuuuu\"]')")
 for lang in ["zh-Hant","en"]{
  if (evaluate("document.documentElement.lang") as? String) != lang{_ = evaluate("document.querySelector('.language').click();true")}

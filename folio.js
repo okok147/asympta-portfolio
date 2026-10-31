@@ -4,7 +4,7 @@
   const $$ = (s, root = document) => [...root.querySelectorAll(s)];
   const messages = {
     zh: {
-      coverPlate:'圖版 00 · 紙與墨',skip:'跳至目錄',contents:'目錄',contact:'聯絡',view:'檢視 ↗',support:'支援 ↗',appStore:'App Store ↗',
+      skip:'跳至目錄',contents:'目錄',contact:'聯絡',view:'檢視 ↗',support:'支援 ↗',appStore:'App Store ↗',
       writingFigure:'圖版 I · Writing',paperieFigure:'圖版 II · Paperie',
       openWriting:'檢視 Writing 圖版',openPaperie:'檢視 Paperie 圖版',
       writingPlateAlt:'Writing 天空畫布的彩色印刷質感圖版',paperiePlateAlt:'Paperie 手帳跨頁的彩色印刷質感圖版',
@@ -18,7 +18,7 @@
       paperCanvas:'紙張畫布',skyCanvas:'天空畫布',spaces:'Spaces',journal:'手帳跨頁',cover:'手帳封面'
     },
     en: {
-      coverPlate:'PLATE 00 · INK & PAPER',skip:'Skip to contents',contents:'Contents',contact:'Contact',view:'View ↗',support:'Support ↗',appStore:'App Store ↗',
+      skip:'Skip to contents',contents:'Contents',contact:'Contact',view:'View ↗',support:'Support ↗',appStore:'App Store ↗',
       writingFigure:'Plate I · Writing',paperieFigure:'Plate II · Paperie',
       openWriting:'View the Writing plates',openPaperie:'View the Paperie plates',
       writingPlateAlt:'A softly colored printed reproduction of the Writing sky canvas',paperiePlateAlt:'A softly colored printed reproduction of the Paperie journal spread',
