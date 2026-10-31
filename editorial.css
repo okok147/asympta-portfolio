@@ -373,3 +373,21 @@ html[lang="zh-Hant"] .hero-text h1{font-family:var(--chinese);letter-spacing:.09
  .nav a{font-size:9px}
  .language-switch{min-width:34px}
 }
+
+
+/* Textless opening plate: brand / typographic apparatus / engraving only. */
+.brand-title{margin:0;padding:0;font:inherit;line-height:1}
+.hero-grid{min-height:475px;padding:35px 0 28px;align-items:start}
+.hero-text{padding-top:54px}
+.hero-text .hero-overline{margin:0}
+.hero-rail{justify-content:flex-end;padding:19px 0 66px}
+@media(max-width:970px){
+ .hero-grid{min-height:440px}
+ .hero-text{padding-top:45px}
+}
+@media(max-width:700px){
+ .hero-grid{min-height:0;display:block;padding:28px 0 18px}
+ .hero-text{padding-top:12px}
+ .hero-diagram{margin:22px auto 18px;max-width:345px}
+ .hero-rail{padding:16px 0 48px}
+}
