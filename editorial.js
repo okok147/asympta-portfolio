@@ -181,3 +181,19 @@ setLanguage(stored==='en'?'en':'zh');
     diagrams.forEach(svg=>svg.classList.add('is-inked'));
   });
 })();
+
+
+/* Trace lines over the complete original image; the original illustration never disappears. */
+(function(){
+ document.querySelectorAll('.work-diagram svg').forEach(svg=>{
+  [...svg.querySelectorAll('path.draw-line')].forEach(path=>{
+   const length=Number(path.style.getPropertyValue('--stroke-length'));if(!length)return;
+   const copy=path.cloneNode(false);
+   copy.classList.remove('draw-line');copy.classList.add('printing-trace');
+   copy.removeAttribute('id');copy.setAttribute('fill','none');
+   copy.style.setProperty('--stroke-length',String(length));
+   copy.style.setProperty('--stroke-order',path.style.getPropertyValue('--stroke-order')||'0');
+   path.parentNode.appendChild(copy);
+  });
+ });
+})();

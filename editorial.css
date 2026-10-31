@@ -332,3 +332,31 @@ html[lang="zh-Hant"] .hero-text h1{font-family:var(--chinese);letter-spacing:.09
  .diagram svg.is-inked path.draw-line{animation:none!important;stroke-dasharray:none!important;stroke-dashoffset:0!important}
  .hero-diagram.is-printed .engraved-plate{animation:none!important;clip-path:none!important;opacity:1!important}
 }
+
+
+/* Edition 03 proof correction: NEVER suspend legibility while animation is paused. */
+@keyframes archive-enter{from{opacity:1;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ink-reveal{from{clip-path:none;opacity:1;filter:grayscale(1) contrast(1.05)}to{clip-path:none;opacity:1;filter:grayscale(1) contrast(1.2)}}
+@keyframes press-reveal{from{opacity:1;transform:translateY(7px)}to{opacity:1;transform:none}}
+.hero-diagram.is-printed .engraved-plate{
+ animation:engraving-register 1.25s cubic-bezier(.15,.8,.35,1) both;
+ clip-path:none;opacity:1;
+}
+@keyframes engraving-register{
+ from{opacity:1;filter:grayscale(1) contrast(1.03);transform:translateY(2px)}
+ to{opacity:1;filter:grayscale(1) contrast(1.2);transform:translateY(0)}
+}
+.motion-ready [data-reveal].is-revealed{opacity:1;filter:none;animation:archive-enter .75s cubic-bezier(.22,.73,.29,1) both}
+.diagram path.draw-line,.diagram svg.is-inked path.draw-line{
+ stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important;transition:none!important
+}
+.printing-trace{stroke-dashoffset:var(--stroke-length);stroke-dasharray:var(--stroke-length);pointer-events:none;opacity:.55}
+.diagram svg.is-inked .printing-trace{
+ stroke-dashoffset:0;transition:stroke-dashoffset 1.2s cubic-bezier(.22,.71,.34,1);
+ transition-delay:calc(var(--stroke-order)*55ms)
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-diagram.is-printed .engraved-plate{animation:none!important;filter:grayscale(1) contrast(1.2)!important}
+ .motion-ready [data-reveal].is-revealed{animation:none!important}
+ .diagram svg.is-inked .printing-trace{transition:none!important;stroke-dashoffset:0!important}
+}
