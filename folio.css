@@ -102,3 +102,45 @@ body.has-viewer{overflow:hidden}
 @media(max-width:540px){body{font-size:15px}.running-head{min-height:68px;width:calc(100% - 36px);gap:20px;font-size:11px}.title-page{width:calc(100% - 36px);min-height:640px;min-height:max(620px,calc(100svh - 68px));padding:29px 0 37px}.edition{font-size:10px;margin-bottom:52px}.title-page h1{font-size:clamp(35px,10.2vw,53px);letter-spacing:.14em;text-indent:.14em}.title-rule{margin-top:23px;margin-bottom:21px;width:30px}.author{font-size:11px}.frontispiece{width:265px;max-width:90%;min-height:190px;margin:42px 0 17px}.cover-index{font-size:11px}.title-page>.folio-number{padding-top:23px}.leaf{width:calc(100% - 48px)}.running-line{font-size:9px}.contents{padding-top:40px;padding-bottom:80px}.section-title{font-size:28px;margin-top:36px}.index-list{padding:0}.index-list a{gap:10px}.index-name{font-size:20px}.index-roman{width:26px}.index-name:lang(zh-Hant){font-size:17px}.work{padding-bottom:80px}.work-heading{padding:42px 0 31px}.work-heading h2{font-size:36px}.plate-side{left:-18px;top:0;font-size:8px;writing-mode:vertical-rl;letter-spacing:.08em}.plate-open{opacity:1;font-size:15px;right:5px;bottom:5px;padding:3px 6px}.plate figcaption{font-size:10px;gap:12px;margin-top:9px}.work-links{font-size:12px;margin-top:6px;gap:29px}.work>.folio-number{margin-top:35px}.paperie-plate{padding-top:18px;padding-bottom:24px}.correspondence>.chapter-number{margin-top:50px}.correspondence .section-title{font-size:28px}.availability{font-size:13px}.email{font-size:20px}.contact-note{font-size:12px;margin-top:37px;max-width:290px}.social{font-size:13px}.correspondence{padding-bottom:65px}.colophon{width:calc(100% - 48px);padding-bottom:28px}#viewer{width:100%;height:100dvh;max-height:100dvh;border:0}.viewer-sheet{padding:0 22px 23px}.viewer-head{min-height:62px;font-size:10px}.viewer-head>div{gap:13px}.viewer-title{padding-top:24px}.viewer-title h2{font-size:28px}.reproduction-switch{font-size:11px;gap:14px;margin-bottom:12px}.viewer-media{min-height:220px}#viewer-image,#viewer-video{max-height:45dvh}.viewer-footer{font-size:11px;gap:12px}.viewer-links{font-size:11px}.viewer-head .close-viewer{font-size:11px;min-width:50px}#viewer-caption{font-size:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.frontispiece .moving-layer{transform:none!important;will-change:auto}.print-pass{display:none!important}}
 @media print{body{background:#fff;color:#000}.running-head,.cover-index,.work-links,.plate-open,.print-pass,.language,.back-top,.skip,#viewer{display:none!important}.title-page{min-height:90vh;page-break-after:always}.leaf{width:90%;break-inside:avoid}.work{break-before:page}.print-type{-webkit-text-fill-color:initial;background:none}.plate-link>img{filter:none}.correspondence{break-before:page}a{color:#000}.plate figcaption a{display:none}}
+
+
+/* Soft color lithographic reproduction: preserve hue, compress digital contrast, and
+   layer fine plate dots and paper fibres without altering the original source media. */
+.plate-link{background:#faf9f5}
+.plate-link>img,
+#viewer-image.is-print{
+  filter:saturate(.79) contrast(.90) brightness(1.015) sepia(.03);
+  mix-blend-mode:multiply;
+}
+.plate-link::before,
+.viewer-media.is-print-reproduction::after,
+.viewer-media.is-film-reproduction::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:url("assets/print-screen.svg"),url("assets/folio/paper.svg");
+  background-size:96px 96px,340px 340px;
+  background-repeat:repeat;
+  background-blend-mode:multiply;
+  mix-blend-mode:multiply;
+  opacity:.19;
+  z-index:1;
+}
+.plate-link::after{z-index:2}
+.plate-open{z-index:3}
+.viewer-media.is-print-reproduction{background:#faf9f6}
+#viewer-image:not(.is-print){filter:none;mix-blend-mode:normal}
+#viewer-video{
+  background:#f6f4f0;
+  filter:saturate(.81) contrast(.91) brightness(1.025) sepia(.025);
+}
+.viewer-media.is-film-reproduction::after{opacity:.13}
+@media(prefers-reduced-motion:reduce){
+  .plate-link::before,
+  .viewer-media.is-print-reproduction::after,
+  .viewer-media.is-film-reproduction::after{animation:none!important}
+}
+@media print{
+  .plate-link>img{filter:saturate(.79) contrast(.90) brightness(1.015) sepia(.03)}
+}

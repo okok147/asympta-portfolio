@@ -7,7 +7,7 @@
       skip:'跳至目錄',contents:'目錄',contact:'聯絡',view:'檢視 ↗',support:'支援 ↗',appStore:'App Store ↗',
       writingFigure:'圖版 I · Writing',paperieFigure:'圖版 II · Paperie',
       openWriting:'檢視 Writing 圖版',openPaperie:'檢視 Paperie 圖版',
-      writingPlateAlt:'Writing 天空畫布的黑白印刷圖版',paperiePlateAlt:'Paperie 手帳跨頁的黑白印刷圖版',
+      writingPlateAlt:'Writing 天空畫布的彩色印刷質感圖版',paperiePlateAlt:'Paperie 手帳跨頁的彩色印刷質感圖版',
       availability:'開放專案與合作。',contactNote:'如電郵未獲回覆，或希望更快交流，亦可透過社交平台私訊。',
       xAria:'透過 X 聯繫 @oklauuuuu',threadsAria:'透過 Threads 聯繫 @oklauuuuu',
       privacyAria:'隱私政策',writingPrivacy:'Writing 隱私',paperiePrivacy:'Paperie 隱私',backTop:'頁首 ↑',
@@ -21,7 +21,7 @@
       skip:'Skip to contents',contents:'Contents',contact:'Contact',view:'View ↗',support:'Support ↗',appStore:'App Store ↗',
       writingFigure:'Plate I · Writing',paperieFigure:'Plate II · Paperie',
       openWriting:'View the Writing plates',openPaperie:'View the Paperie plates',
-      writingPlateAlt:'A monochrome printed reproduction of the Writing sky canvas',paperiePlateAlt:'A monochrome printed reproduction of the Paperie journal spread',
+      writingPlateAlt:'A softly colored printed reproduction of the Writing sky canvas',paperiePlateAlt:'A softly colored printed reproduction of the Paperie journal spread',
       availability:'Open to projects & collaborations.',contactNote:'If your email remains unanswered, or for a quicker conversation, please contact me via social media.',
       xAria:'Contact @oklauuuuu on X',threadsAria:'Contact @oklauuuuu on Threads',
       privacyAria:'Privacy policies',writingPrivacy:'Writing privacy',paperiePrivacy:'Paperie privacy',backTop:'Top ↑',
@@ -35,13 +35,13 @@
   // Add future work here and as a semantic article in index.html. The cover does not depend on a product count.
   const projects = {
     writing: {name:'Writing',roman:'I',store:'https://apps.apple.com/app/id6800755232',support:'https://okok147.github.io/asympta-support/',media:[
-      {source:'assets/writing-ipad-2.webp',print:'assets/folio/writing-plate.png',caption:'skyCanvas'},
-      {source:'assets/writing-ipad-1.webp',print:'assets/folio/writing-paper.png',caption:'paperCanvas'},
-      {source:'assets/writing-ipad-3.webp',print:'assets/folio/writing-spaces.png',caption:'spaces'}
+      {source:'assets/writing-ipad-2.webp',print:'assets/writing-ipad-2.webp',caption:'skyCanvas'},
+      {source:'assets/writing-ipad-1.webp',print:'assets/writing-ipad-1.webp',caption:'paperCanvas'},
+      {source:'assets/writing-ipad-3.webp',print:'assets/writing-ipad-3.webp',caption:'spaces'}
     ]},
     paperie: {name:'Paperie',roman:'II',store:'https://apps.apple.com/app/id6818553101',support:'https://okok147.github.io/asympta-paperie-support/',media:[
-      {source:'assets/paperie-ipad-2.webp',print:'assets/folio/paperie-plate.png',caption:'journal'},
-      {source:'assets/paperie-ipad-1.webp',print:'assets/folio/paperie-cover.png',caption:'cover'},
+      {source:'assets/paperie-ipad-2.webp',print:'assets/paperie-ipad-2.webp',caption:'journal'},
+      {source:'assets/paperie-ipad-1.webp',print:'assets/paperie-ipad-1.webp',caption:'cover'},
       {video:true,source:'assets/paperie-film.mp4',caption:'videoLabel'}
     ]}
   };
@@ -121,9 +121,13 @@
     video.pause();
     video.hidden = !item.video;
     image.hidden = Boolean(item.video);
+    $('.viewer-media').classList.toggle('is-film-reproduction',Boolean(item.video));
+    if (item.video) $('.viewer-media').classList.remove('is-print-reproduction');
     if (!item.video) {
       const src = mode === 'print' ? item.print : item.source;
       image.classList.toggle('is-print',mode === 'print');
+      $('.viewer-media').classList.toggle('is-print-reproduction',mode === 'print');
+      $('.viewer-media').classList.remove('is-film-reproduction');
       image.src = src;
       if (image.complete && image.naturalWidth > 0) printPass($('.viewer-media .print-pass'));
     }
