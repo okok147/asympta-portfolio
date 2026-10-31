@@ -360,3 +360,16 @@ html[lang="zh-Hant"] .hero-text h1{font-family:var(--chinese);letter-spacing:.09
  .motion-ready [data-reveal].is-revealed{animation:none!important}
  .diagram svg.is-inked .printing-trace{transition:none!important;stroke-dashoffset:0!important}
 }
+
+/* Narrow screens: keep navigation within viewport; desktop imprint remains intact. */
+@media(max-width:520px){
+ .masthead{gap:12px}
+ .imprint{display:none!important}
+ .nav{margin-left:auto;gap:11px}
+ .identity{flex-shrink:0}
+}
+@media(max-width:350px){
+ .nav{gap:7px}
+ .nav a{font-size:9px}
+ .language-switch{min-width:34px}
+}
