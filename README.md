@@ -19,7 +19,7 @@ Add an article and contents entry to `index.html`, then a corresponding entry to
 
 ## Reproducing the assets
 
-`python3 tools/make-art.py` regenerates deterministic original SVG textures and the frontispiece. On macOS, `swift tools/render-plates.swift .` regenerates the printed reproductions from the original images in `assets/` and records their hashes. System fonts are referenced, never redistributed. The reference video itself and its third-party illustrations are not published.
+`python3 tools/make-art.py` regenerates deterministic SVG paper/ink textures and icon, while preserving the separately authored `assets/folio/frontispiece.svg` (canonical). On macOS, `swift tools/render-plates.swift .` regenerates the printed reproductions from the original images in `assets/` and records their hashes. System fonts are referenced, never redistributed. The reference video itself and its third-party illustrations are not published.
 
 ## Verification
 

@@ -56,13 +56,16 @@ for k in [2,1,0]:
 parts.append('<g fill="currentColor" stroke="none" font-family="Baskerville,Georgia,serif" font-size="9"><text x="29" y="104">I</text><text x="22" y="166">II</text><text x="16" y="226">III</text><text x="214" y="274" font-size="7">a.</text></g></svg>')
 svg=''.join(parts)
 html=(root/'index.html').read_text()
-if '<!--FRONTISPIECE-->' in html:
- html=html.replace('<!--FRONTISPIECE-->',svg)
+# The edited archival frontispiece SVG is a canonical, deliberately curated artifact.
+# Regenerating background grain must never overwrite its illustration or HTML.
+if 'assets/folio/frontispiece.svg' in html:
+ assert (assets/'frontispiece.svg').is_file(), 'Missing standalone frontispiece artwork'
+elif '<!--FRONTISPIECE-->' in html:
+ (root/'index.html').write_text(html.replace('<!--FRONTISPIECE-->',svg))
 else:
  start=html.index('<svg',html.index('class="frontispiece"'))
  end=html.index('</svg>',start)+len('</svg>')
- html=html[:start]+svg+html[end:]
-(root/'index.html').write_text(html)
+ (root/'index.html').write_text(html[:start]+svg+html[end:])
 # Quiet, neutral rag-paper, with a fixed microstructure. No sepia or animated noise.
 paper='''<svg xmlns="http://www.w3.org/2000/svg" width="680" height="680" viewBox="0 0 680 680"><defs><filter id="p" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="27" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="linear" slope=".13" intercept=".87"/><feFuncG type="linear" slope=".13" intercept=".87"/><feFuncB type="linear" slope=".13" intercept=".87"/></feComponentTransfer></filter></defs><rect width="680" height="680" fill="#fafaf8"/><rect width="680" height="680" filter="url(#p)" opacity=".27"/><g fill="none" stroke="#53534c" stroke-width=".25" opacity=".13">'''
 for i in range(1100):
