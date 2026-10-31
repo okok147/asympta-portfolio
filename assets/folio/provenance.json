@@ -1,0 +1,42 @@
+[
+  {
+    "bytes" : 1128795,
+    "height" : 1280,
+    "output" : "writing-plate.png",
+    "sha256" : "1c49bb5b9d21d2a9d26a1b363b3b9d99a91c74a90be99dcf9d33b9d0bb5f8eee",
+    "source" : "writing-ipad-2.webp",
+    "width" : 960
+  },
+  {
+    "bytes" : 812530,
+    "height" : 1280,
+    "output" : "writing-paper.png",
+    "sha256" : "062ed330d94befed9699e4abb2c9a44fb5977a13531a0ee95ea50c3a7f4da570",
+    "source" : "writing-ipad-1.webp",
+    "width" : 960
+  },
+  {
+    "bytes" : 1158313,
+    "height" : 1280,
+    "output" : "writing-spaces.png",
+    "sha256" : "896a9bc6bb11aa109094db3f41d7fee26bffeb17cc9f5130cfff026dc4cdcdb2",
+    "source" : "writing-ipad-3.webp",
+    "width" : 960
+  },
+  {
+    "bytes" : 831738,
+    "height" : 900,
+    "output" : "paperie-plate.png",
+    "sha256" : "cdc87e60794182e2296d82db4185641499634449861e24f9413a4e59a9dad115",
+    "source" : "paperie-ipad-2.webp",
+    "width" : 1200
+  },
+  {
+    "bytes" : 546668,
+    "height" : 720,
+    "output" : "paperie-cover.png",
+    "sha256" : "7676dcb6fcbb1bb2105490ec42e6274820eae7359c51d575a775c6eba41e2733",
+    "source" : "paperie-ipad-1.webp",
+    "width" : 960
+  }
+]

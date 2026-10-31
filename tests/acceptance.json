@@ -1,0 +1,323 @@
+{
+  "revision": "folio-20261031-1",
+  "chromium": {
+    "checks": [
+      {
+        "name": "No unwanted slogan or fixed product introduction",
+        "pass": true
+      },
+      {
+        "name": "Originals preserved",
+        "pass": true
+      },
+      {
+        "name": "X and exact requested Threads route",
+        "pass": true
+      },
+      {
+        "name": "zh layout 320",
+        "pass": true,
+        "details": {
+          "width": 320,
+          "scroll": 320
+        }
+      },
+      {
+        "name": "zh layout 375",
+        "pass": true,
+        "details": {
+          "width": 375,
+          "scroll": 375
+        }
+      },
+      {
+        "name": "zh layout 390",
+        "pass": true,
+        "details": {
+          "width": 390,
+          "scroll": 390
+        }
+      },
+      {
+        "name": "zh layout 540",
+        "pass": true,
+        "details": {
+          "width": 540,
+          "scroll": 540
+        }
+      },
+      {
+        "name": "zh layout 768",
+        "pass": true,
+        "details": {
+          "width": 768,
+          "scroll": 768
+        }
+      },
+      {
+        "name": "zh layout 1024",
+        "pass": true,
+        "details": {
+          "width": 1024,
+          "scroll": 1024
+        }
+      },
+      {
+        "name": "zh layout 1440",
+        "pass": true,
+        "details": {
+          "width": 1440,
+          "scroll": 1440
+        }
+      },
+      {
+        "name": "zh all authored labels present",
+        "pass": true
+      },
+      {
+        "name": "en layout 320",
+        "pass": true,
+        "details": {
+          "width": 320,
+          "scroll": 320
+        }
+      },
+      {
+        "name": "en layout 375",
+        "pass": true,
+        "details": {
+          "width": 375,
+          "scroll": 375
+        }
+      },
+      {
+        "name": "en layout 390",
+        "pass": true,
+        "details": {
+          "width": 390,
+          "scroll": 390
+        }
+      },
+      {
+        "name": "en layout 540",
+        "pass": true,
+        "details": {
+          "width": 540,
+          "scroll": 540
+        }
+      },
+      {
+        "name": "en layout 768",
+        "pass": true,
+        "details": {
+          "width": 768,
+          "scroll": 768
+        }
+      },
+      {
+        "name": "en layout 1024",
+        "pass": true,
+        "details": {
+          "width": 1024,
+          "scroll": 1024
+        }
+      },
+      {
+        "name": "en layout 1440",
+        "pass": true,
+        "details": {
+          "width": 1440,
+          "scroll": 1440
+        }
+      },
+      {
+        "name": "en all authored labels present",
+        "pass": true
+      },
+      {
+        "name": "Native modal opens with close focus",
+        "pass": true
+      },
+      {
+        "name": "Original is genuinely original",
+        "pass": true
+      },
+      {
+        "name": "Dialog and page change language together",
+        "pass": true
+      },
+      {
+        "name": "Keyboard pagination",
+        "pass": true
+      },
+      {
+        "name": "Escape restores focus and scroll",
+        "pass": true
+      },
+      {
+        "name": "Video never autoplays",
+        "pass": true
+      },
+      {
+        "name": "Actual video decodes and plays",
+        "pass": true,
+        "details": {
+          "time": 0.6592,
+          "width": 1080,
+          "paused": false
+        }
+      },
+      {
+        "name": "Video pauses on close",
+        "pass": true
+      },
+      {
+        "name": "Language preference persists",
+        "pass": true
+      },
+      {
+        "name": "Reduced motion removes all animations",
+        "pass": true
+      },
+      {
+        "name": "No-JavaScript fallback is complete",
+        "pass": true
+      },
+      {
+        "name": "No runtime exceptions",
+        "pass": true,
+        "details": []
+      },
+      {
+        "name": "No missing assets",
+        "pass": true,
+        "details": []
+      }
+    ],
+    "errors": [],
+    "missing_assets": []
+  },
+  "webkit": {
+    "browser": "native WKWebView",
+    "checks": [
+      {
+        "name": "Chinese initial language",
+        "pass": true
+      },
+      {
+        "name": "No marketing hero",
+        "pass": true
+      },
+      {
+        "name": "Correct social routes",
+        "pass": true
+      },
+      {
+        "name": "zh-Hant / 320",
+        "pass": true
+      },
+      {
+        "name": "zh-Hant / 375",
+        "pass": true
+      },
+      {
+        "name": "zh-Hant / 390",
+        "pass": true
+      },
+      {
+        "name": "zh-Hant / 540",
+        "pass": true
+      },
+      {
+        "name": "zh-Hant / 768",
+        "pass": true
+      },
+      {
+        "name": "zh-Hant / 1024",
+        "pass": true
+      },
+      {
+        "name": "zh-Hant / 1440",
+        "pass": true
+      },
+      {
+        "name": "zh-Hant authored labels",
+        "pass": true
+      },
+      {
+        "name": "en / 320",
+        "pass": true
+      },
+      {
+        "name": "en / 375",
+        "pass": true
+      },
+      {
+        "name": "en / 390",
+        "pass": true
+      },
+      {
+        "name": "en / 540",
+        "pass": true
+      },
+      {
+        "name": "en / 768",
+        "pass": true
+      },
+      {
+        "name": "en / 1024",
+        "pass": true
+      },
+      {
+        "name": "en / 1440",
+        "pass": true
+      },
+      {
+        "name": "en authored labels",
+        "pass": true
+      },
+      {
+        "name": "Modal open",
+        "pass": true
+      },
+      {
+        "name": "Printed image decoded",
+        "pass": true
+      },
+      {
+        "name": "Original switch",
+        "pass": true
+      },
+      {
+        "name": "Next sheet",
+        "pass": true
+      },
+      {
+        "name": "Live dialog language",
+        "pass": true
+      },
+      {
+        "name": "Close restores focus",
+        "pass": true
+      },
+      {
+        "name": "Paperie true recording",
+        "pass": true
+      },
+      {
+        "name": "Video pause on close",
+        "pass": true
+      }
+    ],
+    "failures": [],
+    "passed": true
+  },
+  "visual_review": [
+    "cover desktop",
+    "cover mobile",
+    "printed Writing plate",
+    "printed Paperie plate",
+    "contact colophon"
+  ],
+  "scope": "Web browsers; no physical-device verification claimed"
+}
