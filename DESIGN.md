@@ -9,3 +9,7 @@ Implementation: a centered title page with only the name and author; expandable 
 Explicit constraints: no slogans or general-purpose descriptive paragraphs; no product names/counts/platform claims in the cover; X and Threads contact routes; concise formal email fallback; complete authored-interface Chinese/English switching; no unreadable low-contrast body copy; originals available; no automatic sound/video; content remains readable with animation unavailable; no external runtime or font dependency.
 
 Thirty years is a design aspiration, not a measurable guarantee. The engineering response is ordinary HTML/CSS/JavaScript, semantic fallbacks, real media, a compact repeatable type system, reproducible assets and verification rather than a fragile visual framework.
+
+## 31 October: editorial correction
+
+The first folio still read as a sparse website with a small diagram rather than a printed artifact. This revision replaces the light 3D paper-stack illustration with a bespoke, denser contour-engraved plate, removes perpetual floating movement, restores deliberate ink-on-paper contrast, strengthens the scale of real images and readable annotations, alternates work alignment, and treats the contact section as correspondence rather than a generic callout. The cover remains author- and work-agnostic. All imagery remains original or owned app captures; no X video art is reused. Live video retains native playback and subtle color print grading. User-visible words remain functional, not slogan copy.

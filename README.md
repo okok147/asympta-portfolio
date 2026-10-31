@@ -32,3 +32,7 @@ Native WebKit smoke verification: `swift tests/webkit-check.swift .`. The checke
 ## Color print reproduction
 
 The live site displays only the soft-color printed treatment for both the thumbnail plates and the image viewer, with no original-view toggle. `folio.css` applies low-saturation, reduced-contrast grading and delicate screened-ink/paper overlays; the source files remain unchanged. The actual Paperie video also retains its colors and gains the same restrained print treatment without transcoding, autoplay, or blocking native playback controls. Archived monochrome render assets remain in `assets/folio/` for historical comparison but are no longer displayed. A future regenerated plate should preserve color; the archival `tools/render-plates.swift` generator produces the *old monochrome* plates, not the live presentation.
+
+## Printed folio design correction
+
+`assets/folio/frontispiece.svg` is a deterministic, original in-house contour engraving with three ruled folios and dense analog linework. The running head, index, plate captions, contact folio, typography and margins form a single editorial system. The cover stays product-agnostic, and artwork is always fully visible even when animations are paused. Run the Chrome/WebKit acceptance suite for both languages and mobile sizes before publishing.

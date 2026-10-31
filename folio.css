@@ -140,3 +140,109 @@ body.has-viewer{overflow:hidden}
 @media print{
   .plate-link>img{filter:saturate(.79) contrast(.90) brightness(1.015) sepia(.03)}
 }
+
+
+/* Art direction v2 — original ink engraving, intentional margins, a printed book rather than floating UI. */
+:root{--paper:#f8f8f6;--ink:#171716;--muted:#55554f;--line:#a6a6a0;--measure:800px}
+body{background-color:var(--paper);text-rendering:optimizeLegibility;font-feature-settings:"kern" 1,"liga" 1}
+.running-head{width:min(100% - 96px,1100px);min-height:78px;gap:40px;font-size:13px;letter-spacing:.07em}
+.title-page{width:min(100% - 70px,770px);min-height:760px;min-height:max(760px,calc(100svh - 78px));padding:43px 0 28px}
+.edition{display:flex;align-items:center;justify-content:center;gap:16px;font-size:11px;letter-spacing:.2em;margin:0 0 61px}
+.edition-rule{display:block;width:32px;border-top:.8px solid #383833}
+.title-page h1{font:400 clamp(50px,6vw,82px)/1.1 var(--serif);letter-spacing:.20em;text-indent:.20em;margin:0}
+.title-rule{width:49px;margin:28px 0 21px}
+.author{font-size:12px;letter-spacing:.22em}
+.frontispiece{width:min(520px,94%);margin:48px auto 15px;min-height:0;position:relative;isolation:isolate}
+.frontispiece>img{width:100%;height:auto;display:block;mix-blend-mode:multiply;filter:contrast(1.08)}
+.frontispiece figcaption{font:12px/1.6 var(--serif);color:#43433f;letter-spacing:.09em;text-align:center;margin:5px 0 0}
+.frontispiece .register-pass{inset:0 0 29px 0;background:url("assets/folio/frontispiece.svg") center/contain no-repeat;mix-blend-mode:multiply;opacity:0}
+.cover-index{font-size:13px;letter-spacing:.07em;gap:21px}
+.cover-index .down{font-size:20px}
+.title-page>.folio-number{font-size:12px;padding-top:17px}
+.leaf{max-width:var(--measure);scroll-margin-top:36px}
+.running-line{border-color:var(--line);font-size:11px;letter-spacing:.12em;padding-top:15px}
+.contents{max-width:740px;padding-top:66px;padding-bottom:121px}
+.contents .section-title{text-align:left;margin:51px 0 44px;font-size:39px}
+html[lang="zh-Hant"] .contents .section-title{text-align:left;text-indent:0;font-size:32px;letter-spacing:.15em}
+.index-list{padding:0}
+.index-list a{min-height:77px;gap:25px;padding:20px 0;border-bottom:1px solid #b8b8b16c}
+.index-roman{font-size:13px;width:37px}
+.index-name{font-size:25px;letter-spacing:.04em}
+.index-list a>span:last-child{font-size:13px}
+.work{padding-bottom:98px}
+.work-heading{display:flex;text-align:left;align-items:baseline;justify-content:flex-start;gap:27px;padding:72px 0 40px}
+.work-heading h2{font-size:clamp(43px,5.1vw,66px);letter-spacing:.085em;line-height:1.16;margin:0}
+.work-heading .chapter-number{font-size:16px}
+#paperie .work-heading{justify-content:flex-end}
+.plate{margin-bottom:26px}
+.writing-plate{max-width:540px;margin-left:36px;margin-right:auto}
+.paperie-plate{max-width:755px;margin-left:auto;margin-right:0}
+#paperie .plate-side{left:auto;right:-38px}
+.plate-link{background:#f7f7f3}
+.plate-link::after{border-color:#22222160}
+.plate figcaption{font-size:12px;line-height:1.75;letter-spacing:.05em;color:#363632}
+.plate-open{opacity:.9;font-size:18px;border:1px solid #585852;background:#fafaf8}
+.work-links{justify-content:flex-start;gap:44px;font-size:14px}
+#paperie .work-links{justify-content:flex-end}
+.work>.folio-number{margin-top:32px;color:#3c3c39}
+.correspondence{max-width:740px;text-align:left;padding-bottom:98px}
+.correspondence>.chapter-number{display:block;margin-top:77px;font-size:15px}
+.correspondence .section-title{text-align:left;font-size:46px;margin:13px 0 34px}
+html[lang="zh-Hant"] .correspondence .section-title{text-align:left;text-indent:0;letter-spacing:.13em;font-size:40px}
+.availability{font-size:15px;margin:0 0 30px}
+.email{font-size:26px;line-height:1.5}
+.contact-note{margin:39px 0 15px;font-size:14px;max-width:430px;color:#484845;line-height:1.95}
+.social{justify-content:flex-start;gap:23px;font-size:15px}
+.correspondence .folio-number{text-align:right;margin-top:40px}
+.colophon{max-width:740px}
+.colophon nav{font-size:12px}
+#viewer{border:1px solid #878781;background-color:var(--paper)}
+.viewer-head{font-size:12px}
+.viewer-title h2{font-size:35px}
+#viewer-caption{font-size:12px;color:#3f3f3b}
+.viewer-footer{font-size:13px}
+#viewer-image{max-height:54dvh}
+#viewer-video{max-height:54dvh}
+@media(max-width:800px){
+ .title-page{min-height:max(650px,calc(100svh - 78px));width:calc(100% - 54px)}
+ .frontispiece{width:min(460px,98%);margin-top:45px}
+ .work-heading{padding-top:59px}
+ .writing-plate{width:min(80%,540px);margin-left:40px}
+ .paperie-plate{max-width:100%}
+ #paperie .plate-side{right:-24px}
+ .correspondence{max-width:100%}
+}
+@media(max-width:540px){
+ .running-head{width:calc(100% - 36px);min-height:66px;gap:25px;font-size:12px}
+ .title-page{width:calc(100% - 34px);padding:37px 0 25px;min-height:max(640px,calc(100svh - 66px))}
+ .edition{font-size:10px;gap:10px;margin-bottom:67px}
+ .edition-rule{width:20px}
+ .title-page h1{font-size:clamp(36px,10.5vw,51px);letter-spacing:.13em;text-indent:.13em}
+ .frontispiece{width:min(370px,100%);margin:44px auto 12px}
+ .frontispiece figcaption{font-size:11px}
+ .cover-index{font-size:13px;margin-top:6px}
+ .leaf{width:calc(100% - 40px)}
+ .contents{padding-top:42px;padding-bottom:80px}
+ .contents .section-title{font-size:31px}
+ .index-list a{min-height:66px;gap:12px}
+ .index-name{font-size:22px}
+ .work{padding-bottom:74px}
+ .work-heading{justify-content:flex-start;gap:18px;padding:43px 0 30px}
+ .work-heading h2{font-size:37px}
+ #paperie .work-heading{justify-content:flex-end}
+ .writing-plate{width:88%;margin-left:16px}
+ .paperie-plate{width:100%}
+ .plate-side{left:-15px;font-size:10px}
+ #paperie .plate-side{right:-14px;left:auto}
+ .plate figcaption{font-size:11px}
+ .work-links{gap:30px;font-size:13px}
+ .correspondence>.chapter-number{margin-top:50px}
+ .correspondence .section-title{font-size:34px}
+ .availability{font-size:14px}
+ .email{font-size:22px}
+ .contact-note{font-size:13px}
+ #viewer{width:100%;height:100dvh;max-height:100dvh;border:0}
+ #viewer-image,#viewer-video{max-height:48dvh}
+}
+@media(prefers-reduced-motion:reduce){.frontispiece .register-pass{display:none!important}}
+@media print{.frontispiece .register-pass{display:none}.work-heading{break-after:avoid}.plate{break-inside:avoid}.plate-link>img{filter:saturate(.79) contrast(.90)}}
