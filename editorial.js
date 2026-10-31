@@ -47,6 +47,7 @@ Object.assign(translations.en,{"homeAria":"Asympta home","mainNavAria":"Main nav
 
 Object.assign(translations.zh,{"heroDescription":"由 Ka Ho Lau 獨立設計與開發的 Writing 與 Paperie，提供 iPhone、iPad 的手寫畫布與數位手帳。","heroFootnote":"Writing 與 Paperie · iPhone / iPad","writingDescription":"支援 Apple Pencil 手寫、草圖及文字輸入的無限畫布，可自由移動與縮放。","paperieDescription":"可手寫、打字、加入照片、貼紙與印章的數位手帳，支援翻頁閱讀。","collabDescription":"歡迎產品設計、App、創意技術及獨立專案的合作提案。來信時可附上需求概要與預計時程。","collabAction":"電郵洽談 ↗"});
 Object.assign(translations.en,{"heroDescription":"Writing and Paperie are independently built iPhone and iPad apps for handwriting, sketching, and digital journaling.","heroFootnote":"Writing & Paperie · iPhone / iPad","writingDescription":"An infinite canvas for Apple Pencil handwriting, sketching, typed notes, and pan-and-zoom.","paperieDescription":"A digital journal for handwriting, typing, photos, stickers, stamps, and page turning.","collabDescription":"Available for product design, apps, creative technology, and independent projects. Please include a short brief and proposed timeline.","collabAction":"Enquire by email ↗"});
+Object.assign(translations.zh,{plateAlt:"原創雕版風格地形圖，包含等高線、排線與墨點"});Object.assign(translations.en,{plateAlt:"Original engraved topographical plate with contour lines, hachures and stippled ink"});
 const byId = id => document.getElementById(id);
 const dialog=byId('story-dialog'),video=byId('paperie-film'),playButton=byId('start-film'),
       errorMessage=byId('video-error'),storyImage=byId('story-image'),
@@ -56,6 +57,7 @@ function label(key){return key==='writing'?'Writing':'Paperie'}
 function setLanguage(next){
   language=next;document.documentElement.lang=next==='en'?'en':'zh-Hant';
   document.querySelectorAll('[data-i18n]').forEach(el=>{const value=translations[next][el.dataset.i18n];if(value!==undefined)el.textContent=value});
+  document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const value=translations[next][el.dataset.i18nAlt];if(value!==undefined)el.setAttribute('alt',value)});
   document.querySelectorAll('[data-i18n-aria-label]').forEach(el=>{
     const value=translations[next][el.dataset.i18nAriaLabel];if(value!==undefined)el.setAttribute('aria-label',value);
   });
@@ -150,6 +152,10 @@ setLanguage(stored==='en'?'en':'zh');
   },{threshold:0.08,rootMargin:'0px 0px -12px 0px'});
   blocks.forEach((el,i)=>{el.style.setProperty('--reveal-delay',Math.min(i%3,2)*105+'ms');observer.observe(el)});
   document.documentElement.classList.add('motion-ready');
+  const art=document.querySelector('[data-engraving]');if(art){
+    const artObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){art.classList.add('is-printed');artObserver.unobserve(entry.target)}})},{threshold:.18});
+    artObserver.observe(art);
+  }
   const diagrams=[...document.querySelectorAll('.diagram svg')];
   const inkObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{
     if(!entry.isIntersecting)return;

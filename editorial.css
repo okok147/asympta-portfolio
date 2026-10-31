@@ -266,3 +266,69 @@ html[lang="zh-Hant"] .collab-body h2 em{font-style:normal}
  .diagram path.draw-line{stroke-dasharray:none!important;stroke-dashoffset:0!important;transition:none!important}
  .story-sheet{animation:none!important}
 }
+
+
+/* 2026-10-31 Edition 03: historically grounded plate engraving and screened imagery.
+   Initial content is ALWAYS visible. Motion may animate it, never gate readability. */
+html{background-color:#fff}
+body{background-image:url("assets/paper-grain.svg");background-size:256px 256px}
+.hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(330px,.82fr);gap:clamp(25px,3.5vw,62px)}
+.hero-text h1{font-family:var(--serif);letter-spacing:.068em;text-transform:uppercase;font-size:clamp(60px,7.1vw,112px);line-height:1.08}
+html[lang="zh-Hant"] .hero-text h1{font-family:var(--chinese);letter-spacing:.09em;text-transform:none}
+.hero-diagram{max-width:440px;position:relative;isolation:isolate}
+.engraved-plate{display:block;width:100%;height:auto;mix-blend-mode:multiply;filter:grayscale(1) contrast(1.2)}
+.hero-diagram::after,
+.work-diagram::after{
+ content:"";position:absolute;inset:0 0 35px 0;
+ background-image:url("assets/print-screen.svg");background-repeat:repeat;background-size:96px 96px;
+ opacity:.42;mix-blend-mode:multiply;pointer-events:none;z-index:1;
+}
+.hero-diagram::after{inset:0 0 47px 0;opacity:.48}
+.diagram{position:relative;isolation:isolate}
+.work-diagram{padding:0 5px}
+.work-diagram svg{filter:grayscale(1) contrast(1.2)}
+.story-image-shell{position:relative;isolation:isolate}
+.story-image-shell::after{
+ content:"";position:absolute;inset:0;background:url("assets/print-screen.svg") repeat;
+ opacity:.12;mix-blend-mode:multiply;pointer-events:none;
+}
+.story-image-shell:has(.film-wrap:not([hidden]))::after{display:none}
+.story-figure{background-image:url("assets/paper-grain.svg");background-size:256px 256px}
+.story-image-shell>img{filter:saturate(.91) contrast(1.035);outline:1px solid rgba(25,25,25,.13);outline-offset:0}
+.motion-ready [data-reveal],
+.motion-ready [data-reveal]:not(.is-revealed){opacity:1;transform:none;filter:none}
+.motion-ready [data-reveal].is-revealed{
+ animation:archive-enter .84s cubic-bezier(.21,.73,.29,1) both;
+ transition:none;opacity:1;transform:none;filter:none;
+}
+.diagram path.draw-line{stroke-dasharray:none;stroke-dashoffset:0}
+.diagram svg.is-inked path.draw-line{
+ stroke-dasharray:var(--stroke-length);
+ animation:archive-draw 1.05s cubic-bezier(.18,.7,.32,1) both;
+ animation-delay:calc(var(--stroke-order)*48ms);
+ transition:none;
+}
+.hero-diagram.is-printed .engraved-plate{animation:ink-reveal 1.38s steps(38,end) both}
+.hero-text h1 span,.hero-text h1 em{text-wrap:nowrap}
+@keyframes archive-enter{from{opacity:.58;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@keyframes archive-draw{from{stroke-dashoffset:var(--stroke-length)}to{stroke-dashoffset:0}}
+@keyframes ink-reveal{from{clip-path:inset(0 0 85% 0);opacity:.52;filter:grayscale(1) contrast(1.35)}to{clip-path:inset(0 0 0 0);opacity:1;filter:grayscale(1) contrast(1.2)}}
+@media(max-width:970px){
+ .hero-grid{grid-template-columns:minmax(0,1.2fr) minmax(245px,.76fr)}
+ .hero-text h1{font-size:clamp(57px,7.4vw,90px);letter-spacing:.04em}
+}
+@media(max-width:700px){
+ .hero-grid{display:block}
+ .hero-text h1{font-size:clamp(58px,12.3vw,90px);letter-spacing:.055em}
+ .hero-diagram{width:min(82%,355px);max-width:100%;margin:35px 0 22px auto}
+ .hero-diagram::after{inset:0 0 40px 0}
+}
+@media(max-width:390px){
+ .hero-text h1{font-size:clamp(52px,11.6vw,67px)}
+ html[lang="zh-Hant"] .hero-text h1{font-size:clamp(49px,10.1vw,59px)}
+}
+@media(prefers-reduced-motion:reduce){
+ .motion-ready [data-reveal].is-revealed{animation:none!important}
+ .diagram svg.is-inked path.draw-line{animation:none!important;stroke-dasharray:none!important;stroke-dashoffset:0!important}
+ .hero-diagram.is-printed .engraved-plate{animation:none!important;clip-path:none!important;opacity:1!important}
+}
