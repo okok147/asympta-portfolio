@@ -1,9 +1,22 @@
 {
-  "revision": "letterpress-ink-materiality-2026-10-31",
+  "revision": "printed-folio-2026-11-01",
+  "base_commit": "e135c753d31668e5c783bdcc8852befad70d5f55",
   "status": "local-acceptance-passed",
+  "verified_at": "2026-11-01T01:37:49.249Z",
+  "source_sha256": {
+    "index.html": "7af6f774a55d7dffbd09e03d66f1e3ec9f0c14685649b7f8ef6c9f4cc34b4ed3",
+    "folio.css": "8b300c9f0919902af76b03111b542c2bb2e67ef6d742b8d075baf983f3f6ba2a",
+    "folio.js": "2aaa8e41e86dca2e6e49b8b1ecff8afc559d9b9fde66e7b2ed9ac6de01b4a8e8",
+    "assets/folio/paper.svg": "d046187482306dc4dfabb6f6f53634f7f99c8cc0390339833869d2a0f0419120",
+    "assets/folio/letterpress-ink.svg": "5311d04f612ecb4233d278572a2353564ac18a87594727068ffb3b1b03cadd52",
+    "assets/fonts/old-standard-regular.woff2": "2b46a1a10dfb166d5c35c5b5610726117da0f6556f2c2cad37a1397d2f38ba0c",
+    "assets/fonts/fell-english-sc.woff2": "4f36d463787a70dcc25419f271d45fe0fdfcf0409164852c6a7e0dbb83e18a32",
+    "assets/fonts/noto-serif-tc-regular.woff2": "b813a94643bbeea215ae56e2b368964de3639c09f839059bbafe6ccd38616c4c"
+  },
+  "test_suite_sha256": "a916984c26925665dd38f3608222b2e136d09d1559b62cc0da599a2172b4e7ef",
   "chrome": {
-    "browser": "isolated headless Chrome",
-    "passed": 41,
+    "browser": "Google Chrome 156.0.8078.79 / isolated Linux headless profile",
+    "passed": 44,
     "failed": 0,
     "checks": [
       {
@@ -23,6 +36,24 @@
         "pass": true
       },
       {
+        "name": "Self-hosted Latin, small-cap and Chinese fonts actually load",
+        "pass": true,
+        "details": [
+          {
+            "family": "Folio Old Standard",
+            "loaded": true
+          },
+          {
+            "family": "Folio Fell",
+            "loaded": true
+          },
+          {
+            "family": "Folio Song",
+            "loaded": true
+          }
+        ]
+      },
+      {
         "name": "Printed serif faces selected for Latin and Chinese",
         "pass": true
       },
@@ -39,6 +70,10 @@
         "pass": true
       },
       {
+        "name": "Forced colors retain opaque readable lettering",
+        "pass": true
+      },
+      {
         "name": "Thumbnail preserves color",
         "pass": true
       },
@@ -48,31 +83,59 @@
       },
       {
         "name": "zh layout 320",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 320,
+          "scroll": 305
+        }
       },
       {
         "name": "zh layout 375",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 375,
+          "scroll": 360
+        }
       },
       {
         "name": "zh layout 390",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 390,
+          "scroll": 375
+        }
       },
       {
         "name": "zh layout 540",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 540,
+          "scroll": 525
+        }
       },
       {
         "name": "zh layout 768",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 768,
+          "scroll": 753
+        }
       },
       {
         "name": "zh layout 1024",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 1024,
+          "scroll": 1009
+        }
       },
       {
         "name": "zh layout 1440",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 1440,
+          "scroll": 1425
+        }
       },
       {
         "name": "zh all authored labels present",
@@ -80,31 +143,59 @@
       },
       {
         "name": "en layout 320",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 320,
+          "scroll": 305
+        }
       },
       {
         "name": "en layout 375",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 375,
+          "scroll": 360
+        }
       },
       {
         "name": "en layout 390",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 390,
+          "scroll": 375
+        }
       },
       {
         "name": "en layout 540",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 540,
+          "scroll": 525
+        }
       },
       {
         "name": "en layout 768",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 768,
+          "scroll": 753
+        }
       },
       {
         "name": "en layout 1024",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 1024,
+          "scroll": 1009
+        }
       },
       {
         "name": "en layout 1440",
-        "pass": true
+        "pass": true,
+        "details": {
+          "width": 1440,
+          "scroll": 1425
+        }
       },
       {
         "name": "en all authored labels present",
@@ -144,7 +235,12 @@
       },
       {
         "name": "Actual video decodes and plays",
-        "pass": true
+        "pass": true,
+        "details": {
+          "time": 0.653,
+          "width": 1080,
+          "paused": false
+        }
       },
       {
         "name": "Video pauses on close",
@@ -164,150 +260,96 @@
       },
       {
         "name": "No runtime exceptions",
-        "pass": true
+        "pass": true,
+        "details": []
+      },
+      {
+        "name": "Font requests succeed with the correct MIME type",
+        "pass": true,
+        "details": {
+          "responses": [
+            {
+              "url": "/assets/fonts/noto-serif-tc-regular.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            },
+            {
+              "url": "/assets/fonts/old-standard-regular.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            },
+            {
+              "url": "/assets/fonts/fell-english-sc.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            },
+            {
+              "url": "/assets/fonts/fell-english-sc.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            },
+            {
+              "url": "/assets/fonts/noto-serif-tc-regular.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            },
+            {
+              "url": "/assets/fonts/old-standard-regular.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            },
+            {
+              "url": "/assets/fonts/noto-serif-tc-regular.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            },
+            {
+              "url": "/assets/fonts/old-standard-regular.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            },
+            {
+              "url": "/assets/fonts/fell-english-sc.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            }
+          ],
+          "errors": []
+        }
       },
       {
         "name": "No missing assets",
-        "pass": true
+        "pass": true,
+        "details": []
       }
     ],
-    "consoleErrors": [],
-    "badAssetResponses": []
+    "runtime_errors": [],
+    "missing_assets": [],
+    "font_errors": []
+  },
+  "visual_review": {
+    "desktop": true,
+    "mobile_390px": true,
+    "languages": [
+      "zh-Hant",
+      "en"
+    ],
+    "reviewed": [
+      "title leaf",
+      "contents",
+      "work plates",
+      "image reader",
+      "contact"
+    ],
+    "chinese_ui_glyphs": 99,
+    "missing_chinese_ui_glyphs": 0
   },
   "webkit": {
-    "browser": "native WKWebView",
-    "passed": 31,
-    "failed": 0,
-    "checks": [
-      {
-        "name": "Chinese initial language",
-        "pass": true
-      },
-      {
-        "name": "No marketing hero",
-        "pass": true
-      },
-      {
-        "name": "No decorative cover illustration",
-        "pass": true
-      },
-      {
-        "name": "Letterpress ink surface",
-        "pass": true
-      },
-      {
-        "name": "Serif print typography",
-        "pass": true
-      },
-      {
-        "name": "Title and navigation intact",
-        "pass": true
-      },
-      {
-        "name": "Correct social routes",
-        "pass": true
-      },
-      {
-        "name": "zh-Hant / 320",
-        "pass": true
-      },
-      {
-        "name": "zh-Hant / 375",
-        "pass": true
-      },
-      {
-        "name": "zh-Hant / 390",
-        "pass": true
-      },
-      {
-        "name": "zh-Hant / 540",
-        "pass": true
-      },
-      {
-        "name": "zh-Hant / 768",
-        "pass": true
-      },
-      {
-        "name": "zh-Hant / 1024",
-        "pass": true
-      },
-      {
-        "name": "zh-Hant / 1440",
-        "pass": true
-      },
-      {
-        "name": "zh-Hant authored labels",
-        "pass": true
-      },
-      {
-        "name": "en / 320",
-        "pass": true
-      },
-      {
-        "name": "en / 375",
-        "pass": true
-      },
-      {
-        "name": "en / 390",
-        "pass": true
-      },
-      {
-        "name": "en / 540",
-        "pass": true
-      },
-      {
-        "name": "en / 768",
-        "pass": true
-      },
-      {
-        "name": "en / 1024",
-        "pass": true
-      },
-      {
-        "name": "en / 1440",
-        "pass": true
-      },
-      {
-        "name": "en authored labels",
-        "pass": true
-      },
-      {
-        "name": "Modal open",
-        "pass": true
-      },
-      {
-        "name": "Printed image decoded",
-        "pass": true
-      },
-      {
-        "name": "Print-only mode",
-        "pass": true
-      },
-      {
-        "name": "Next sheet",
-        "pass": true
-      },
-      {
-        "name": "Live dialog language",
-        "pass": true
-      },
-      {
-        "name": "Close restores focus",
-        "pass": true
-      },
-      {
-        "name": "Paperie true recording",
-        "pass": true
-      },
-      {
-        "name": "Video pause on close",
-        "pass": true
-      }
-    ]
+    "status": "not-run",
+    "reason": "Linux host lacks required WebKit native libraries."
   },
-  "additionalCheck": {
-    "name": "Rebuilding paper/ink textures preserves curated frontispiece and index.html",
-    "pass": true
-  },
-  "limitations": "Tests reflect local headless Chrome and native offscreen WebKit at this source revision; no physical-device or universal compatibility claims."
+  "physical_device": {
+    "status": "not-run",
+    "reason": "This verification uses isolated browser emulation, not physical hardware."
+  }
 }

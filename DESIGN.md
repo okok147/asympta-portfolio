@@ -1,32 +1,24 @@
-# Folio / reference and acceptance
+# Printed folio — 1 November 2026
 
-Reference: the user-supplied recording of Julián Leiss's Borges video essay, https://x.com/julianleiss/status/2116294919488716958. The 62-second recording was examined at 3-second intervals and at selected full-resolution frames. This is a design interpretation, not an identification of its font or a reproduction of its artwork.
+## Reference and interpretation
 
-Observed: a narrow book-page measure; restrained, tracked serif title pages; large areas of unprinted paper; figure numbering and running heads; dense engraving and photographic halftones; abrupt plate changes and mechanical printing/reveal motion. Its atmosphere depends on these relationships together, not a paper overlay alone.
+The user supplied a photograph-like reference of an old title page headed “Del rigor en la ciencia”. Its defining relationships are near-neutral paper, large tracked serif capitals, compact irregular small type, wide unprinted intervals, short rules and a strong hierarchy of text groups. The exact source font cannot be identified reliably from this image. Its resolution and softness are not evidence that all text should be blurred.
 
-Implementation: a centered title page with only the name and author; expandable contents; separate printed plates; a correspondence colophon; one serif hierarchy, neutral paper, ink irregularity, deterministic raster screening of the actual app screenshots. The frontispiece is newly constructed vector artwork. No source footage or third-party illustration from the reference is copied.
+This revision interprets those relationships for Asympta. No reference text, emblem or illustration is reproduced. The title leaf is deliberately unillustrated, following the user's previous request to remove the decorative cover image.
 
-Explicit constraints: no slogans or general-purpose descriptive paragraphs; no product names/counts/platform claims in the cover; X and Threads contact routes; concise formal email fallback; complete authored-interface Chinese/English switching; no unreadable low-contrast body copy; originals available; no automatic sound/video; content remains readable with animation unavailable; no external runtime or font dependency.
+## Decisions
 
-Thirty years is a design aspiration, not a measurable guarantee. The engineering response is ordinary HTML/CSS/JavaScript, semantic fallbacks, real media, a compact repeatable type system, reproducible assets and verification rather than a fragile visual framework.
+- Cool ivory paper replaces the previous yellow-brown stock. Low-frequency pulp variation and fine fibers have different scales; neither moves.
+- Actual OFL printing faces replace device-dependent primary fonts. Old Standard TT provides the tall serif title; IM FELL English SC provides naturally irregular small capitals; Noto Serif TC gives Chinese a consistent printed Song-style structure.
+- Only display lettering receives pigment interruption. Body copy, controls and captions retain strong readable ink. Letters remain real HTML text.
+- A centered title leaf opens into an asymmetric contents page and staggered work plates. The reference's literal line arrangement is not copied.
+- All typography, whitespace, plates, correspondence and the viewer use one consolidated stylesheet. Five historical cascaded style generations were removed from the live stylesheet.
+- Actual images retain their colors. Flat printed plate boundaries replace ornamental mat frames and brown inset shadows.
+- Existing viewer, native video, language switch, store/support/privacy links, X and Threads stay functional.
+- No new descriptive paragraphs or slogans are added to the interface. “作品集 / Selected works” is a functional title-page label.
 
-## 31 October: editorial correction
+## Acceptance
 
-The first folio still read as a sparse website with a small diagram rather than a printed artifact. This revision replaces the light 3D paper-stack illustration with a bespoke, denser contour-engraved plate, removes perpetual floating movement, restores deliberate ink-on-paper contrast, strengthens the scale of real images and readable annotations, alternates work alignment, and treats the contact section as correspondence rather than a generic callout. The cover remains author- and work-agnostic. All imagery remains original or owned app captures; no X video art is reused. Live video retains native playback and subtle color print grading. User-visible words remain functional, not slogan copy.
+Inspect desktop and mobile screenshots in both languages; verify genuine font loading, no horizontal clipping at 320px, all viewer interactions, real video decoding, language persistence, semantic no-JavaScript fallbacks, forced colors, printing and reduced motion. Deployment must be checked against the committed source and a successful GitHub Pages deployment. Emulated layouts do not establish physical iPhone/iPad testing.
 
-## 31 October: intaglio and physical stock
-
-The user clarified that antique engraving and analog materiality—not gothic iconography—are the desired visual qualities. The cover plate is now an original engraved open folio/quill with irregular ruled edges, crosshatching, small dry-point bites and etching-like shadows. The paper stock is warm ivory with visible irregular fiber traces; ink is black-brown rather than digital black. The work images are mounted as subtle printed plates, with screened ink and restrained mounting lines. No external images or fonts, no moving-background texture and no loss of image color. Functional text, active links, native video and bilingual controls remain unchanged. Chrome: 37/37; offscreen WebKit: 27/27 on the local build. These are local verification results, not production/browser-universal claims.
-
-## 31 October: minimal cover correction
-
-Following review of the large quill-and-book illustration, the user requested its removal. The visible title leaf is therefore purely typographic, with no substitute hero image. Analog materiality remains in the warm stock, serif impression, restrained linework and product plates. The original engraving is archived, unreferenced by the runtime. The responsive cover height and entry link were rebalanced without increasing runtime dependencies.
-
-## 31 October: type is part of the physical print
-
-Ink treatment is contained inside letterforms rather than coating the page
-with uniform transparency. Very fine holes and streaks suggest paper fibres,
-less-inked areas and capillary absorption. Warm brown-black typography uses
-locally available old-style serif printing faces, with Songti for traditional
-Chinese. No blur, drop shadows, or blurry raster letters. At small sizes keep
-high-contrast solid ink. Preserve the bare, unillustrated cover.
+Original media provenance is retained in `ASSET_SOURCES.json`; font license/source provenance is in `assets/fonts/`. Material generator seeds are fixed. The old visual generators and illustrations are retained only as archive assets.

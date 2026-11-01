@@ -6,53 +6,30 @@ A static portfolio, published from the root of `main` by GitHub Pages.
 
 ## Live files
 
-- `index.html`: semantic cover, contents, work plates, correspondence, reader.
-- `folio.css`: the complete design system, including the warm engraved-paper edition; no previous stylesheets are loaded.
-- `folio.js`: bilingual labels, the reader, print-only color image treatment, restrained animation.
-- `assets/folio/`: original print textures, archived monochrome plates plus original owner-supplied screenshots, social preview, asset provenance.
+- `index.html`: title leaf, contents, actual work plates, correspondence, native image/video reader.
+- `folio.css`: one consolidated print design system, responsive layouts and accessibility fallbacks.
+- `folio.js`: Chinese/English interface, image reader, keyboard navigation and optional ink-pass animation.
+- `assets/fonts/`: self-hosted, renamed OFL font subsets; original licenses and pinned source provenance.
+- `assets/folio/paper.svg`, `letterpress-ink.svg`: original, deterministic neutral paper and pigment materials.
 
-No framework, package installation, API, account, analytics or external font service is required. All meaningful content, image fallbacks and contact links work without JavaScript. The selected language is optionally stored in local storage. Native dialog behavior provides Escape, focus containment, and focus restoration. All motion is optional; `prefers-reduced-motion` is respected. Product videos never autoplay. Original media is unchanged.
+The 1 November edition interprets the typography and material relationships in the user's reference title page. It does not reproduce its text, illustration, page composition or exact font. The title leaf remains free of decorative illustrations and promotional copy.
+
+No framework, external font service, analytics, autoplay, continuous animation or scroll handler is used. The page and image links remain usable without JavaScript. The chosen language is optionally stored in local storage. The reader uses a native dialog with Escape, focus containment and focus restoration. Product media stays in its original files, with restrained color print treatment in CSS.
+
+## Typography and materials
+
+The display face is a subset of Old Standard TT (`Folio Old Standard`), small capitals use IM FELL English SC (`Folio Fell`), and Chinese uses a static weight-400 subset of Noto Serif TC (`Folio Song`). All three are served locally as WOFF2 and preloaded. Modified font families are renamed, with complete original OFL notices retained. See `assets/fonts/README.md` and `provenance.json` for exact source versions, hashes and rebuilding.
+
+Regenerate materials with `python3 tools/make-print-materials.py`. Glyph pigment is clipped inside real selectable text; small controls remain solid ink. Paper texture is static. Forced colors, increased contrast and print restore solid text. Earlier `make-art.py`, `make-letterpress.py` and `render-plates.swift` generators belong to the archived visual editions; do not use them to regenerate the current materials.
 
 ## Adding work
 
-Add an article and contents entry to `index.html`, then a corresponding entry to the `projects` map in `folio.js`. Keep names in the works section, not in a cover slogan or fixed-count introduction. Update both language dictionaries for authored labels. New images require provenance and an unmodified original alongside any printed reproduction.
+Add a semantic article and contents link to `index.html`, then add its media to `projects` in `folio.js`. Keep explicit `lang="en"` on Latin work names. Add all interface text to both language dictionaries. Regenerate the font subsets after adding Chinese characters. New images need source provenance; never replace actual app screenshots with simulated UI.
 
-## Reproducing the assets
-
-`python3 tools/make-art.py` regenerates deterministic SVG paper/ink textures and icon, while preserving the separately authored `assets/folio/frontispiece.svg` (canonical). On macOS, `swift tools/render-plates.swift .` regenerates the printed reproductions from the original images in `assets/` and records their hashes. System fonts are referenced, never redistributed. The reference video itself and its third-party illustrations are not published.
+The separate `muzhu/` site, original app media and earlier presentation assets are not changed by this edition. Earlier root CSS/JS remain archived and are not loaded by the home page.
 
 ## Verification
 
-`node tests/folio-check.mjs .` starts an isolated local server and a separate headless Chrome profile, exercises both languages, layout widths, the reader, original media, keyboard navigation, reduced motion, no-JavaScript fallback, and saves screenshots and an inspectable report outside the published site. It does not activate the user's browser or touch its profile.
+`CHROME_PATH=/path/to/chrome node tests/folio-check.mjs .` starts a local server and isolated headless browser. It checks both languages, 320–1440px layouts, loaded fonts, focus and keyboard navigation, actual video playback, reduced motion, no-JavaScript fallbacks, print/forced-color text and missing assets. Screenshots and the report are written outside the published site. No user's browser profile is used.
 
-The separate `muzhu/` site and earlier presentation assets remain untouched. Earlier root CSS/JS are retained for rollback but are not loaded. Copyright remains with the respective owners; this publication does not grant an open-source license to the product artwork.
-
-Native WebKit smoke verification: `swift tests/webkit-check.swift .`. The checked-in `tests/acceptance.json` records 41 Chrome and 31 WebKit checks for this editorial print edition; it is a test record, not a guarantee of future compatibility.
-
-## Color print reproduction
-
-The live site displays only the soft-color printed treatment for both the thumbnail plates and the image viewer, with no original-view toggle. `folio.css` applies low-saturation, reduced-contrast grading and delicate screened-ink/paper overlays; the source files remain unchanged. The actual Paperie video also retains its colors and gains the same restrained print treatment without transcoding, autoplay, or blocking native playback controls. Archived monochrome render assets remain in `assets/folio/` for historical comparison but are no longer displayed. A future regenerated plate should preserve color; the archival `tools/render-plates.swift` generator produces the *old monochrome* plates, not the live presentation.
-
-## Printed folio design correction
-
-`assets/folio/frontispiece.svg` is a deterministic, archived original intaglio illustration (not shown on the title page) and dense analog linework. The running head, index, plate captions, contact folio, typography and margins form a single editorial system. The cover stays product-agnostic, and artwork is always fully visible even when animations are paused. Run the Chrome/WebKit acceptance suite for both languages and mobile sizes before publishing.
-
-## Antique engraving and analog materiality (31 October 2026)
-
-The home plate is an original hand-constructed folio-and-quill engraving: irregular rule lines, crosshatching, ink burr and plate-registration marks. The display is not a reused third-party illustration. Warm fiber paper and absorbed-ink textures are authored as local SVGs; work images retain color with print screening and a restrained plate rim. No external fonts, new libraries, tracking, extra runtime requests or perpetual animation were added. The tools/make-art.py generator deliberately leaves the canonical frontispiece unchanged. Verified with the existing 37-check headless Chrome and 27-check offscreen WebKit suites; no claims of physical-device testing.
-
-## Image-free title leaf (31 October 2026)
-
-The decorative folio-and-quill illustration was intentionally removed from the visible cover at the user's request. The first screen now uses only engraved serif typography, warm tactile paper, whitespace, and a minimal contents link. Work plates, physical ink reproduction and actual media remain unchanged. The former illustration is retained as an unused archive asset for reversible editing, and is not fetched by the page.
-
-## Letterpress type and absorbed ink
-
-The tools/make-letterpress.py generator deterministically draws the original
-microscopic pigment tile at assets/folio/letterpress-ink.svg.
-Baskerville/Iowan Old Style and Songti are local system-font stacks;
-no remote font, WebGL, canvas, blur, full-page overlay, or runtime image
-processing is needed. Only display-sized lettering receives pigment/fiber
-interruptions, while body copy stays sharp. Fallbacks keep solid text when
-background-clip or print backgrounds are unavailable; contrast and
-forced-colors modes remove decorative pigment. The previously removed
-cover illustration is not restored.
+`tests/acceptance.json` records the exact inputs and checks actually run for the current edition. Older Swift WebKit checks are retained as historical tooling, not evidence for the new edition. Browser emulation is not physical-device testing.

@@ -4,6 +4,7 @@
   const $$ = (s, root = document) => [...root.querySelectorAll(s)];
   const messages = {
     zh: {
+      portfolio:'作品集',navigation:'導覽',
       skip:'跳至目錄',contents:'目錄',contact:'聯絡',view:'檢視 ↗',support:'支援 ↗',appStore:'App Store ↗',
       writingFigure:'圖版 I · Writing',paperieFigure:'圖版 II · Paperie',
       openWriting:'檢視 Writing 圖版',openPaperie:'檢視 Paperie 圖版',
@@ -18,6 +19,7 @@
       paperCanvas:'紙張畫布',skyCanvas:'天空畫布',spaces:'Spaces',journal:'手帳跨頁',cover:'手帳封面'
     },
     en: {
+      portfolio:'Selected works',navigation:'Navigation',
       skip:'Skip to contents',contents:'Contents',contact:'Contact',view:'View ↗',support:'Support ↗',appStore:'App Store ↗',
       writingFigure:'Plate I · Writing',paperieFigure:'Plate II · Paperie',
       openWriting:'View the Writing plates',openPaperie:'View the Paperie plates',
