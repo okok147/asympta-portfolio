@@ -37,7 +37,7 @@ body {
   margin: 0;
   color: var(--ink);
   background-color: var(--paper);
-  background-image: url("assets/folio/paper-patina.svg"), url("assets/folio/security-weave.svg?v=20261101-3"), linear-gradient(#eae4d775, #eae4d775), url("assets/folio/cotton-stock.webp");
+  background-image: url("assets/folio/paper-patina.svg?v=20261101-4"), url("assets/folio/security-weave.svg?v=20261101-3"), linear-gradient(#eae4d775, #eae4d775), url("assets/folio/cotton-stock.webp");
   background-repeat: repeat;
   background-size: 1100px 1400px, 512px 512px, auto, 500px 500px;
   font: 17px/1.8 var(--serif);
@@ -110,7 +110,7 @@ html[lang="zh-Hant"] .cover-kind { font-family: var(--cjk); font-size: 16px; let
 .print-type, .index-name { color: var(--ink); font-synthesis: none; }
 @supports (background-clip: text) or (-webkit-background-clip: text) {
   .print-type, .index-name {
-    background: var(--ink) url("assets/folio/letterpress-ink.svg?v=20261101-3") repeat;
+    background: var(--ink) url("assets/folio/letterpress-ink.svg?v=20261101-4") repeat;
     background-size: 256px 256px;
     -webkit-background-clip: text;
     background-clip: text;
@@ -124,10 +124,11 @@ html[lang="zh-Hant"] .cover-kind { font-family: var(--cjk); font-size: 16px; let
 /* An index and two actual work plates, composed on the same page measure. */
 .leaf { width: calc(100% - 80px); max-width: var(--measure); margin: 0 auto; position: relative; scroll-margin-top: 30px; }
 .running-line { display: flex; align-items: center; justify-content: space-between; padding-top: 15px; border-top: 1px solid var(--line); font: 12px/1.5 var(--small); letter-spacing: .13em; }
-.contents { display: grid; grid-template-columns: 185px minmax(0, 1fr); gap: 0 42px; padding-top: 50px; padding-bottom: 138px; }
+.contents { display: grid; grid-template-columns: minmax(185px, max-content) minmax(0, 1fr); gap: 0 42px; padding-top: 50px; padding-bottom: 138px; }
 .contents .running-line { grid-column: 1 / -1; }
 .section-title { font: 400 43px/1.3 var(--serif); letter-spacing: .09em; }
-.contents .section-title { margin: 57px 0 0; }
+/* The paint box must contain the full translated word and its ink edge. */
+.contents .section-title { margin: 57px 0 0; padding-inline-end: .15em; }
 html[lang="zh-Hant"] .section-title { font-family: var(--cjk); letter-spacing: .2em; font-size: 34px; }
 .index-list { list-style: none; margin: 41px 0 0; padding: 0; }
 .index-list a { display: flex; align-items: baseline; gap: 19px; min-height: 76px; padding: 19px 0 17px; }
@@ -197,7 +198,7 @@ html[lang="zh-Hant"] .correspondence .section-title { font-size: 42px; text-inde
 #viewer {
   color: var(--ink);
   background-color: var(--paper);
-  background-image: url("assets/folio/paper-patina.svg"), url("assets/folio/security-weave.svg?v=20261101-3"), linear-gradient(#eae4d775, #eae4d775), url("assets/folio/cotton-stock.webp");
+  background-image: url("assets/folio/paper-patina.svg?v=20261101-4"), url("assets/folio/security-weave.svg?v=20261101-3"), linear-gradient(#eae4d775, #eae4d775), url("assets/folio/cotton-stock.webp");
   background-repeat: repeat;
   background-size: 1100px 1400px, 512px 512px, auto, 500px 500px;
   width: min(1100px, calc(100vw - 48px));
@@ -237,7 +238,7 @@ body.has-viewer { overflow: hidden; }
 
 @media (max-width: 900px) {
   .title-page h1 { font-size: clamp(53px, 9vw, 82px); }
-  .contents { grid-template-columns: 145px minmax(0, 1fr); gap: 0 28px; }
+  .contents { grid-template-columns: minmax(145px, max-content) minmax(0, 1fr); gap: 0 28px; }
   .work-heading { padding-top: 58px; }
   .writing-plate { width: min(76%, 490px); margin-left: 35px; }
   .paperie-plate { width: calc(100% - 20px); }

@@ -96,6 +96,24 @@ try{
       check(`${lang} layout at ${width}px`,layout.scroll<=layout.viewport+1,layout);
     }
   }
+  const contentsMeasurements=[];
+  await language('en');
+  for(const width of [601,768,900,1024,1440]){
+    await page.setViewportSize({width,height:1000});
+    contentsMeasurements.push(await page.evaluate(async()=>{
+      await document.fonts.ready;
+      const heading=document.querySelector('#contents-title'),box=heading.getBoundingClientRect(),style=getComputedStyle(heading);
+      const range=document.createRange();range.selectNodeContents(heading);
+      const word=range.getBoundingClientRect(),list=document.querySelector('.index-list').getBoundingClientRect();
+      const paintLeft=box.left+(parseFloat(style.borderLeftWidth)||0),paintRight=box.right-(parseFloat(style.borderRightWidth)||0);
+      const leftClearance=word.left-paintLeft,rightClearance=paintRight-word.right,indexClearance=list.left-Math.max(box.right,word.right);
+      return {viewport:innerWidth,text:heading.textContent.trim(),wordWidth:word.width,paintWidth:paintRight-paintLeft,leftClearance,rightClearance,indexClearance,lineCount:range.getClientRects().length,scrollWidth:document.documentElement.scrollWidth,
+        fits:heading.textContent.trim()==='Contents'&&word.width>0&&range.getClientRects().length===1&&leftClearance>=-.5&&rightClearance>=-.5&&indexClearance>=-.5&&document.documentElement.scrollWidth<=innerWidth+1};
+    }));
+  }
+  check('English Contents fits its paint box without index overlap or page overflow',contentsMeasurements.every(row=>row.fits),contentsMeasurements);
+  await settle();await page.locator('#contents').screenshot({path:path.join(output,'contents-desktop-en.png')});
+  await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
   await capture('02-desktop-en');
   await page.setViewportSize({width:390,height:844});
   await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));

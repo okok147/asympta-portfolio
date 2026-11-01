@@ -86,45 +86,13 @@ for index in range(90):
     )
     wrapped(mark, x, y, radius * 2.2, radius * 2.2)
 
-# Fine irregular abrasion: pale, short, intermittent tracks, never scratches
-# across a complete page. These read as softened fibres at normal viewing size.
-for index in range(78):
-    x, y = rng.uniform(0, WIDTH), rng.uniform(0, HEIGHT)
-    length, rise = rng.uniform(3, 21), rng.uniform(-4, 4)
-    opacity = rng.uniform(.09, .23)
-    path = (f'M {n(x)} {n(y)} q {n(length*.43)} {n(rise-rng.uniform(.4,1.6))} '
-            f'{n(length)} {n(rise)}')
-    mark = (f'<path d="{path}" fill="none" stroke="#fffff5" '
-            f'stroke-width="{n(rng.uniform(.35,.85))}" stroke-linecap="round" opacity="{n(opacity)}"/>')
-    wrapped(mark, x, y, length + 2, abs(rise) + 2)
-
-# Faint paired pressure traces have faded ends; no hard fold lines or creases.
-for index, (x, y, length, rise) in enumerate([
-    (98, 575, 175, -11), (720, 157, 150, 8), (505, 1184, 195, -7),
-    (1000, 925, 155, 12), (302, 863, 122, -6),
-]):
-    ident = f'pressure-{index}'
-    defs.append(
-        f'<linearGradient id="{ident}" x1="0" x2="1" y1="0" y2="0">'
-        '<stop offset="0" stop-color="#8b7e63" stop-opacity="0"/>'
-        '<stop offset=".4" stop-color="#8b7e63" stop-opacity=".047"/>'
-        '<stop offset=".66" stop-color="#8b7e63" stop-opacity=".023"/>'
-        '<stop offset="1" stop-color="#8b7e63" stop-opacity="0"/>'
-        '</linearGradient>'
-    )
-    path = f'M {x} {y} q {n(length*.45)} {n(rise*1.6)} {length} {rise}'
-    mark = (f'<path d="{path}" fill="none" stroke="url(#{ident})" stroke-width=".65"/>'
-            f'<path d="{path}" transform="translate(0 .8)" fill="none" '
-            'stroke="#fffef5" stroke-width=".7" opacity=".055"/>')
-    wrapped(mark, x, y, length + 3, abs(rise) * 2 + 3)
-
 svg = (
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" '
     f'viewBox="0 0 {WIDTH} {HEIGHT}" fill="none">\n'
     '<title>Subtle paper patina</title>\n'
-    '<desc>Deterministic uneven ivory oxidation, faint foxing, pale abrasion, '
-    'and handling traces. Transparent, static vector artwork; no filter or animation.</desc>\n'
-    '<defs>\n' + '\n'.join(defs) + '\n</defs>\n' + '\n'.join(shapes) + '\n</svg>\n'
+    '<desc>Quiet uneven ivory tone and minute foxing. Transparent, static '
+    'vector artwork; no drawn scratches, filter or animation.</desc>\n'
+    '<defs>\n' + '\n'.join(defs) + '\n</defs>\n<g opacity=".38">\n' + '\n'.join(shapes) + '\n</g>\n</svg>\n'
 )
 OUT.write_text(svg, encoding="utf-8")
 print(f"{OUT.name}: {OUT.stat().st_size:,} bytes")

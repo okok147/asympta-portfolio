@@ -1,22 +1,22 @@
 {
-  "revision": "aged-ink-paper-patina-2026-11-01",
-  "base_commit": "cd1d723c44bcb048ea64879988540ff6f44d1760",
+  "revision": "natural-ink-complete-contents-2026-11-01",
+  "base_commit": "6f2ef0eb77a09eecd44152ee52e0c2d0ae4c967d",
   "status": "local-acceptance-passed",
   "source_sha256": {
-    "index.html": "484121b5412ce947c82e37167d37f87c48e727bf0395e99f9869b7709d905179",
-    "folio.css": "61fb1951363143ea3d801560488306efa5e67e721a49a9b0a4b6168a7eb09557",
+    "index.html": "134056f65e980aaa7d33320c77fc22ced4fc984b2aced344df08c6a227ddbab2",
+    "folio.css": "1160d396429746519a321f6533cacadd949399a44bd475549253fe63ea7dd9ec",
     "folio.js": "2aaa8e41e86dca2e6e49b8b1ecff8afc559d9b9fde66e7b2ed9ac6de01b4a8e8",
     "assets/folio/cotton-stock.webp": "cb458d5f86ca495659e65ec6475d9d02c5970be959d58a225f2c4e05661ee3ae",
     "assets/folio/security-weave.svg": "c7aa5416d75ab2846572eba9bf29a8d570dfe4dec560c7512e4b171d39d610d7",
-    "assets/folio/paper-patina.svg": "2d961de2d8accc3f4fd110569b712db933b03bbd00e5d51d789276ad5ca227ed",
-    "assets/folio/letterpress-ink.svg": "76b18f89d444de8f995b5aa5566b19fa5730a6e8f9634484db930a219c231a9a",
+    "assets/folio/paper-patina.svg": "c423796815f90d8426491e8469339d51ecd41c17c3374cde77a84b8e83cf7e7c",
+    "assets/folio/letterpress-ink.svg": "8ae7224a568c9888573a5781ac8b072e977bc902df22523d3dd84df8b6287f9b",
     "assets/fonts/old-standard-regular.woff2": "2b46a1a10dfb166d5c35c5b5610726117da0f6556f2c2cad37a1397d2f38ba0c",
     "assets/fonts/fell-english-sc.woff2": "4f36d463787a70dcc25419f271d45fe0fdfcf0409164852c6a7e0dbb83e18a32",
     "assets/fonts/noto-serif-tc-regular.woff2": "b813a94643bbeea215ae56e2b368964de3639c09f839059bbafe6ccd38616c4c"
   },
   "test_suite_sha256": {
-    "tests/folio-check.mjs": "dfc4517672d690166c0a513657860e420ac36531545617f52a242fe598d8498b",
-    "tests/webkit-print-check.mjs": "89b8eedf48652656307fba1e127de3cdb0acf513dd0ac7407e5b8b3133cae910"
+    "tests/folio-check.mjs": "57b8bf082abde8bb5c39a3d4a708d7c5eed37099fe048cc45eaaab1f76180478",
+    "tests/webkit-print-check.mjs": "c1bf011050a6d453911d41b31cbf57dec8a09efaa0335b5c266bc20c06f587ec"
   },
   "chrome": {
     "browser": "Headless Google Chrome / isolated profile",
@@ -27,8 +27,8 @@
       "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
       "jsVersion": "15.6.75.27"
     },
-    "verified_at": "2026-11-01T03:10:56.444Z",
-    "passed": 46,
+    "verified_at": "2026-11-01T03:35:55.163Z",
+    "passed": 47,
     "failed": 0,
     "checks": [
       {
@@ -218,6 +218,72 @@
         "pass": true
       },
       {
+        "name": "English Contents fits its paint box without index overlap or page overflow",
+        "pass": true,
+        "details": [
+          {
+            "viewport": 601,
+            "text": "Contents",
+            "wordWidth": 196.09375,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.4375,
+            "indexClearance": 28,
+            "lineCount": 1,
+            "scrollWidth": 586,
+            "fits": true
+          },
+          {
+            "viewport": 768,
+            "text": "Contents",
+            "wordWidth": 196.09375,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.4375,
+            "indexClearance": 28,
+            "lineCount": 1,
+            "scrollWidth": 753,
+            "fits": true
+          },
+          {
+            "viewport": 900,
+            "text": "Contents",
+            "wordWidth": 196.09375,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.4375,
+            "indexClearance": 28,
+            "lineCount": 1,
+            "scrollWidth": 885,
+            "fits": true
+          },
+          {
+            "viewport": 1024,
+            "text": "Contents",
+            "wordWidth": 196.09375,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.4375,
+            "indexClearance": 42,
+            "lineCount": 1,
+            "scrollWidth": 1009,
+            "fits": true
+          },
+          {
+            "viewport": 1440,
+            "text": "Contents",
+            "wordWidth": 196.09375,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.4375,
+            "indexClearance": 42,
+            "lineCount": 1,
+            "scrollWidth": 1425,
+            "fits": true
+          }
+        ]
+      },
+      {
         "name": "Native modal opens with close focus",
         "pass": true
       },
@@ -253,7 +319,7 @@
         "name": "Actual video decodes and plays",
         "pass": true,
         "details": {
-          "time": 0.6562,
+          "time": 0.6532,
           "width": 1080,
           "paused": false
         }
@@ -285,11 +351,6 @@
         "details": {
           "responses": [
             {
-              "url": "/assets/fonts/old-standard-regular.woff2",
-              "status": 200,
-              "mimeType": "font/woff2"
-            },
-            {
               "url": "/assets/fonts/noto-serif-tc-regular.woff2",
               "status": 200,
               "mimeType": "font/woff2"
@@ -305,12 +366,17 @@
               "mimeType": "font/woff2"
             },
             {
-              "url": "/assets/fonts/noto-serif-tc-regular.woff2",
+              "url": "/assets/fonts/old-standard-regular.woff2",
               "status": 200,
               "mimeType": "font/woff2"
             },
             {
               "url": "/assets/fonts/fell-english-sc.woff2",
+              "status": 200,
+              "mimeType": "font/woff2"
+            },
+            {
+              "url": "/assets/fonts/noto-serif-tc-regular.woff2",
               "status": 200,
               "mimeType": "font/woff2"
             },
@@ -351,8 +417,8 @@
   "webkit": {
     "browser": "Playwright WebKit / isolated profile",
     "browser_version": "26.5",
-    "verified_at": "2026-11-01T03:11:07.085Z",
-    "passed": 24,
+    "verified_at": "2026-11-01T03:36:05.875Z",
+    "passed": 25,
     "failed": 0,
     "checks": [
       {
@@ -427,9 +493,9 @@
         "details": {
           "name": "desktop",
           "filter": "url(\"#ink-impression\")",
-          "enabled": "c239b29f38c00d02bf929fa6fb65381e9847e50a34dbde94abdf08b611b249b0",
-          "disabled": "4af175806b3d6a6db8fd8874f9e74e9e375b916098b5f1b3b886028fe066de3d",
-          "restored": "c239b29f38c00d02bf929fa6fb65381e9847e50a34dbde94abdf08b611b249b0",
+          "enabled": "6b04e88409e9563961a6312083fd8dd92ddf4d90e74acfcede77b2355362af06",
+          "disabled": "413dcd5f51059546ba740bd5298c548d9e2ed70ed0330db6f082d85dbd40aec4",
+          "restored": "6b04e88409e9563961a6312083fd8dd92ddf4d90e74acfcede77b2355362af06",
           "changed": true,
           "stable": true
         }
@@ -483,14 +549,80 @@
         }
       },
       {
+        "name": "English Contents fits its paint box without index overlap or page overflow",
+        "pass": true,
+        "details": [
+          {
+            "viewport": 601,
+            "text": "Contents",
+            "wordWidth": 196.0798797607422,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.4513702392578125,
+            "indexClearance": 28,
+            "lineCount": 1,
+            "scrollWidth": 601,
+            "fits": true
+          },
+          {
+            "viewport": 768,
+            "text": "Contents",
+            "wordWidth": 196.0798797607422,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.4513702392578125,
+            "indexClearance": 28,
+            "lineCount": 1,
+            "scrollWidth": 768,
+            "fits": true
+          },
+          {
+            "viewport": 900,
+            "text": "Contents",
+            "wordWidth": 196.0798797607422,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.4513702392578125,
+            "indexClearance": 28,
+            "lineCount": 1,
+            "scrollWidth": 900,
+            "fits": true
+          },
+          {
+            "viewport": 1024,
+            "text": "Contents",
+            "wordWidth": 196.07989501953125,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.45135498046875,
+            "indexClearance": 42,
+            "lineCount": 1,
+            "scrollWidth": 1024,
+            "fits": true
+          },
+          {
+            "viewport": 1440,
+            "text": "Contents",
+            "wordWidth": 196.07989501953125,
+            "paintWidth": 202.53125,
+            "leftClearance": 0,
+            "rightClearance": 6.45135498046875,
+            "indexClearance": 42,
+            "lineCount": 1,
+            "scrollWidth": 1440,
+            "fits": true
+          }
+        ]
+      },
+      {
         "name": "mobile filter changes the actual rendered heading and restores deterministically",
         "pass": true,
         "details": {
           "name": "mobile",
           "filter": "url(\"#ink-impression-small\")",
-          "enabled": "0337e636813fd6f2678717c88974ddd7d1b10572058609e75f0bac23c3a2d82c",
-          "disabled": "cac73f8dff219b6ff2b559534a698c263d650999cbff2b8a45cff2340b40ff89",
-          "restored": "0337e636813fd6f2678717c88974ddd7d1b10572058609e75f0bac23c3a2d82c",
+          "enabled": "a1bc22993d4f0b5f991306008e9634f750670540ddf2b5fdebfc39380f978f3a",
+          "disabled": "e4fdf88fe92a4aa00d6e0b61266903004c5fda5662a26b4076cc27debd2c1d6c",
+          "restored": "a1bc22993d4f0b5f991306008e9634f750670540ddf2b5fdebfc39380f978f3a",
           "changed": true,
           "stable": true
         }
@@ -546,18 +678,18 @@
       {
         "name": "desktop",
         "filter": "url(\"#ink-impression\")",
-        "enabled": "c239b29f38c00d02bf929fa6fb65381e9847e50a34dbde94abdf08b611b249b0",
-        "disabled": "4af175806b3d6a6db8fd8874f9e74e9e375b916098b5f1b3b886028fe066de3d",
-        "restored": "c239b29f38c00d02bf929fa6fb65381e9847e50a34dbde94abdf08b611b249b0",
+        "enabled": "6b04e88409e9563961a6312083fd8dd92ddf4d90e74acfcede77b2355362af06",
+        "disabled": "413dcd5f51059546ba740bd5298c548d9e2ed70ed0330db6f082d85dbd40aec4",
+        "restored": "6b04e88409e9563961a6312083fd8dd92ddf4d90e74acfcede77b2355362af06",
         "changed": true,
         "stable": true
       },
       {
         "name": "mobile",
         "filter": "url(\"#ink-impression-small\")",
-        "enabled": "0337e636813fd6f2678717c88974ddd7d1b10572058609e75f0bac23c3a2d82c",
-        "disabled": "cac73f8dff219b6ff2b559534a698c263d650999cbff2b8a45cff2340b40ff89",
-        "restored": "0337e636813fd6f2678717c88974ddd7d1b10572058609e75f0bac23c3a2d82c",
+        "enabled": "a1bc22993d4f0b5f991306008e9634f750670540ddf2b5fdebfc39380f978f3a",
+        "disabled": "e4fdf88fe92a4aa00d6e0b61266903004c5fda5662a26b4076cc27debd2c1d6c",
+        "restored": "a1bc22993d4f0b5f991306008e9634f750670540ddf2b5fdebfc39380f978f3a",
         "changed": true,
         "stable": true
       }
@@ -569,10 +701,49 @@
     ]
   },
   "visual_review": {
-    "normal_scale_desktop": "Reviewed the English title leaf against the previous edition: warm charcoal with visible uneven fading; intact printed letterforms.",
-    "mobile_390px": "Reviewed the Chinese title leaf: readable title, labels and navigation, without clipping.",
-    "paper": "Old ivory cotton surface with restrained oxidation and handling traces; no conspicuous stains or burned borders.",
-    "ink": "Local rubbed patches, surviving dark pigment and shallow abrasion; small controls retain solid ink."
+    "normal_scale_desktop": "Reviewed final title leaf against previous edition: whole warm-charcoal strokes, quiet pigment variation, no conspicuous pale abrasion bands.",
+    "mobile_390px": "Reviewed Chinese and English cover renderings: readable typography and preserved print hierarchy.",
+    "paper": "Cotton fibers retained; added patina reduced to 38%, with explicit scratches and pressure traces removed.",
+    "ink": "Nearby charcoal tones, diffuse low-contrast pigment variation and sparse fine pores; explicit abrasion removed.",
+    "contents": "Full final s visible in actual Chromium and WebKit screenshots at 1440px and 768px. Intrinsic tracks allow approximately 196.09px of text in a 202.53px paint box.",
+    "contents_measurements": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "headingWidth": 202.53125,
+        "textWidth": 196.09375,
+        "remaining": 6.4375,
+        "pageOverflow": -15,
+        "filter": "url(\"#ink-impression-small\")"
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "headingWidth": 202.53125,
+        "textWidth": 196.09375,
+        "remaining": 6.4375,
+        "pageOverflow": -15,
+        "filter": "url(\"#ink-impression-small\")"
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "headingWidth": 202.53125,
+        "textWidth": 196.07989501953125,
+        "remaining": 6.45135498046875,
+        "pageOverflow": 0,
+        "filter": "url(\"#ink-impression-small\")"
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "headingWidth": 202.53125,
+        "textWidth": 196.0798797607422,
+        "remaining": 6.4513702392578125,
+        "pageOverflow": 0,
+        "filter": "url(\"#ink-impression-small\")"
+      }
+    ]
   },
   "physical_device": {
     "status": "not-run",

@@ -98,6 +98,23 @@ try{
   }
   check(lang+' all authored labels present',await evaluate("[...document.querySelectorAll('[data-i18n]')].every(e=>!!e.textContent.trim())&&[...document.querySelectorAll('[data-i18n-aria]')].every(e=>!!e.getAttribute('aria-label'))"));
  }
+ const contentsMeasurements=[];
+ await language('en');
+ for(const width of [601,768,900,1024,1440]){
+  await dimensions(width,1000);
+  contentsMeasurements.push(await evaluate(`(async()=>{
+   await document.fonts.ready;
+   const heading=document.querySelector('#contents-title'),box=heading.getBoundingClientRect(),style=getComputedStyle(heading);
+   const range=document.createRange();range.selectNodeContents(heading);
+   const word=range.getBoundingClientRect(),list=document.querySelector('.index-list').getBoundingClientRect();
+   const paintLeft=box.left+(parseFloat(style.borderLeftWidth)||0),paintRight=box.right-(parseFloat(style.borderRightWidth)||0);
+   const leftClearance=word.left-paintLeft,rightClearance=paintRight-word.right,indexClearance=list.left-Math.max(box.right,word.right);
+   return {viewport:innerWidth,text:heading.textContent.trim(),wordWidth:word.width,paintWidth:paintRight-paintLeft,leftClearance,rightClearance,indexClearance,lineCount:range.getClientRects().length,scrollWidth:document.documentElement.scrollWidth,
+    fits:heading.textContent.trim()==='Contents'&&word.width>0&&range.getClientRects().length===1&&leftClearance>=-.5&&rightClearance>=-.5&&indexClearance>=-.5&&document.documentElement.scrollWidth<=innerWidth+1};
+  })()`));
+ }
+ check('English Contents fits its paint box without index overlap or page overflow',contentsMeasurements.every(row=>row.fits),contentsMeasurements);
+ await evaluate("document.querySelector('#contents').scrollIntoView({behavior:'instant',block:'start'})");await screenshot('10-contents-en');
  await dimensions(1440,1000);await language('en');await evaluate("scrollTo({top:0,behavior:'instant'})");await screenshot('02-cover-en');
  await screenshot('03-full-en',true);
  await dimensions(390,844);await screenshot('04-mobile-en');

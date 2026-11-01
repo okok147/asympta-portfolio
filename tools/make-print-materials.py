@@ -75,59 +75,49 @@ def paper():
 def ink():
     r = Random(192011126)
     size = 256
-    p = begin(size, '#575448')
-    p.append('<defs><radialGradient id="pigment"><stop stop-color="#b9ad93"/><stop offset="1" stop-color="#b9ad93" stop-opacity="0"/></radialGradient><radialGradient id="dense"><stop stop-color="#292b24"/><stop offset="1" stop-color="#292b24" stop-opacity="0"/></radialGradient><radialGradient id="faded"><stop stop-color="#d2c7ad"/><stop offset=".45" stop-color="#bbb096" stop-opacity=".7"/><stop offset="1" stop-color="#bbb096" stop-opacity="0"/></radialGradient></defs>')
-    # Uneven pigment survival: broad rubbed areas sit beneath finer paper
-    # pores. This is localized fading, not uniform transparency on the text.
-    for _ in range(38):
+    p = begin(size, '#4c4a42')
+    p.append('<defs><radialGradient id="pigment"><stop stop-color="#8b877b"/><stop offset="1" stop-color="#8b877b" stop-opacity="0"/></radialGradient><radialGradient id="dense"><stop stop-color="#30312b"/><stop offset="1" stop-color="#30312b" stop-opacity="0"/></radialGradient><radialGradient id="faded"><stop stop-color="#8a867a"/><stop offset=".45" stop-color="#817d72" stop-opacity=".6"/><stop offset="1" stop-color="#817d72" stop-opacity="0"/></radialGradient></defs>')
+    # Quiet differences in pigment density. Nearby ink tones and diffuse
+    # fields preserve whole strokes; age is not drawn as pale damage bands.
+    for _ in range(24):
         x, y = r.uniform(0, size), r.uniform(0, size)
         rx, ry = r.uniform(13, 37), r.uniform(5, 19)
-        opacity = r.uniform(.24, .45)
+        opacity = r.uniform(.055, .11)
         for u, v in wrapped(x, y, rx, ry, size):
             p.append(f'<ellipse cx="{u:.1f}" cy="{v:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#faded)" opacity="{opacity:.3f}"/>')
-    for _ in range(170):
+    for _ in range(150):
         x, y = r.uniform(0, size), r.uniform(0, size)
-        rx, ry = r.uniform(2.5, 10.3), r.uniform(1.1, 6.7)
-        opacity = r.uniform(.22, .47)
+        rx, ry = r.uniform(1.8, 7.2), r.uniform(1.1, 5.4)
+        opacity = r.uniform(.07, .16)
         for u, v in wrapped(x, y, rx, ry, size):
             p.append(f'<ellipse cx="{u:.1f}" cy="{v:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#pigment)" opacity="{opacity:.3f}"/>')
     for _ in range(85):
         x, y = r.uniform(0, size), r.uniform(0, size)
         rx, ry = r.uniform(1.4, 5.5), r.uniform(.7, 3.6)
         for u, v in wrapped(x, y, rx, ry, size):
-            p.append(f'<ellipse cx="{u:.1f}" cy="{v:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#dense)" opacity=".35"/>')
-    for group in range(6):
+            p.append(f'<ellipse cx="{u:.1f}" cy="{v:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#dense)" opacity=".19"/>')
+    for group in range(4):
         paths = []
-        for _ in range(38):
+        for _ in range(30):
             x, y, a = r.uniform(0, size), r.uniform(0, size), r.uniform(0, 2 * pi)
-            length = r.uniform(.7, 3.5)
+            length = r.uniform(.4, 1.8)
             dx, dy = cos(a) * length, sin(a) * length
             for u, v in wrapped(x, y, length, length, size):
                 paths.append(f'M{u:.2f} {v:.2f}l{dx:.2f} {dy:.2f}')
-        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#e6ddca" stroke-width="{.23 + group * .03:.3f}" stroke-linecap="round" opacity="{.26 + group * .047:.3f}"/>')
+        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#b2ad9d" stroke-width="{.17 + group * .025:.3f}" stroke-linecap="round" opacity="{.11 + group * .025:.3f}"/>')
     for group in range(5):
-        p.append(f'<g fill="#e9e1d1" opacity="{.24 + group * .055:.3f}">')
-        for _ in range(78):
-            x, y, radius = r.uniform(0, size), r.uniform(0, size), r.uniform(.18, .64)
+        p.append(f'<g fill="#c4bead" opacity="{.12 + group * .025:.3f}">')
+        for _ in range(54):
+            x, y, radius = r.uniform(0, size), r.uniform(0, size), r.uniform(.12, .34)
             for u, v in wrapped(x, y, radius, radius, size):
                 p.append(f'<circle cx="{u:.2f}" cy="{v:.2f}" r="{radius:.2f}"/>')
         p.append('</g>')
-    p.append('<g fill="#12120f" opacity=".22">')
+    p.append('<g fill="#292a24" opacity=".14">')
     for _ in range(95):
         x, y, radius = r.uniform(0, size), r.uniform(0, size), r.uniform(.15, .4)
         for u, v in wrapped(x, y, radius, radius, size):
             p.append(f'<circle cx="{u:.2f}" cy="{v:.2f}" r="{radius:.2f}"/>')
     p.append('</g>')
-    # Short, shallow abrasion traces: enough to interrupt ink, never to
-    # remove a complete stem. Most marks fall outside each clipped glyph.
-    for group in range(3):
-        paths = []
-        for _ in range(36):
-            x, y = r.uniform(0,size), r.uniform(0,size)
-            dx, dy = r.uniform(1.4, 6.8), r.uniform(-.6,.6)
-            for u, v in wrapped(x, y, dx+1, abs(dy)+1, size):
-                paths.append(f'M{u:.2f} {v:.2f}q{dx*.45:.2f} {dy+.35:.2f} {dx:.2f} {dy:.2f}')
-        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#eae4d7" stroke-width="{.25+group*.15:.2f}" opacity="{.19+group*.08:.2f}" stroke-linecap="round"/>')
     finish(p, 'letterpress-ink.svg')
 
 
