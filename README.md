@@ -12,6 +12,7 @@ A static portfolio, published from the root of `main` by GitHub Pages.
 - `assets/fonts/`: self-hosted, renamed OFL font subsets; original licenses and pinned source provenance.
 - `assets/folio/cotton-stock.webp`: generated cotton/linen paper material, with prompt and provenance in `cotton-stock-source.json`.
 - `assets/folio/security-weave.svg`, `letterpress-ink.svg`: original deterministic engraved underprint and pigment materials.
+- `assets/folio/paper-patina.svg`: original deterministic oxidation, foxing and handling traces, repeated over the cotton stock.
 
 The 1 November edition interprets the typography and material relationships in the user's reference title page. It does not reproduce its text, illustration, page composition or exact font. The title leaf remains free of decorative illustrations and promotional copy.
 
@@ -21,9 +22,9 @@ No framework, external font service, analytics, autoplay, continuous animation o
 
 The display face is a subset of Old Standard TT (`Folio Old Standard`), small capitals use IM FELL English SC (`Folio Fell`), and Chinese uses a static weight-400 subset of Noto Serif TC (`Folio Song`). All three are served locally as WOFF2 and preloaded. Modified font families are renamed, with complete original OFL notices retained. See `assets/fonts/README.md` and `provenance.json` for exact source versions, hashes and rebuilding.
 
-Regenerate the vector ink and weave with `python3 tools/make-print-materials.py`. The generated bitmap has its own source record and is not overwritten by that script. The paper uses a 500px repeating cotton tile, a neutral 35% tonal wash and a faint static engraved weave. These layers cover the page and reader without a full-page filter or animation.
+Regenerate the vector ink and weave with `python3 tools/make-print-materials.py`, and the paper's age marks with `python3 tools/make-paper-patina.py`. Both generators use fixed seeds. The generated cotton bitmap has its own source record and is not overwritten by either script. The current paper combines a 500px repeating cotton tile, a warm ivory 46% tonal wash, a faded static engraved weave and a transparent 1100 × 1400px patina layer. Soft oxidation, fine foxing and faint handling traces vary at different scales; wrapped vector marks avoid a hard repeat boundary. These layers cover the page and reader without a full-page filter or animation.
 
-Large headings use an inline SVG impression filter: fixed-seed paper-tooth displacement, a thin capillary ink spread and shallow paper-edge relief. The mobile version is gentler. Ink-density variation is visible inside real selectable text; small controls remain unfiltered. Forced colors, increased contrast and print remove all decorative filters and background images. Earlier `paper.svg`, `make-art.py`, `make-letterpress.py` and `render-plates.swift` are archived visual assets/tools, not the current paper treatment.
+Large headings use an inline SVG impression filter: fixed-seed paper-tooth displacement, a thin capillary ink spread and shallow paper-edge relief. The mobile version is gentler. The 256px pigment tile combines surviving dark deposits, broad faded patches, fine pores and shallow abrasion. Fading is local within the strokes, rather than a uniform reduction in text opacity. This variation remains visible inside real selectable text; small controls remain unfiltered and retain solid ink. Forced colors, increased contrast and print remove all decorative filters and background images. Earlier `paper.svg`, `make-art.py`, `make-letterpress.py` and `render-plates.swift` are archived visual assets/tools, not the current paper treatment.
 
 ## Adding work
 

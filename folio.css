@@ -22,10 +22,10 @@
 }
 :root {
   color-scheme: light;
-  --paper: #eeede7;
-  --ink: #302f2b;
-  --muted: #66655d;
-  --line: #a8a69a;
+  --paper: #eae4d7;
+  --ink: #4d473d;
+  --muted: #6d6557;
+  --line: #aaa18f;
   --serif: "Folio Old Standard", "Baskerville", "Times New Roman", serif;
   --small: "Folio Fell", "Folio Old Standard", "Baskerville", serif;
   --cjk: "Folio Song", "Songti TC", "Noto Serif CJK TC", "PMingLiU", serif;
@@ -37,9 +37,9 @@ body {
   margin: 0;
   color: var(--ink);
   background-color: var(--paper);
-  background-image: url("assets/folio/security-weave.svg"), linear-gradient(#eeede759, #eeede759), url("assets/folio/cotton-stock.webp");
+  background-image: url("assets/folio/paper-patina.svg"), url("assets/folio/security-weave.svg?v=20261101-3"), linear-gradient(#eae4d775, #eae4d775), url("assets/folio/cotton-stock.webp");
   background-repeat: repeat;
-  background-size: 512px 512px, auto, 500px 500px;
+  background-size: 1100px 1400px, 512px 512px, auto, 500px 500px;
   font: 17px/1.8 var(--serif);
   font-kerning: normal;
   font-optical-sizing: auto;
@@ -110,8 +110,8 @@ html[lang="zh-Hant"] .cover-kind { font-family: var(--cjk); font-size: 16px; let
 .print-type, .index-name { color: var(--ink); font-synthesis: none; }
 @supports (background-clip: text) or (-webkit-background-clip: text) {
   .print-type, .index-name {
-    background: var(--ink) url("assets/folio/letterpress-ink.svg?v=20261101-2") repeat;
-    background-size: 160px 160px;
+    background: var(--ink) url("assets/folio/letterpress-ink.svg?v=20261101-3") repeat;
+    background-size: 256px 256px;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -197,9 +197,9 @@ html[lang="zh-Hant"] .correspondence .section-title { font-size: 42px; text-inde
 #viewer {
   color: var(--ink);
   background-color: var(--paper);
-  background-image: url("assets/folio/security-weave.svg"), linear-gradient(#eeede759, #eeede759), url("assets/folio/cotton-stock.webp");
+  background-image: url("assets/folio/paper-patina.svg"), url("assets/folio/security-weave.svg?v=20261101-3"), linear-gradient(#eae4d775, #eae4d775), url("assets/folio/cotton-stock.webp");
   background-repeat: repeat;
-  background-size: 512px 512px, auto, 500px 500px;
+  background-size: 1100px 1400px, 512px 512px, auto, 500px 500px;
   width: min(1100px, calc(100vw - 48px));
   height: calc(100dvh - 48px);
   max-width: none;
@@ -209,7 +209,7 @@ html[lang="zh-Hant"] .correspondence .section-title { font-size: 42px; text-inde
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
 }
-#viewer::backdrop { background: #eeede7ed; }
+#viewer::backdrop { background: #eae4d7ed; }
 .viewer-sheet { min-height: 100%; padding: 0 45px 25px; }
 .viewer-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 70px; border-bottom: 1px solid var(--line); font: 13px/1.5 var(--small); letter-spacing: .12em; }
 .viewer-head > div { display: flex; align-items: center; gap: 21px; }

@@ -6,7 +6,7 @@ import os from 'node:os';
 import {spawn} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const root=path.resolve(process.argv[2]||'.');
-const verifiedFiles=['index.html','folio.css','folio.js','assets/folio/cotton-stock.webp','assets/folio/security-weave.svg','assets/folio/letterpress-ink.svg','assets/fonts/old-standard-regular.woff2','assets/fonts/fell-english-sc.woff2','assets/fonts/noto-serif-tc-regular.woff2'];
+const verifiedFiles=['index.html','folio.css','folio.js','assets/folio/cotton-stock.webp','assets/folio/security-weave.svg','assets/folio/paper-patina.svg','assets/folio/letterpress-ink.svg','assets/fonts/old-standard-regular.woff2','assets/fonts/fell-english-sc.woff2','assets/fonts/noto-serif-tc-regular.woff2'];
 async function sourceSnapshot(){return Object.fromEntries(await Promise.all(verifiedFiles.map(async file=>[file,createHash('sha256').update(await fs.readFile(path.join(root,file))).digest('hex')])));}
 const sourceHashes=await sourceSnapshot();
 const output=await fs.mkdtemp(path.join(os.tmpdir(),'asympta-folio-proof-'));

@@ -74,18 +74,24 @@ def paper():
 
 def ink():
     r = Random(192011126)
-    size = 160
-    p = begin(size, '#30312c')
-    p.append('<defs><radialGradient id="pigment"><stop stop-color="#a2a08c"/><stop offset="1" stop-color="#a2a08c" stop-opacity="0"/></radialGradient><radialGradient id="dense"><stop stop-color="#0d100c"/><stop offset="1" stop-color="#0d100c" stop-opacity="0"/></radialGradient></defs>')
-    # Visible ink-density variation at a 2–6px scale, rather than a nearly
-    # solid vector fill with microscopic holes detectable only when enlarged.
-    for _ in range(130):
+    size = 256
+    p = begin(size, '#575448')
+    p.append('<defs><radialGradient id="pigment"><stop stop-color="#b9ad93"/><stop offset="1" stop-color="#b9ad93" stop-opacity="0"/></radialGradient><radialGradient id="dense"><stop stop-color="#292b24"/><stop offset="1" stop-color="#292b24" stop-opacity="0"/></radialGradient><radialGradient id="faded"><stop stop-color="#d2c7ad"/><stop offset=".45" stop-color="#bbb096" stop-opacity=".7"/><stop offset="1" stop-color="#bbb096" stop-opacity="0"/></radialGradient></defs>')
+    # Uneven pigment survival: broad rubbed areas sit beneath finer paper
+    # pores. This is localized fading, not uniform transparency on the text.
+    for _ in range(38):
         x, y = r.uniform(0, size), r.uniform(0, size)
-        rx, ry = r.uniform(2.2, 8.3), r.uniform(1.1, 5.7)
-        opacity = r.uniform(.24, .53)
+        rx, ry = r.uniform(13, 37), r.uniform(5, 19)
+        opacity = r.uniform(.24, .45)
+        for u, v in wrapped(x, y, rx, ry, size):
+            p.append(f'<ellipse cx="{u:.1f}" cy="{v:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#faded)" opacity="{opacity:.3f}"/>')
+    for _ in range(170):
+        x, y = r.uniform(0, size), r.uniform(0, size)
+        rx, ry = r.uniform(2.5, 10.3), r.uniform(1.1, 6.7)
+        opacity = r.uniform(.22, .47)
         for u, v in wrapped(x, y, rx, ry, size):
             p.append(f'<ellipse cx="{u:.1f}" cy="{v:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#pigment)" opacity="{opacity:.3f}"/>')
-    for _ in range(58):
+    for _ in range(85):
         x, y = r.uniform(0, size), r.uniform(0, size)
         rx, ry = r.uniform(1.4, 5.5), r.uniform(.7, 3.6)
         for u, v in wrapped(x, y, rx, ry, size):
@@ -98,9 +104,9 @@ def ink():
             dx, dy = cos(a) * length, sin(a) * length
             for u, v in wrapped(x, y, length, length, size):
                 paths.append(f'M{u:.2f} {v:.2f}l{dx:.2f} {dy:.2f}')
-        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#e6e4d9" stroke-width="{.23 + group * .03:.3f}" stroke-linecap="round" opacity="{.20 + group * .047:.3f}"/>')
+        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#e6ddca" stroke-width="{.23 + group * .03:.3f}" stroke-linecap="round" opacity="{.26 + group * .047:.3f}"/>')
     for group in range(5):
-        p.append(f'<g fill="#eeede7" opacity="{.22 + group * .055:.3f}">')
+        p.append(f'<g fill="#e9e1d1" opacity="{.24 + group * .055:.3f}">')
         for _ in range(78):
             x, y, radius = r.uniform(0, size), r.uniform(0, size), r.uniform(.18, .64)
             for u, v in wrapped(x, y, radius, radius, size):
@@ -112,6 +118,16 @@ def ink():
         for u, v in wrapped(x, y, radius, radius, size):
             p.append(f'<circle cx="{u:.2f}" cy="{v:.2f}" r="{radius:.2f}"/>')
     p.append('</g>')
+    # Short, shallow abrasion traces: enough to interrupt ink, never to
+    # remove a complete stem. Most marks fall outside each clipped glyph.
+    for group in range(3):
+        paths = []
+        for _ in range(36):
+            x, y = r.uniform(0,size), r.uniform(0,size)
+            dx, dy = r.uniform(1.4, 6.8), r.uniform(-.6,.6)
+            for u, v in wrapped(x, y, dx+1, abs(dy)+1, size):
+                paths.append(f'M{u:.2f} {v:.2f}q{dx*.45:.2f} {dy+.35:.2f} {dx:.2f} {dy:.2f}')
+        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#eae4d7" stroke-width="{.25+group*.15:.2f}" opacity="{.19+group*.08:.2f}" stroke-linecap="round"/>')
     finish(p, 'letterpress-ink.svg')
 
 
@@ -128,7 +144,7 @@ def security_weave():
                 commands.append(f'c10.67 {-3.4*direction:.1f} 21.33 {-3.4*direction:.1f} 32 0s21.33 {3.4*direction:.1f} 32 0')
             paths.append(' '.join(commands))
         transform = '' if direction == 1 else ' transform="rotate(90 256 256)"'
-        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#555b50" stroke-width=".35" opacity=".105"{transform}/>')
+        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#756b58" stroke-width=".35" opacity=".075"{transform}/>')
     finish(p, 'security-weave.svg')
 
 

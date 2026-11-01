@@ -14,7 +14,7 @@ const require=createRequire(import.meta.url);
 const {webkit}=require('playwright');
 const root=path.resolve(process.argv[2]||'.');
 const output=await fs.mkdtemp(path.join(os.tmpdir(),'asympta-webkit-proof-'));
-const verifiedFiles=['index.html','folio.css','folio.js','assets/folio/cotton-stock.webp','assets/folio/security-weave.svg','assets/folio/letterpress-ink.svg','assets/fonts/old-standard-regular.woff2','assets/fonts/fell-english-sc.woff2','assets/fonts/noto-serif-tc-regular.woff2'];
+const verifiedFiles=['index.html','folio.css','folio.js','assets/folio/cotton-stock.webp','assets/folio/security-weave.svg','assets/folio/paper-patina.svg','assets/folio/letterpress-ink.svg','assets/fonts/old-standard-regular.woff2','assets/fonts/fell-english-sc.woff2','assets/fonts/noto-serif-tc-regular.woff2'];
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 async function sourceSnapshot(){return Object.fromEntries(await Promise.all(verifiedFiles.map(async file=>[file,digest(await fs.readFile(path.join(root,file)))])));}
 const sourceHashes=await sourceSnapshot();
