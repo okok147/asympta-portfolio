@@ -17,11 +17,36 @@
 <link rel="preload" href="assets/fonts/old-standard-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fell-english-sc.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/noto-serif-tc-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="folio.css?v=20261101-1">
+<link rel="preload" href="assets/folio/cotton-stock.webp" as="image">
+<link rel="stylesheet" href="folio.css?v=20261101-2">
 <script defer src="folio.js?v=20261101-1"></script>
 <title>Asympta — Ka Ho Lau</title>
 </head>
 <body id="top">
+<svg class="print-definitions" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="ink-impression" x="-3%" y="-12%" width="106%" height="126%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".075 .24" numOctaves="2" seed="19" result="fibres"/>
+      <feComponentTransfer in="fibres" result="paper-tooth"><feFuncR type="linear" slope="2.2" intercept="-.6"/><feFuncG type="linear" slope="2.2" intercept="-.6"/></feComponentTransfer>
+      <feDisplacementMap in="SourceGraphic" in2="paper-tooth" scale="1.1" xChannelSelector="R" yChannelSelector="G" result="ink-edge"/>
+      <feMorphology in="ink-edge" operator="dilate" radius=".14" result="ink-spread"/>
+      <feGaussianBlur in="ink-spread" stdDeviation=".24" result="absorption"/>
+      <feComponentTransfer in="absorption" result="soft-ink"><feFuncA type="linear" slope=".32"/></feComponentTransfer>
+      <feOffset in="ink-edge" dx=".15" dy=".6" result="pressed-edge"/>
+      <feFlood flood-color="#fffef6" flood-opacity=".5" result="paper-light"/>
+      <feComposite in="paper-light" in2="pressed-edge" operator="in" result="paper-lip"/>
+      <feMerge><feMergeNode in="paper-lip"/><feMergeNode in="soft-ink"/><feMergeNode in="ink-edge"/></feMerge>
+    </filter>
+    <filter id="ink-impression-small" x="-3%" y="-12%" width="106%" height="126%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".1 .28" numOctaves="2" seed="19" result="fibres"/>
+      <feComponentTransfer in="fibres" result="paper-tooth"><feFuncR type="linear" slope="2.2" intercept="-.6"/><feFuncG type="linear" slope="2.2" intercept="-.6"/></feComponentTransfer>
+      <feDisplacementMap in="SourceGraphic" in2="paper-tooth" scale=".8" xChannelSelector="R" yChannelSelector="G" result="ink-edge"/>
+      <feGaussianBlur in="ink-edge" stdDeviation=".2" result="absorption"/>
+      <feComponentTransfer in="absorption" result="soft-ink"><feFuncA type="linear" slope=".28"/></feComponentTransfer>
+      <feMerge><feMergeNode in="soft-ink"/><feMergeNode in="ink-edge"/></feMerge>
+    </filter>
+  </defs>
+</svg>
 <a class="skip" href="#contents" data-i18n="skip">跳至目錄</a>
 <header class="running-head">
   <a class="running-author" href="#top" lang="en">Ka Ho Lau</a>
@@ -44,7 +69,7 @@
 
   <nav id="contents" class="contents leaf" aria-labelledby="contents-title">
     <div class="running-line" aria-hidden="true"><span>ASYMPTA</span><span>MMXXVI</span></div>
-    <h2 id="contents-title" class="section-title" data-i18n="contents">目錄</h2>
+    <h2 id="contents-title" class="section-title print-type" data-i18n="contents">目錄</h2>
     <ol class="index-list">
       <li><a href="#writing"><span class="index-roman" aria-hidden="true">I.</span><span class="index-name" lang="en">Writing</span><span class="leader" aria-hidden="true"></span><span aria-hidden="true">01</span></a></li>
       <li><a href="#paperie"><span class="index-roman" aria-hidden="true">II.</span><span class="index-name" lang="en">Paperie</span><span class="leader" aria-hidden="true"></span><span aria-hidden="true">02</span></a></li>

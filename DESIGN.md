@@ -22,3 +22,13 @@ This revision interprets those relationships for Asympta. No reference text, emb
 Inspect desktop and mobile screenshots in both languages; verify genuine font loading, no horizontal clipping at 320px, all viewer interactions, real video decoding, language persistence, semantic no-JavaScript fallbacks, forced colors, printing and reduced motion. Deployment must be checked against the committed source and a successful GitHub Pages deployment. Emulated layouts do not establish physical iPhone/iPad testing.
 
 Original media provenance is retained in `ASSET_SOURCES.json`; font license/source provenance is in `assets/fonts/`. Material generator seeds are fixed. The old visual generators and illustrations are retained only as archive assets.
+
+## Correction: visible ink and banknote-like paper
+
+The user correctly identified that the first edition's large type still read as clean digital outlines. Pigment holes were too small and low in contrast to matter at normal viewing size. The sparse paper fibers likewise did not establish a continuous physical surface. Passing functional checks did not validate that visual requirement.
+
+The correction changes the edge itself with a bounded, static inline SVG filter on large headings. A fixed paper-tooth field creates small irregularities, a very thin ink spread suggests capillary absorption, and a shallow light edge suggests pressure without a conspicuous bevel. Desktop displacement is 1.1; smaller headings and mobile use 0.8. Pigment variation now occurs at visible 2–6px scales, with pores secondary to the letterform. Controls and body copy remain unfiltered.
+
+An original image_gen cotton/linen material supplies dense interlocking short fibers and real-looking local relief. Its first in-page treatment looked too much like unpressed pulp, so the final stock uses a finer 500px tile and a 35% neutral wash. An original low-opacity engraved weave adds the fine-line texture associated with security printing, without any actual banknote, seal, denomination or copied design.
+
+The acceptance standard is direct inspection at normal desktop/mobile scale: ink variation and paper tooth must be visible without enlargement, while small labels remain readable. The final renderer is also checked in WebKit, with filter-on/off pixel evidence and opaque high-contrast/print fallbacks. There is no per-frame canvas, animated turbulence, full-page filter or fixed texture overlay.

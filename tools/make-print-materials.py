@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Rebuild the original, seamless folio paper and glyph-pigment materials.
+"""Rebuild the original glyph pigment and fine engraved security weave.
 
-Deterministic vectors only: no runtime canvas, animation, source photograph,
-external resource, or SVG filter. Paper is drawn at 768 CSS px; the ink tile
-at 192 CSS px. Tiny marks describe fibres and pores, not damaged lettering.
+The physical cotton stock is an image_gen asset with separate provenance.
+These two vector materials are deterministic and static. The earlier paper()
+generator is retained for archival reproduction, but is no longer invoked.
 """
 from math import cos, sin, pi
 from pathlib import Path
@@ -74,29 +74,35 @@ def paper():
 
 def ink():
     r = Random(192011126)
-    size = 192
-    p = begin(size, '#302f2b')
-    p.append('<defs><radialGradient id="pigment"><stop stop-color="#79786c"/><stop offset="1" stop-color="#79786c" stop-opacity="0"/></radialGradient></defs>')
-    # Slowly varying ink pressure is subordinate to each real font outline.
-    for _ in range(24):
+    size = 160
+    p = begin(size, '#30312c')
+    p.append('<defs><radialGradient id="pigment"><stop stop-color="#a2a08c"/><stop offset="1" stop-color="#a2a08c" stop-opacity="0"/></radialGradient><radialGradient id="dense"><stop stop-color="#0d100c"/><stop offset="1" stop-color="#0d100c" stop-opacity="0"/></radialGradient></defs>')
+    # Visible ink-density variation at a 2–6px scale, rather than a nearly
+    # solid vector fill with microscopic holes detectable only when enlarged.
+    for _ in range(130):
         x, y = r.uniform(0, size), r.uniform(0, size)
-        rx, ry = r.uniform(4, 17), r.uniform(1, 7)
-        opacity = r.uniform(.07, .15)
+        rx, ry = r.uniform(2.2, 8.3), r.uniform(1.1, 5.7)
+        opacity = r.uniform(.24, .53)
         for u, v in wrapped(x, y, rx, ry, size):
             p.append(f'<ellipse cx="{u:.1f}" cy="{v:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#pigment)" opacity="{opacity:.3f}"/>')
+    for _ in range(58):
+        x, y = r.uniform(0, size), r.uniform(0, size)
+        rx, ry = r.uniform(1.4, 5.5), r.uniform(.7, 3.6)
+        for u, v in wrapped(x, y, rx, ry, size):
+            p.append(f'<ellipse cx="{u:.1f}" cy="{v:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#dense)" opacity=".35"/>')
     for group in range(6):
         paths = []
         for _ in range(38):
             x, y, a = r.uniform(0, size), r.uniform(0, size), r.uniform(0, 2 * pi)
-            length = r.uniform(.35, 2.5)
+            length = r.uniform(.7, 3.5)
             dx, dy = cos(a) * length, sin(a) * length
             for u, v in wrapped(x, y, length, length, size):
                 paths.append(f'M{u:.2f} {v:.2f}l{dx:.2f} {dy:.2f}')
-        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#e6e4d9" stroke-width="{.16 + group * .025:.3f}" stroke-linecap="round" opacity="{.13 + group * .037:.3f}"/>')
+        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#e6e4d9" stroke-width="{.23 + group * .03:.3f}" stroke-linecap="round" opacity="{.20 + group * .047:.3f}"/>')
     for group in range(5):
-        p.append(f'<g fill="#eeede7" opacity="{.18 + group * .045:.3f}">')
+        p.append(f'<g fill="#eeede7" opacity="{.22 + group * .055:.3f}">')
         for _ in range(78):
-            x, y, radius = r.uniform(0, size), r.uniform(0, size), r.uniform(.13, .42)
+            x, y, radius = r.uniform(0, size), r.uniform(0, size), r.uniform(.18, .64)
             for u, v in wrapped(x, y, radius, radius, size):
                 p.append(f'<circle cx="{u:.2f}" cy="{v:.2f}" r="{radius:.2f}"/>')
         p.append('</g>')
@@ -109,7 +115,24 @@ def ink():
     finish(p, 'letterpress-ink.svg')
 
 
+def security_weave():
+    # Original, seamless fine engraving. No note layout, currency symbol,
+    # denomination or copied banknote design. Low opacity supports the stock.
+    size = 512
+    p = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 {size} {size}">']
+    for direction in (1, -1):
+        paths = []
+        for y in range(-16, 532, 5):
+            commands = [f'M0 {y}']
+            for _ in range(8):
+                commands.append(f'c10.67 {-3.4*direction:.1f} 21.33 {-3.4*direction:.1f} 32 0s21.33 {3.4*direction:.1f} 32 0')
+            paths.append(' '.join(commands))
+        transform = '' if direction == 1 else ' transform="rotate(90 256 256)"'
+        p.append(f'<path d="{" ".join(paths)}" fill="none" stroke="#555b50" stroke-width=".35" opacity=".105"{transform}/>')
+    finish(p, 'security-weave.svg')
+
+
 if __name__ == '__main__':
     OUT.mkdir(parents=True, exist_ok=True)
-    paper()
     ink()
+    security_weave()

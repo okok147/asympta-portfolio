@@ -6,8 +6,9 @@ import os from 'node:os';
 import {spawn} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const root=path.resolve(process.argv[2]||'.');
-const verifiedFiles=['index.html','folio.css','folio.js','assets/folio/paper.svg','assets/folio/letterpress-ink.svg','assets/fonts/old-standard-regular.woff2','assets/fonts/fell-english-sc.woff2','assets/fonts/noto-serif-tc-regular.woff2'];
-const sourceHashes=Object.fromEntries(await Promise.all(verifiedFiles.map(async file=>[file,createHash('sha256').update(await fs.readFile(path.join(root,file))).digest('hex')])));
+const verifiedFiles=['index.html','folio.css','folio.js','assets/folio/cotton-stock.webp','assets/folio/security-weave.svg','assets/folio/letterpress-ink.svg','assets/fonts/old-standard-regular.woff2','assets/fonts/fell-english-sc.woff2','assets/fonts/noto-serif-tc-regular.woff2'];
+async function sourceSnapshot(){return Object.fromEntries(await Promise.all(verifiedFiles.map(async file=>[file,createHash('sha256').update(await fs.readFile(path.join(root,file))).digest('hex')])));}
+const sourceHashes=await sourceSnapshot();
 const output=await fs.mkdtemp(path.join(os.tmpdir(),'asympta-folio-proof-'));
 const profile=path.join(output,'chrome-profile');
 const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.mp4':'video/mp4','.json':'application/json','.woff2':'font/woff2'};
@@ -53,7 +54,7 @@ async function until(expression){for(let i=0;i<70;i++){if(await evaluate(express
 const checks=[];
 function check(name,value,details){checks.push({name,pass:Boolean(value),details});if(!value)throw Error('FAIL: '+name+' '+JSON.stringify(details));}
 async function dimensions(width,height=900){await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});await delay(50)}
-async function screenshot(name,full=false){await delay(90);const params={format:'png',captureBeyondViewport:full};if(full){const m=await send('Page.getLayoutMetrics');params.clip={x:0,y:0,width:m.cssContentSize.width,height:m.cssContentSize.height,scale:1}}const r=await send('Page.captureScreenshot',params);await fs.writeFile(path.join(output,name+'.png'),Buffer.from(r.data,'base64'));}
+async function screenshot(name,full=false){await evaluate("(async()=>{await document.fonts.ready;await Promise.all(document.getAnimations().filter(a=>Number.isFinite(a.effect?.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{})));await new Promise(requestAnimationFrame)})()");const params={format:'png',captureBeyondViewport:full};if(full){const m=await send('Page.getLayoutMetrics');params.clip={x:0,y:0,width:m.cssContentSize.width,height:m.cssContentSize.height,scale:1}}const r=await send('Page.captureScreenshot',params);await fs.writeFile(path.join(output,name+'.png'),Buffer.from(r.data,'base64'));}
 async function language(lang){if(await evaluate('document.documentElement.lang')!==(lang==='zh'?'zh-Hant':'en'))await evaluate("document.querySelector('.language').click()");}
 let failure;
 try{
@@ -77,12 +78,13 @@ try{
  check('Self-hosted Latin, small-cap and Chinese fonts actually load',loadedFonts.every(font=>font.loaded),loadedFonts);
  check('Printed serif faces selected for Latin and Chinese',await evaluate("getComputedStyle(document.querySelector('#site-title')).fontFamily.includes('Folio Old Standard')&&getComputedStyle(document.querySelector('#contact-title')).fontFamily.includes('Folio Song')"));
  check('Pigment texture is clipped inside real selectable lettering',await evaluate("getComputedStyle(document.querySelector('#site-title')).backgroundImage.includes('letterpress-ink.svg')&&getComputedStyle(document.querySelector('.index-name')).backgroundImage.includes('letterpress-ink.svg')&&document.querySelector('#site-title').textContent==='ASYMPTA'"));
- check('Body still has paper stock, not global ink noise',await evaluate("getComputedStyle(document.body).backgroundImage.includes('paper.svg')&&!getComputedStyle(document.querySelector('.running-head a')).backgroundImage.includes('letterpress-ink.svg')"));
+ check('Static paper and underprint remain separate from unfiltered controls',await evaluate("getComputedStyle(document.body).backgroundImage.includes('cotton-stock.webp')&&getComputedStyle(document.body).backgroundImage.includes('security-weave.svg')&&[...document.querySelectorAll('body,main,.title-page,.running-head,.running-head a,.language,.plate figcaption,.work-links,.email,.contact-note,.index-name')].every(e=>getComputedStyle(e).filter==='none')&&!getComputedStyle(document.querySelector('.running-head a')).backgroundImage.includes('letterpress-ink.svg')"));
+ check('Ink edge effects remain static and limited to large headings',await evaluate("getComputedStyle(document.querySelector('#site-title')).filter.includes('url(')&&[...document.querySelectorAll('body *')].filter(e=>getComputedStyle(e).filter.includes('url(')).every(e=>e.matches('#site-title,#contents-title,.work-heading h2,.correspondence .section-title,.viewer-title h2'))&&!document.querySelector('.print-definitions animate,.print-definitions animateTransform,.print-definitions set')"));
  await send('Emulation.setEmulatedMedia',{media:'print'});
- check('Print stylesheet restores solid black glyphs',await evaluate("getComputedStyle(document.querySelector('#site-title')).backgroundImage==='none'&&getComputedStyle(document.querySelector('#site-title')).webkitTextFillColor!=='transparent'"));
+ check('Print restores solid unfiltered glyphs and plain paper',await evaluate("[...document.querySelectorAll('.print-type,.index-name')].every(e=>{const s=getComputedStyle(e);return s.backgroundImage==='none'&&s.filter==='none'&&s.webkitTextFillColor!=='transparent'})&&getComputedStyle(document.body).backgroundImage==='none'&&getComputedStyle(document.querySelector('#viewer')).backgroundImage==='none'"));
  await send('Emulation.setEmulatedMedia',{media:'screen'});
  await send('Emulation.setEmulatedMedia',{features:[{name:'forced-colors',value:'active'}]});
- check('Forced colors retain opaque readable lettering',await evaluate("[...document.querySelectorAll('.print-type,.index-name')].every(element=>{const style=getComputedStyle(element);const fill=style.webkitTextFillColor;return fill!=='transparent'&&!/,[ ]*0(?:[.]0*)?[)]$/.test(fill)&&style.opacity!=='0'&&style.backgroundImage==='none'})"));
+ check('Forced colors retain opaque unfiltered lettering on plain paper',await evaluate("[...document.querySelectorAll('.print-type,.index-name')].every(element=>{const style=getComputedStyle(element);const fill=style.webkitTextFillColor;return fill!=='transparent'&&!/^rgba[(].*,[ ]*0(?:[.]0*)?[)]$/.test(fill)&&style.opacity!=='0'&&style.backgroundImage==='none'&&style.filter==='none'})&&getComputedStyle(document.body).backgroundImage==='none'&&getComputedStyle(document.querySelector('#viewer')).backgroundImage==='none'"));
  await send('Emulation.setEmulatedMedia',{features:[]});
  check('Thumbnail preserves color',await evaluate("document.querySelector('.plate-link>img').src.endsWith('writing-ipad-2.webp')&&getComputedStyle(document.querySelector('.plate-link>img')).filter.includes('saturate(0.79)')"));
  check('X and exact requested Threads route',await evaluate("!!document.querySelector('a[href=\"https://www.threads.com/@oklauuuuu\"]')&&!!document.querySelector('a[href=\"https://x.com/oklauuuuu\"]')"));
@@ -136,8 +138,10 @@ try{
  check('No runtime exceptions',errors.length===0,errors);
  check('Font requests succeed with the correct MIME type',fontResponses.length>0&&fontResponses.every(response=>response.status<400&&response.mimeType==='font/woff2')&&fontErrors.length===0,{responses:fontResponses,errors:fontErrors});
  check('No missing assets',badResponses.length===0,badResponses);
+ check('Verified source remained unchanged during rendering',JSON.stringify(sourceHashes)===JSON.stringify(await sourceSnapshot()));
 }catch(e){failure=e.stack||String(e)}finally{
- const report={root,output,sourceHashes,checks,errors,badResponses,fontResponses,fontErrors,failure:failure||null,browser:'Headless Google Chrome / isolated profile',at:new Date().toISOString()};
+ const browserVersion=await send('Browser.getVersion').catch(()=>null);
+ const report={root,output,sourceHashes,checks,errors,badResponses,fontResponses,fontErrors,failure:failure||null,browser:'Headless Google Chrome / isolated profile',browserVersion,at:new Date().toISOString()};
  await fs.writeFile(path.join(output,'acceptance.json'),JSON.stringify(report,null,2));
  console.log(JSON.stringify({output,passed:checks.filter(x=>x.pass).length,total:checks.length,failure:failure||null,errors,badResponses}));
  socket.close();chrome.kill('SIGTERM');chrome.unref();server.closeAllConnections();server.close();

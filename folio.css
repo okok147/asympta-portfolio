@@ -36,8 +36,10 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; scroll-padding-top: 30
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--paper) url("assets/folio/paper.svg?v=20261101") repeat;
-  background-size: 768px 768px;
+  background-color: var(--paper);
+  background-image: url("assets/folio/security-weave.svg"), linear-gradient(#eeede759, #eeede759), url("assets/folio/cotton-stock.webp");
+  background-repeat: repeat;
+  background-size: 512px 512px, auto, 500px 500px;
   font: 17px/1.8 var(--serif);
   font-kerning: normal;
   font-optical-sizing: auto;
@@ -55,6 +57,7 @@ a:focus-visible, button:focus-visible, video:focus-visible { outline: 1.5px soli
 ::selection { background: #d6d4c8; color: #181816; -webkit-text-fill-color: #181816; }
 .skip { position: fixed; left: 16px; top: -100px; z-index: 20; padding: 12px 18px; background: var(--paper); }
 .skip:focus { top: 12px; }
+.print-definitions { position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; }
 
 /* The running head stays outside the title's quiet field. */
 .running-head {
@@ -107,14 +110,16 @@ html[lang="zh-Hant"] .cover-kind { font-family: var(--cjk); font-size: 16px; let
 .print-type, .index-name { color: var(--ink); font-synthesis: none; }
 @supports (background-clip: text) or (-webkit-background-clip: text) {
   .print-type, .index-name {
-    background: var(--ink) url("assets/folio/letterpress-ink.svg?v=20261101") repeat;
-    background-size: 192px 192px;
+    background: var(--ink) url("assets/folio/letterpress-ink.svg?v=20261101-2") repeat;
+    background-size: 160px 160px;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .title-page h1 { -webkit-text-stroke: .13px #302f2b24; }
 }
+/* Static paper-tooth displacement and capillary spread, limited to the large glyph surfaces. */
+.title-page h1, .work-heading h2 { filter: url("#ink-impression"); }
+.contents .section-title, .correspondence .section-title, .viewer-title h2 { filter: url("#ink-impression-small"); }
 
 /* An index and two actual work plates, composed on the same page measure. */
 .leaf { width: calc(100% - 80px); max-width: var(--measure); margin: 0 auto; position: relative; scroll-margin-top: 30px; }
@@ -151,8 +156,8 @@ html[lang="zh-Hant"] .index-name[data-i18n] { font: 400 23px/1.6 var(--cjk); let
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background-image: url("assets/print-screen.svg"), url("assets/folio/paper.svg?v=20261101");
-  background-size: 96px 96px, 384px 384px;
+  background-image: url("assets/print-screen.svg"), url("assets/folio/cotton-stock.webp");
+  background-size: 96px 96px, 700px 700px;
   background-repeat: repeat;
   mix-blend-mode: multiply;
   opacity: .18;
@@ -191,8 +196,10 @@ html[lang="zh-Hant"] .correspondence .section-title { font-size: 42px; text-inde
 /* The image reader is a paper sheet, with native video and keyboard controls. */
 #viewer {
   color: var(--ink);
-  background: var(--paper) url("assets/folio/paper.svg?v=20261101") repeat;
-  background-size: 768px 768px;
+  background-color: var(--paper);
+  background-image: url("assets/folio/security-weave.svg"), linear-gradient(#eeede759, #eeede759), url("assets/folio/cotton-stock.webp");
+  background-repeat: repeat;
+  background-size: 512px 512px, auto, 500px 500px;
   width: min(1100px, calc(100vw - 48px));
   height: calc(100dvh - 48px);
   max-width: none;
@@ -246,6 +253,7 @@ body.has-viewer { overflow: hidden; }
   .title-page { width: calc(100% - 38px); min-height: clamp(570px, calc(100svh - 70px), 630px); padding: 53px 0 29px; }
   .edition { font-size: 12px; margin-bottom: 66px; }
   .title-page h1 { font-size: clamp(37px, 11.6vw, 60px); letter-spacing: .13em; text-indent: .13em; }
+  .title-page h1, .work-heading h2 { filter: url("#ink-impression-small"); }
   .cover-kind { font-size: 17px; margin-top: 21px; }
   html[lang="zh-Hant"] .cover-kind { font-size: 15px; }
   .title-rule { width: 43px; margin: 31px 0 24px; }
@@ -305,7 +313,8 @@ body.has-viewer { overflow: hidden; }
 }
 @media (prefers-contrast: more), (forced-colors: active) {
   :root { --ink: #191917; --muted: #393932; --line: #69685e; }
-  .print-type, .index-name { background: none !important; -webkit-text-fill-color: currentColor !important; -webkit-text-stroke: 0 !important; }
+  body, #viewer { background-image: none !important; }
+  .print-type, .index-name { filter: none !important; background: none !important; -webkit-text-fill-color: currentColor !important; -webkit-text-stroke: 0 !important; }
   .plate-link::before, .viewer-media::after { display: none; }
   .plate-open { border: 1px solid currentColor; }
 }
@@ -318,7 +327,7 @@ body.has-viewer { overflow: hidden; }
   .work, .correspondence { break-before: page; }
   .work-heading { break-after: avoid; }
   .plate { break-inside: avoid; }
-  .print-type, .index-name { background: none !important; color: #000 !important; -webkit-text-fill-color: currentColor !important; -webkit-text-stroke: 0 !important; }
+  .print-type, .index-name { filter: none !important; background: none !important; color: #000 !important; -webkit-text-fill-color: currentColor !important; -webkit-text-stroke: 0 !important; }
   .plate-link { background: #fff; }
   .plate-link::before, .plate-link::after, .plate figcaption a { display: none; }
   a { color: #000; }

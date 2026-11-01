@@ -1,0 +1,14 @@
+{
+  "asset": "assets/folio/cotton-stock.webp",
+  "source": "OpenAI built-in image_gen",
+  "generation_date": "2026-11-01",
+  "original_generated_filename": "exec-32dd8b4f-67ce-4ac1-96c5-2927f16092ef.png",
+  "purpose": "Original neutral cotton/linen rag-paper material for the Asympta portfolio background. This contains no banknote design, denomination, seal, lettering or watermark.",
+  "prompt": "Use case: photorealistic-natural.\nAsset type: seamless square photographic material texture for a website background, at least 1024 by 1024 pixels.\nPrimary request: generate an ORIGINAL close-up of real high-quality cotton and linen rag paper, with the rich tactile physical surface of unprinted banknote paper. The ENTIRE image is just flat paper material.\nComposition: orthographic overhead macro scan, paper fills every edge. Uniform seamless tile suitable for repeating in both directions. Dense interlocking very short cotton fibers and subtly pressed linen grain, a softly raised fibrous tooth. No isolated long hairs; the whole surface has fine organically interwoven material. Fibers should be visually perceptible at normal screen size, with tiny neutral microshadows between fibers and very gentle highlights on their ridges. This must look like physical paper, not white digital noise or widely scattered drawn lines.\nLighting: perfectly even diffuse neutral illumination across the complete square, with very mild microscopic relief only. No large shadows, no center-to-edge lighting variation, no vignette, no folds, no creases, no isolated stains, no grime.\nColor palette: very pale neutral gray ivory, dominant #eeede7, minimal chroma, no yellow or brown cast. Local fiber contrast should remain delicate but clearly visible; not a blank flat background.\nConstraints: original texture only. NO actual currency. No banknotes, text, letters, numbers, symbols, denominations, faces, seals, border designs, ornaments, watermarks, logos, security threads, colored confetti, objects, gradients or page edge. No transparent background.",
+  "width": 1254,
+  "height": 1254,
+  "transform": "PNG to WebP, quality 82, effort 6. No crop, recoloring, relighting or compositing.",
+  "bytes": 234602,
+  "sha256": "cb458d5f86ca495659e65ec6475d9d02c5970be959d58a225f2c4e05661ee3ae",
+  "inspection": "Dense short interlocking fibres and fine paper tooth are visible at normal size. Pale neutral ivory stock; no typography, symbols, border, page edge, watermark, vignette or objects. Generated as a repeating square; exact seamlessness requires in-page validation."
+}
