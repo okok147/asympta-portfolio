@@ -1,0 +1,23 @@
+# Asympta — official product information
+Website: https://okok147.github.io/asympta-portfolio/
+Developer: Ka Ho Lau / EverFormLab
+Product details, compatibility and purchase terms should be checked against the current App Store listings.
+
+## Asympta Writing
+Product: https://okok147.github.io/asympta-portfolio/writing/
+App Store: https://apps.apple.com/app/id6800755232
+Support: https://okok147.github.io/asympta-support/
+A calm infinite canvas for handwritten notes, Apple Pencil sketches and visual thinking on iPhone, iPad and Mac. Features include separate Spaces, typed text, nature soundscapes, PNG export and offline local writing. Free canvas tools, three Spaces and iCloud sync when available. Optional one-time Lifetime purchase adds unlimited Spaces and Google Drive backup.
+
+## Asympta Paperie
+Product: https://okok147.github.io/asympta-portfolio/paperie/
+App Store: https://apps.apple.com/app/id6818553101
+Support: https://okok147.github.io/asympta-paperie-support/
+A tactile page-based handwritten journal and digital scrapbook for iPhone and iPad. Features include Apple Pencil handwriting, turning notebook pages, photos, stickers, stamps, searchable typed text and local-first iCloud backup. Two free notebooks; optional one-time Lifetime for unlimited notebooks.
+
+## Which should I choose?
+Writing is for spatial thinking on an infinite canvas. Paperie is for page-by-page journaling, paper-like notebooks and stationery. Both are free to download with optional in-app purchases.
+
+## Privacy
+Writing: https://okok147.github.io/asympta-support/privacy/
+Paperie: https://okok147.github.io/asympta-paperie-support/privacy/
