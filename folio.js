@@ -5,7 +5,7 @@
   const messages = {
     zh: {
       portfolio:'作品集',navigation:'導覽',
-      skip:'跳至目錄',contents:'目錄',contact:'聯絡',view:'檢視 ↗',support:'支援 ↗',appStore:'App Store ↗',
+      skip:'跳至目錄',contents:'目錄',contact:'聯絡',view:'檢視 ↗',support:'支援 ↗',appStore:'App Store ↗',details:'了解作品 ↗',writingSummary:'無限畫布、Apple Pencil 手寫與視覺思考，適用於 iPhone、iPad 及 Mac。',paperieSummary:'像真紙一樣的數位日記與手帳，支援手寫、貼紙與拼貼。',
       writingFigure:'圖版 I · Writing',paperieFigure:'圖版 II · Paperie',
       openWriting:'檢視 Writing 圖版',openPaperie:'檢視 Paperie 圖版',
       writingPlateAlt:'Writing 天空畫布的彩色印刷質感圖版',paperiePlateAlt:'Paperie 手帳跨頁的彩色印刷質感圖版',
@@ -14,13 +14,13 @@
       privacyAria:'隱私政策',writingPrivacy:'Writing 隱私',paperiePrivacy:'Paperie 隱私',backTop:'頁首 ↑',
       close:'關閉 ×',previous:'← 上一頁',next:'下一頁 →',
       videoFallback:'瀏覽器無法播放影片。',mediaError:'媒體載入失敗。',
-      meta:'Asympta — Ka Ho Lau。作品與聯絡。',subject:'專案與合作',page:'第 {n} 頁，共 {total} 頁',
+      meta:'Asympta Writing 無限手寫畫布與 Asympta Paperie 數位日記手帳。由 Ka Ho Lau 創作。',subject:'專案與合作',page:'第 {n} 頁，共 {total} 頁',
       printLabel:'印刷圖版',videoLabel:'實際操作 · 無聲影片',
       paperCanvas:'紙張畫布',skyCanvas:'天空畫布',spaces:'Spaces',journal:'手帳跨頁',cover:'手帳封面'
     },
     en: {
       portfolio:'Selected works',navigation:'Navigation',
-      skip:'Skip to contents',contents:'Contents',contact:'Contact',view:'View ↗',support:'Support ↗',appStore:'App Store ↗',
+      skip:'Skip to contents',contents:'Contents',contact:'Contact',view:'View ↗',support:'Support ↗',appStore:'App Store ↗',details:'About the app ↗',writingSummary:'An infinite canvas for Apple Pencil handwriting, notes and visual thinking on iPhone, iPad and Mac.',paperieSummary:'A tactile digital journal and scrapbook with handwriting, paper pages and stationery.',
       writingFigure:'Plate I · Writing',paperieFigure:'Plate II · Paperie',
       openWriting:'View the Writing plates',openPaperie:'View the Paperie plates',
       writingPlateAlt:'A softly colored printed reproduction of the Writing sky canvas',paperiePlateAlt:'A softly colored printed reproduction of the Paperie journal spread',
@@ -29,7 +29,7 @@
       privacyAria:'Privacy policies',writingPrivacy:'Writing privacy',paperiePrivacy:'Paperie privacy',backTop:'Top ↑',
       close:'Close ×',previous:'← Previous',next:'Next →',
       videoFallback:'Your browser cannot play this video.',mediaError:'The media could not be loaded.',
-      meta:'Asympta — Ka Ho Lau. Works and contact.',subject:'Project & Collaboration',page:'Page {n} of {total}',
+      meta:'Asympta Writing: an infinite handwriting canvas. Asympta Paperie: a tactile digital journal and scrapbook. Two quiet apps by Ka Ho Lau.',subject:'Project & Collaboration',page:'Page {n} of {total}',
       printLabel:'Printed reproduction',videoLabel:'Actual app recording · Silent',
       paperCanvas:'Paper canvas',skyCanvas:'Sky canvas',spaces:'Spaces',journal:'Journal spread',cover:'Journal cover'
     }
