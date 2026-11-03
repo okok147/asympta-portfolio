@@ -333,3 +333,10 @@ body.has-viewer { overflow: hidden; }
   .plate-link::before, .plate-link::after, .plate figcaption a { display: none; }
   a { color: #000; }
 }
+
+/* Search-accessible work captions, in the existing printed index. */
+.work-summary {margin:0 0 13px;color:var(--muted);font:15px/1.8 var(--serif);max-width:700px}
+#writing .work-summary {margin-left:49px}
+#paperie .work-summary {text-align:right;margin-left:auto}
+html[lang="zh-Hant"] .work-summary {font-family:var(--cjk)}
+@media(max-width:600px){#writing .work-summary{margin-left:0}#paperie .work-summary{text-align:left;margin-left:0}}
